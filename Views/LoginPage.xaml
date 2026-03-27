@@ -39,6 +39,20 @@
                     HeightRequest="45"
                     BackgroundColor="White"
                     Margin="0,5"/>
+                
+                <Button
+                    Text="Login"
+                    HeightRequest="50"
+                    BackgroundColor="#00697F"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontAttributes="Bold"/>
+
+                <Label
+                    Text="Invalid login"
+                    TextColor="Red"
+                    IsVisible="False"
+                    HorizontalOptions="Center"/>
 
             </VerticalStackLayout>
 
