@@ -4,7 +4,7 @@ namespace Campus.Views;
 
 public partial class EventsPage : ContentPage
 {
-    public EventsPage(EventsViewModel viewModel)
+    public EventsPage(EventViewModels viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
