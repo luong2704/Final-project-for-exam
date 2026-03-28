@@ -1,13 +1,13 @@
-﻿using Campus_Activity_Manager.Services;
-using Campus_Activity_Manager.Models;
+﻿using Campus.Services;
+using Campus.Models;
 
-namespace Campus_Activity_Manager.Services
+namespace Campus.Services
 {
-	public class MockMyEventService : IMyEventService
+	public class MockEventService : IEventService
 	{
 		private readonly List<Event> _registeredEvents;
 
-		public MockMyEventService()
+		public MockEventService()
 		{
 			_registeredEvents = new List<Event>
 			{

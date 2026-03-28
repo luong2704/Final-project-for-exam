@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Campus.Services;
+using Campus.ViewModels;
 
 namespace Campus
 {
@@ -14,6 +16,10 @@ namespace Campus
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<ICategoryService, CategoryService>();
+            builder.Services.AddSingleton<IEventService, EventService>();
+            builder.Services.AddTransient<EventsViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

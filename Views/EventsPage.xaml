@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.EventsPage"
+             Title="Campus Events">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Filter Chips - Horizontal ScrollView -->
+        <ScrollView Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    HorizontalScrollBarVisibility="Never"
+                    Padding="10,5">
+            <HorizontalStackLayout Spacing="8">
+                <!-- "All" Chip -->
+                <Button Text="All" 
+                        Command="{Binding ShowAllCategoriesCommand}"
+                        Style="{StaticResource FilterChipStyle}" />
+                
+                <!-- Category Chips -->
+                <StackLayout BindableLayout.ItemsSource="{Binding Categories}" Orientation="Horizontal">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding CategoryName}"
+                                    Command="{Binding SelectCategoryCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource FilterChipStyle}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Events CollectionView -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding FilteredEvents}"
+                        SelectionMode="None"
+                        BackgroundColor="Transparent">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="10,5" Padding="15" BackgroundColor="White" CornerRadius="10">
+                        <Frame.HasShadow>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="iOS">False</On>
+                                <On Platform="Android">True</On>
+                            </OnPlatform>
+                        </Frame.HasShadow>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Label Grid.Row="0" Grid.Column="0" 
+                                   Text="{Binding EventName}" 
+                                   FontSize="Medium" 
+                                   FontAttributes="Bold"/>
+                            
+                            <Label Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding EventDate, StringFormat='{}{0:MMM dd}'}"
+                                   FontSize="Small"
+                                   TextColor="Gray"/>
+                            
+                            <Label Grid.Row="1" Grid.ColumnSpan="2" 
+                                   Text="{Binding EventDescription}"
+                                   FontSize="Small"
+                                   TextColor="Gray"
+                                   MaxLines="2"/>
+                            
+                            <Label Grid.Row="2" Grid.ColumnSpan="2" 
+                                   Text="{Binding Location}"
+                                   FontSize="Small"
+                                   TextColor="DarkGray"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Empty State -->
+        <StackLayout Grid.Row="1" 
+                     IsVisible="{Binding HasNoEvents}"
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Center">
+            <Label Text="No Events" 
+                   FontSize="Large" 
+                   HorizontalOptions="Center"/>
+            <Label Text="No events match the selected category" 
+                   FontSize="Small" 
+                   TextColor="Gray"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="1" 
+                          IsRunning="{Binding IsLoading}" 
+                          VerticalOptions="Center" 
+                          HorizontalOptions="Center"/>
+    </Grid>
+</ContentPage>
