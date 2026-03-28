@@ -25,11 +25,22 @@
                         Command="{Binding ShowAllCategoriesCommand}"
                         Style="{StaticResource FilterChipStyle}" />
                 
-                <!-- Category Chips -->
-                <Button Text="{Binding Category.CategoryName}"
-                        Command="{Binding SelectCategoryCommand}"
-                        CommandParameter="{Binding Category}"
-                        Style="{StaticResource FilterChipStyle}" />
+                <!-- Category Chips using BindableLayout -->
+                <ItemsControl ItemsSource="{Binding Categories}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <HorizontalStackLayout Spacing="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding CategoryName}"
+                                    Command="{Binding Source={RelativeSource AncestorType=ContentPage}, Path=BindingContext.SelectCategoryCommand}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource FilterChipStyle}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </HorizontalStackLayout>
         </ScrollView>
 
