@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Campus.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Settings"
+    BackgroundColor="#F5F7FB">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label
+                Text="Settings &amp; Preferences"
+                FontSize="26"
+                FontAttributes="Bold"
+                TextColor="#1F2937" />
+
+            <Label
+                Text="Manage your app appearance and notification preferences."
+                FontSize="14"
+                TextColor="#6B7280" />
+
+            <!-- Dark Mode -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,Auto">
+
+                    <Label
+                        Text="Dark Mode"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#111827" />
+
+                    <Switch Grid.Column="1" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,8,0,0"
+                        Text="Enable dark theme for a more comfortable viewing experience."
+                        FontSize="13"
+                        TextColor="#6B7280" />
+                </Grid>
+            </Border>
+
+            <!-- Notifications -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,Auto">
+
+                    <Label
+                        Text="Notifications"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#111827" />
+
+                    <Switch Grid.Column="1" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,8,0,0"
+                        Text="Receive reminders and updates about campus activities."
+                        FontSize="13"
+                        TextColor="#6B7280" />
+                </Grid>
+            </Border>
+
+            <!-- Save Button -->
+            <Button
+                Text="Save Settings"
+                HeightRequest="50"
+                CornerRadius="14"
+                BackgroundColor="#4F46E5"
+                TextColor="White"
+                FontAttributes="Bold" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
