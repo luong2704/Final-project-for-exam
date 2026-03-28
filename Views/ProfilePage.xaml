@@ -17,6 +17,23 @@
             StrokeShape="RoundRectangle 15"
             BackgroundColor="#F4F8F9"
             Padding="20">
+
+            <VerticalStackLayout Spacing="10">
+
+                <Label Text="Name: User Name"
+                       FontSize="18"
+                       TextColor="#00697F"/>
+
+                <Label Text="Email: user@email.com"
+                       FontSize="18"
+                       TextColor="#00697F"/>
+
+                <Label Text="Student ID: 123456"
+                       FontSize="18"
+                       TextColor="#00697F"/>
+
+            </VerticalStackLayout>
+
         </Border>
 
         <Button
