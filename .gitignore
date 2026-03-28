@@ -1,0 +1,89 @@
+# Build results
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.suo
+*.suo.credentials
+*.userprefs
+.vscode/
+
+# .NET
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+
+# Rider
+.idea/
+
+# MacOS
+.DS_Store
+
+# Android
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+GeneratedFiles/
+
+# iOS
+*.mobileprovision
+*.xcuserstate
+*.xcworkspace
+!Default.xcworkspace
+DerivedData/
+*.ipa
+*.appiconset/
+
+# MAUI specific
+.maui/
+*.android.*.properties
+*.android.*.pkgs
+*.iOS.*.plist
+*.iOS.*.md
+*.mac.*
+
+# User-specific files
+*.rsuser
+*.user
+*.userosscache
+*.sln.docstates
+
+# Application files
+*.pf
+*.pfx
+*.snk
+*.snk.?*
+
+# Test Results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+.planning
+*.md
