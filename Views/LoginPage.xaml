@@ -1,0 +1,93 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.LoginPage"
+             BackgroundColor="#F7FAFC"
+             Title="Login">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="15"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            MaximumWidthRequest="350">
+
+            <!-- Logo -->
+            <Image
+                Source="ictu.png"
+                HeightRequest="80"
+                HorizontalOptions="Center"/>
+
+            <!-- Title -->
+            <Label
+                Text="Campus Activity Manager"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                TextColor="#00697F"/>
+
+            <!-- Card -->
+            <Border
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="White"
+                Padding="20"
+                Shadow="0,4,10,#22000000">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Entry
+                        Placeholder="Email"
+                        Keyboard="Email"
+                        HeightRequest="45"
+                        BackgroundColor="#F1F5F9"/>
+
+                    <Entry
+                        Placeholder="Password"
+                        IsPassword="True"
+                        HeightRequest="45"
+                        BackgroundColor="#F1F5F9"/>
+
+                    <Label
+                        Text="Forgot Password?"
+                        TextColor="#00697F"
+                        FontSize="12"
+                        HorizontalOptions="End">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnForgotPasswordTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <Button
+                        Text="Login"
+                        HeightRequest="45"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        CornerRadius="12"
+                        FontAttributes="Bold"/>
+
+                    <!-- Error Message -->
+                    <Label
+                        Text="Invalid email or password"
+                        TextColor="Red"
+                        FontSize="12"
+                        IsVisible="False"
+                        HorizontalOptions="Center"/>
+
+                    <ActivityIndicator
+                        IsRunning="False"
+                        IsVisible="False"
+                        HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

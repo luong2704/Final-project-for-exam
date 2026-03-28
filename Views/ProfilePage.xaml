@@ -1,0 +1,75 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.ProfilePage"
+             BackgroundColor="White"
+             Title="Profile">
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Frame
+                HeightRequest="130"
+                WidthRequest="130"
+                CornerRadius="65"
+                IsClippedToBounds="True"
+                HorizontalOptions="Center"
+                HasShadow="True"
+                BackgroundColor="White">
+
+                <Image
+                    Source="ictu.png"
+                    Aspect="AspectFill"/>
+            </Frame>
+
+            <!-- Info Card -->
+            <Border
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="White"
+                Padding="20"
+                Shadow="0,4,10,#22000000">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="User Information"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="#00697F"/>
+
+                    <Label Text="Name" FontSize="12" TextColor="Gray"/>
+
+                    <Label Text="User Name" FontSize="16" FontAttributes="Bold" TextColor="#00697F"/>
+
+                    <Label Text="Email"
+                           FontSize="12"
+                           TextColor="Gray"/>
+                    <Label Text="user@email.com"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#00697F"/>
+
+                    <Label Text="Student ID"
+                           FontSize="12"
+                           TextColor="Gray"/>
+                    <Label Text="123456"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#00697F"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Button
+            Text="Logout"
+            BackgroundColor="#00697F"
+            TextColor="White"
+            HeightRequest="50"
+            CornerRadius="10"
+            FontAttributes="Bold"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>
