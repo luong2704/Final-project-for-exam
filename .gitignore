@@ -87,3 +87,4 @@ coverage/
 
 .planning
 *.md
+.planning/
