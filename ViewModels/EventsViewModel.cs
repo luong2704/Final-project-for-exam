@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
 using Campus.Services;
 
+namespace Campus.ViewModels;
+
 public partial class EventsViewModel : ObservableObject
 {
     private readonly ICategoryService _categoryService;
