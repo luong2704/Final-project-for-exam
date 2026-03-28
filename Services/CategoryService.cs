@@ -9,27 +9,7 @@ public class CategoryService : ICategoryService
         throw new NotImplementedException();
     }
 
-    public Task<Category?> GetCategoryByIdAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
     public Task<List<Category>> GetCategoriesByTypeAsync(CategoryType type)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task AddCategoryAsync(Category category)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateCategoryAsync(Category category)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteCategoryAsync(int id)
     {
         throw new NotImplementedException();
     }
