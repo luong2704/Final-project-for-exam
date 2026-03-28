@@ -51,6 +51,18 @@
                         BackgroundColor="#F1F5F9"
                         Margin="0"/>
 
+                    <Label
+                        Text="Forgot Password?"
+                        TextColor="#00697F"
+                        FontSize="12"
+                        HorizontalOptions="End">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnForgotPasswordTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
                     <Button
                         Text="Login"
                         HeightRequest="45"
