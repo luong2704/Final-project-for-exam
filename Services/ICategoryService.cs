@@ -1,3 +1,5 @@
+using Campus.Models;
+
 namespace Campus.Services;
 
 public interface ICategoryService
