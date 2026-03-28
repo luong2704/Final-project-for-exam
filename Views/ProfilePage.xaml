@@ -1,0 +1,24 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.ProfilePage"
+             BackgroundColor="White"
+             Title="Profile">
+
+    <VerticalStackLayout Padding="30" Spacing="20">
+
+        <Image
+            Source="ictu.png"
+            HeightRequest="120"
+            WidthRequest="120"
+            HorizontalOptions="Center"/>
+
+        <Button
+            Text="Logout"
+            BackgroundColor="#00697F"
+            TextColor="White"
+            HeightRequest="50"
+            CornerRadius="10"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
