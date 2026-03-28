@@ -5,11 +5,11 @@ namespace Campus.Services
 {
 	public class MockEventService : IEventService
 	{
-		private readonly List<Event> _registeredEvents;
+		private readonly List<Event> _allEvents;
 
 		public MockEventService()
 		{
-			_registeredEvents = new List<Event>
+			_allEvents = new List<Event>
 			{
 				new Event
 				{
@@ -19,7 +19,7 @@ namespace Campus.Services
 					Date = new DateTime(2026, 3, 15, 9, 0, 0),
 					Location = "Hall A - Building 1",
 					Image = "dotnet_maui.png",
-					Category = "Technology",
+					Category = "Academic",
 					IsRegistered = true
 				},
 				new Event
@@ -30,7 +30,7 @@ namespace Campus.Services
 					Date = new DateTime(2026, 3, 20, 18, 0, 0),
 					Location = "Open Air Theater",
 					Image = "music_fest.png",
-					Category = "Entertainment",
+					Category = "Cultural",
 					IsRegistered = true
 				},
 				new Event
@@ -41,7 +41,7 @@ namespace Campus.Services
 					Date = new DateTime(2026, 3, 10, 8, 30, 0),
 					Location = "Convention Center",
 					Image = "career_fair.png",
-					Category = "Career",
+					Category = "Social",
 					IsRegistered = true
 				},
 				new Event
@@ -52,7 +52,7 @@ namespace Campus.Services
 					Date = new DateTime(2026, 4, 5, 14, 0, 0),
 					Location = "Lab 3 - Building 2",
 					Image = "uiux_workshop.png",
-					Category = "Workshop",
+					Category = "Academic",
 					IsRegistered = true
 				},
 				new Event
@@ -69,17 +69,27 @@ namespace Campus.Services
 			};
 		}
 
+		public Task<List<Event>> GetAllEventsAsync()
+		{
+			return Task.FromResult(_allEvents.ToList());
+		}
+
+		public Task<List<Event>> GetEventsByCategoryAsync(int categoryId)
+		{
+			return Task.FromResult(_allEvents.ToList());
+		}
+
 		public Task<List<Event>> GetMyEventsAsync()
 		{
-			return Task.FromResult(_registeredEvents.ToList());
+			return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
 		}
 
 		public Task<bool> UnregisterEventAsync(Guid eventId)
 		{
-			var eventItem = _registeredEvents.FirstOrDefault(e => e.Id == eventId);
+			var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
 			if (eventItem != null)
 			{
-				_registeredEvents.Remove(eventItem);
+				_allEvents.Remove(eventItem);
 				return Task.FromResult(true);
 			}
 			return Task.FromResult(false);
