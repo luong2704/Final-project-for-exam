@@ -41,14 +41,14 @@
                         Placeholder="Email"
                         Keyboard="Email"
                         HeightRequest="45"
-                        BackgroundColor="#F1F5F9"
+                        BackgroundColor="{Binding EmailBackgroundColor}"
                         Text="{Binding Email}" />
 
                     <Entry
                         Placeholder="Password"
                         IsPassword="True"
                         HeightRequest="45"
-                        BackgroundColor="#F1F5F9"
+                        BackgroundColor="{Binding PasswordBackgroundColor}"
                         Text="{Binding Password}" />
 
                     <Label
