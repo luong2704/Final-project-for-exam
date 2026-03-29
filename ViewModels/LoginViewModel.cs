@@ -47,7 +47,12 @@ namespace Campus.ViewModels
 
         private async void OnLogin()
         {
-            
+            if (string.IsNullOrWhiteSpace(Username) ||
+                string.IsNullOrWhiteSpace(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Please enter all fields", "OK");
+                return;
+            }
         }
     }
 }
