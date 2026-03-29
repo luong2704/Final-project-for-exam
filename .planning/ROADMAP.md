@@ -81,6 +81,7 @@
 **Duration**: Day 7-8 (Mar 9-10)
 **Owner**: Nguyenvu32 (Backend)
 **Status**: Planned
+**Assignee**: Nguyenvu32 (issue #43)
 **Plans**: 1 plan
 
 ### Tasks
@@ -102,8 +103,9 @@
 
 ## Phase 5: Display
 **Duration**: Day 9-10 (Mar 11-12)
-**Owner**: caoanh10 (Frontend)
+**Owner**: Nguyenvu32 (Backend) — reassigned from caoanh10
 **Status**: Planned
+**Assignee**: Nguyenvu32 (issue #44)
 **Plans**: 1 plan
 
 ### Tasks
