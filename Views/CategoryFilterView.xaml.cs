@@ -16,6 +16,7 @@ public partial class CategoryFilterView : ContentPage
         if (BindingContext is CategoryViewModel vm && vm.Categories.Count == 0)
         {
             await vm.LoadCategoriesAsync();
+            await vm.LoadEventsAsync();
         }
     }
 }
