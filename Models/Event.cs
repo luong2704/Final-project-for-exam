@@ -1,4 +1,4 @@
-﻿namespace Campus.Models
+namespace Campus.Models
 {
 	public class Event
 	{
