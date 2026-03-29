@@ -103,11 +103,11 @@
 ## Phase 5: Display
 **Duration**: Day 9-10 (Mar 11-12)
 **Owner**: caoanh10 (Frontend)
-**Status**: Planned
+**Status**: In Progress
 **Plans**: 1 plan
 
 ### Tasks
-- [ ] #44: Display filtered events
+- [x] #44: Display filtered events
   - Update event list after filter
   - Show "no results" message
   - Clear filter restores full list
@@ -156,7 +156,7 @@
 | M2: Service Complete | Mar 5 | #40 - CategoryService returns mock data |
 | M3: UI Complete | Mar 8 | #41, #42 - Filter UI functional |
 | M4: Logic Complete | Mar 10 | #43 - Filter works correctly |
-| M5: Display Complete | Mar 12 | #44 - Filtered events display |
+| M5: Display Complete | Mar 12 ✓ | #44 - Filtered events display |
 | M6: Final | Mar 14 | Merged to main, demo ready |
 
 ---

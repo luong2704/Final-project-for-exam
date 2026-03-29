@@ -30,7 +30,7 @@
 
 ## Current Phase
 
-**Phase 1: Data Models** (Not Started)
+**Phase 5: Display** (In Progress - 05-01 complete)
 
 ---
 
@@ -54,7 +54,7 @@
 - [x] #42: Bind category selection to ViewModel
 
 ### In Progress
-- [ ] None yet
+- [ ] Phase 5 remaining plans (if any)
 
 ### Pending
 
@@ -69,7 +69,7 @@
 - [ ] #43: Implement filtering logic
 
 #### Phase 5
-- [ ] #44: Display filtered events
+- [x] #44: Display filtered events
 
 #### Phase 6
 - [ ] Code review coordination
@@ -82,18 +82,20 @@
 ## Recent Commits
 
 ```
-5e02729 ui(#42): register CategoryFilterView route in Shell navigation
-d0b5740 ui(#41): create CategoryFilterView page with category picker and filter controls
-3cf8ad9 feat(03-01): create CategoryViewModel with MVVM bindings for category filter UI
+10db59a chore(05-01): register IEventService and CategoryFilterView route in DI
+0437604 feat(05-01): wire up event filtering with CategoryViewModel and IEventService
+bcfc376 ui(05-01): add CollectionView to display filtered events with empty state
+040133a fix(#41): register CategoryViewModel in DI container for runtime navigation
+f395dad docs(03-02): complete CategoryFilterView plan
 ```
 
 ---
 
 ## Next Steps
 
-1. Complete Phase 3 remaining plans (if any)
-2. Phase 4: Implement filtering logic (#43)
-3. DI register CategoryViewModel in MauiProgram.cs
+1. Phase 5 remaining plans (if any)
+2. Phase 6: Code review, merge branches, integration testing, final demo
+3. Complete #40 (category data source) and #43 (filtering logic) if not done by other agents
 
 ---
 
