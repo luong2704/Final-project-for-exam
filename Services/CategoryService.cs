@@ -22,4 +22,5 @@ public class CategoryService : ICategoryService
     {
         return Task.FromResult(_categories.Where(c => c.CategoryType == type).ToList());
     }
+
 }
