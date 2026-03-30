@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Campus.Services;
 using Campus.ViewModels;
+using Campus.Views;
 
 namespace Campus
 {
@@ -22,10 +23,13 @@ namespace Campus
             builder.Services.AddTransient<EventViewModels>();
             builder.Services.AddTransient<RegistrationViewModel>();
             builder.Services.AddTransient<EventDetailViewModel>();
+            builder.Services.AddTransient<CategoryViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            Routing.RegisterRoute("categoryfilter", typeof(CategoryFilterView));
 
             return builder.Build();
         }
