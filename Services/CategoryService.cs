@@ -40,4 +40,16 @@ public class CategoryService : ICategoryService
                         categoryNamesOfType.Contains(e.Category.ToLowerInvariant()))
             .ToList();
     }
+
+    public static List<Event> FilterEventsByCategory(IEnumerable<Event> events, string categoryName)
+    {
+        if (events == null || string.IsNullOrWhiteSpace(categoryName))
+        {
+            return events?.ToList() ?? new List<Event>();
+        }
+        
+        return events
+            .Where(e => e.Category?.Equals(categoryName, StringComparison.OrdinalIgnoreCase) == true)
+            .ToList();
+    }
 }
