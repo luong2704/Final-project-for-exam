@@ -23,4 +23,21 @@ public class CategoryService : ICategoryService
         return Task.FromResult(_categories.Where(c => c.CategoryType == type).ToList());
     }
 
+    public static List<Event> FilterEventsByType(IEnumerable<Event> events, CategoryType type)
+    {
+        if (events == null)
+        {
+            return new List<Event>();
+        }
+        
+        var categoryNamesOfType = _categories
+            .Where(c => c.CategoryType == type)
+            .Select(c => c.CategoryName.ToLowerInvariant())
+            .ToHashSet();
+        
+        return events
+            .Where(e => !string.IsNullOrEmpty(e.Category) && 
+                        categoryNamesOfType.Contains(e.Category.ToLowerInvariant()))
+            .ToList();
+    }
 }
