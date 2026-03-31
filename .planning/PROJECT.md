@@ -39,10 +39,13 @@ main
 
 ### Commit Convention
 
-Format: `<type>(#<issue>): <short description>`
+Format: `<type>: <short description> on <file>`
 
-Types: feat, ui, logic, service, model, test, fix, refactor, docs, chore
-Scope: Use GitHub issue number (e.g., #39, #40)
+Examples:
+- `fix: fix route navigation on AppShell.xaml`
+- `ui: add dynamic empty state on CategoryFilterView.xaml`
+- `logic: add loading indicator on CategoryViewModel.cs`
+- `docs: update project documentation`
 
 ---
 
