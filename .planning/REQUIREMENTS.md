@@ -4,14 +4,14 @@
 
 ### Navigation Fix
 
-- [ ] **UI-01**: Fix route navigation - AppShell route phải khớp với Routing.RegisterRoute
+- [x] **UI-01**: Fix route navigation - AppShell route phải khớp với Routing.RegisterRoute
   - Current: AppShell route = "CategoryFilterView", MauiProgram route = "categoryfilter"
   - Solution: Đổi AppShell route thành "categoryfilter"
   - Success criteria: CategoryFilterView hiển thị đúng khi navigate
 
 ### UI Improvements
 
-- [ ] **UI-02**: Dynamic empty state với IValueConverter
+- [x] **UI-02**: Dynamic empty state với IValueConverter
   - Empty state label tự động hiện khi FilteredEvents.Count == 0
   - Success criteria: "No events match your filter" hiện khi không có kết quả
 
@@ -19,7 +19,7 @@
   - Thêm ActivityIndicator hoặc loading state trong ViewModel
   - Success criteria: Loading indicator hiện khi đang load events
 
-- [ ] **UI-04**: Visual feedback khi filter active
+- [x] **UI-04**: Visual feedback khi filter active
   - Đã có (SelectedCategory label) - verify hoạt động
   - Success criteria: Label hiển thị category đang filter
 
@@ -66,9 +66,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| UI-01 | 01 | Pending |
-| UI-02 | 01 | Pending |
+| UI-01 | 01 | Complete |
+| UI-02 | 01 | Complete |
 | UI-03 | 02 | Pending |
-| UI-04 | 01 | Pending |
+| UI-04 | 01 | Complete |
 | LOGIC-01 | 02 | Pending |
 | LOGIC-02 | 02 | Pending |
