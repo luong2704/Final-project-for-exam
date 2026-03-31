@@ -19,5 +19,18 @@ namespace Campus.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private bool _isDarkMode;
+
+        public bool IsDarkMode
+        {
+            get => _isDarkMode;
+            set
+            {
+                if (_isDarkMode == value) return;
+                _isDarkMode = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }
