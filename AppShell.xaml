@@ -8,8 +8,18 @@
 
     <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate views:MyEventsPage}"
+        ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
+
+    <ShellContent
+        Title="Events"
+        ContentTemplate="{DataTemplate views:EventListPage}"
+        Route="EventListPage" />
+
+    <ShellContent
+        Title="My Events"
+        ContentTemplate="{DataTemplate views:MyEventsPage}"
+        Route="MyEventsPage" />
 
     <ShellContent
         Title="Categories"
