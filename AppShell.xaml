@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate views:LoginPage}"
+        ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="LoginPage" />
 
     <ShellContent

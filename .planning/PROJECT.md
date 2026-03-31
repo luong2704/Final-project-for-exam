@@ -17,8 +17,8 @@
 ### Timeline
 
 - **Start**: March 3, 2026
-- **End**: March 14, 2026
-- **Duration**: 12 days
+- **End**: March 14, 2026 (v1.0)
+- **Current**: v1.1 - UI Optimization
 
 ### Technical Stack
 
@@ -26,11 +26,6 @@
 - **Target**: net10.0-windows10.0.19041.0
 - **Pattern**: MVVM
 - **Package**: CommunityToolkit.Mvvm
-
-### GitHub Issues
-
-- **Epic**: #6 - Event Categories (assigned to quanghai2k4)
-- **Sub-issues**: #39-44
 
 ### Git Branches
 
@@ -42,20 +37,49 @@ main
       └── Nguyenvu32-backend (Service + Logic + Testing)
 ```
 
-### Key Tasks (GitHub Issues)
-
-| Issue # | Description | Assignee | Hours |
-|---------|-------------|----------|-------|
-| #39 | Create Category model | quanghai2k4 | 2h |
-| #40 | Implement category data source (interface) | quanghai2k4 | 2h |
-| #41 | Design category filter UI | caoanh10 | 6h |
-| #42 | Bind category selection to ViewModel | caoanh10 | 4h |
-| #43 | Implement filtering logic | Nguyenvu32 | 4h |
-| #44 | Display filtered events | caoanh10 | 3h |
-
 ### Commit Convention
 
-Format: `<type>(#<issue>): <short description>`
+Format: `<type>: <short description> on <file>`
 
-Types: feat, ui, logic, service, model, test, fix, refactor, docs, chore
-Scope: Use GitHub issue number (e.g., #39, #40)
+Examples:
+- `fix: fix route navigation on AppShell.xaml`
+- `ui: add dynamic empty state on CategoryFilterView.xaml`
+- `logic: add loading indicator on CategoryViewModel.cs`
+- `docs: update project documentation`
+
+---
+
+## Current Milestone: v1.1 - UI Optimization
+
+**Goal:** Cải thiện trải nghiệm người dùng và chức năng lọc sự kiện theo danh mục
+
+**Target features:**
+- Fix route navigation (CategoryFilterView route mismatch với AppShell)
+- Tối ưu UI: dynamic empty state, visual feedback
+- Cải thiện filter functionality
+- Performance optimization
+
+---
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
+---
+
+## Last Updated
+
+2026-03-31 - Milestone v1.1 started

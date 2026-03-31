@@ -1,100 +1,74 @@
-# Requirements - Event Categories Module
+# Requirements - Milestone v1.1: UI Optimization
 
-## Epic: #6 - Event Categories
+## Epic: v1.1 - UI Optimization
 
-### Phase 1: Data Models
+### Navigation Fix
 
-#### #39: Create Category Model
-- **Description**: Create Category model class with basic properties
-- **Requirements**:
-  - CategoryId (int, primary key)
-  - CategoryName (string, required)
-  - CategoryDescription (string, optional)
-  - CategoryType (enum reference)
-  - IsActive (bool, default true)
-  - CreatedDate (DateTime)
-  - UpdatedDate (DateTime)
-- **Validation**: Required fields validation, max length constraints
-- **Status**: TODO
+- [ ] **UI-01**: Fix route navigation - AppShell route phải khớp với Routing.RegisterRoute
+  - Current: AppShell route = "CategoryFilterView", MauiProgram route = "categoryfilter"
+  - Solution: Đổi AppShell route thành "categoryfilter"
+  - Success criteria: CategoryFilterView hiển thị đúng khi navigate
 
----
+### UI Improvements
 
-### Phase 2: Service Layer
+- [ ] **UI-02**: Dynamic empty state với IValueConverter
+  - Empty state label tự động hiện khi FilteredEvents.Count == 0
+  - Success criteria: "No events match your filter" hiện khi không có kết quả
 
-#### #40: Implement Category Data Source
-- **Description**: Create service for category data operations
-- **Requirements**:
-  - ICategoryService interface
-  - GetAllCategories() - returns all active categories
-  - GetCategoryById(int id) - returns single category
-  - GetCategoriesByType(CategoryType type) - filter by type
-  - Mock data provider implementation
-  - JSON serialization support
-- **Status**: TODO
+- [ ] **UI-03**: Loading indicator khi đang filter
+  - Thêm ActivityIndicator hoặc loading state trong ViewModel
+  - Success criteria: Loading indicator hiện khi đang load events
 
----
+- [ ] **UI-04**: Visual feedback khi filter active
+  - Đã có (SelectedCategory label) - verify hoạt động
+  - Success criteria: Label hiển thị category đang filter
 
-### Phase 3: UI/Frontend
+### Performance & Animation
 
-#### #41: Design Category Filter UI
-- **Description**: Create user interface for filtering events by category
-- **Requirements**:
-  - Filter button in main toolbar
-  - Dropdown/list for category selection
-  - Visual feedback for selected category
-  - Clear filter option
-  - Responsive layout for different screen sizes
-- **Status**: TODO
+- [ ] **LOGIC-01**: Performance optimization - async loading
+  - Đảm bảo LoadEventsAsync và LoadCategoriesAsync chạy async
+  - Success criteria: UI không bị block khi load data
 
-#### #42: Bind Category Selection to ViewModel
-- **Description**: Connect UI to ViewModel for category filtering
-- **Requirements**:
-  - CategoryViewModel implementation
-  - INotifyPropertyChanged implementation
-  - RelayCommand for filter actions
-  - ObservableCollection for category list
-  - Bind dropdown to ViewModel
-- **Status**: TODO
+- [ ] **LOGIC-02**: Filter animation/transitions
+  - Thêm animation khi filter results thay đổi
+  - Success criteria: Smooth transition khi apply/clear filter
 
 ---
 
-### Phase 4: Business Logic
+## Future Requirements (Deferred)
 
-#### #43: Implement Filtering Logic
-- **Description**: Core filtering logic for events
-- **Requirements**:
-  - FilterEventsByCategory(IEnumerable<Event> events, int categoryId)
-  - Handle null/empty inputs
-  - Return filtered event collection
-  - Performance consideration for large datasets
-- **Status**: TODO
+- **UI-05**: Category icons/images trong picker
+- **UI-06**: Filter by multiple categories
+- **LOGIC-03**: Cached filter results
+- **LOGIC-04**: Pull-to-refresh cho event list
 
 ---
 
-### Phase 5: Display
+## Out of Scope
 
-#### #44: Display Filtered Events
-- **Description**: Show filtered events in UI
-- **Requirements**:
-  - Update event list after filter applied
-  - Show "no results" message when empty
-  - Clear filter restores full list
-  - Smooth UI update (no flickering)
-- **Status**: TODO
+- Thay đổi filter logic (đã hoạt động tốt)
+- Thêm features mới (search, sort)
+- Backend changes
 
 ---
 
 ## Success Criteria
 
-1. All categories display correctly in UI
-2. Filter functionality works as expected
-3. CategoryService returns accurate data
-4. Application builds without errors
-5. Code follows commit convention (#39, #40, etc.)
+1. Navigation hoạt động đúng
+2. Empty state hiển thị dynamic
+3. Loading indicator khi load
+4. UI smooth và responsive
+5. Build không có errors
 
-## Dependencies
+---
 
-- #39 must complete before #40
-- #40 must complete before #41, #42, #43
-- #42 must complete before #44
-- #43 must complete before #44
+## Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| UI-01 | 01 | Pending |
+| UI-02 | 01 | Pending |
+| UI-03 | 02 | Pending |
+| UI-04 | 01 | Pending |
+| LOGIC-01 | 02 | Pending |
+| LOGIC-02 | 02 | Pending |

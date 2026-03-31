@@ -84,6 +84,17 @@ namespace Campus.Services
 			return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
 		}
 
+		public Task<bool> RegisterEventAsync(Guid eventId)
+		{
+			var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
+			if (eventItem != null)
+			{
+				eventItem.IsRegistered = true;
+				return Task.FromResult(true);
+			}
+			return Task.FromResult(false);
+		}
+
 		public Task<bool> UnregisterEventAsync(Guid eventId)
 		{
 			var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
