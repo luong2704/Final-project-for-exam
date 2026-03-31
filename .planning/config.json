@@ -2,7 +2,8 @@
   "workflow": {
     "mode": "automatic",
     "execution": "phased",
-    "research": false
+    "research": false,
+    "_auto_chain_active": false
   },
   "project": {
     "name": "Campus Activity Manager",

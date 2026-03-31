@@ -28,7 +28,7 @@
 ### Hours: 2h
 
 ### Plans
-- [ ] 07-01-PLAN.md — Route fix + EmptyCollectionConverter
+- [x] 07-01-PLAN.md — Route fix + EmptyCollectionConverter
 
 ---
 
