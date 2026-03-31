@@ -10,6 +10,16 @@
             Padding="25"
             Spacing="15">
 
+            <!-- Loading Indicator -->
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}"
+                Color="#00697F"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="40"
+                WidthRequest="40"/>
+
             <!-- Title -->
             <Label
                 Text="Filter Events"
