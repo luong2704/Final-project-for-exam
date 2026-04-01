@@ -2,11 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campus.Views.EventCardView">
 
-    <Frame Padding="10" Margin="10">
-        <VerticalStackLayout>
-            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold"/>
-            <Label Text="{Binding Description}" FontSize="14"/>
-        </VerticalStackLayout>
-    </Frame>
+    <VerticalStackLayout Padding="10" Spacing="5">
+
+        <!-- Title -->
+        <Label Text="{Binding Title}"
+               FontSize="18"
+               FontAttributes="Bold" />
+
+        <!-- Description -->
+        <Label Text="{Binding Description}"
+               FontSize="14" />
+
+        <!-- Image (optional nếu có) -->
+        <Image Source="{Binding ImageUrl}"
+               HeightRequest="150"
+               Aspect="AspectFill" />
+
+    </VerticalStackLayout>
 
 </ContentView>
