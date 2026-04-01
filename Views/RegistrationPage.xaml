@@ -125,6 +125,17 @@
                         FontSize="15"
                         Margin="0,12,0,0" />
 
+                <!-- View My Events Button -->
+                <Button Text="View My Events"
+                        Command="{Binding GoToMyEventsCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="#00697F"
+                        HeightRequest="48"
+                        CornerRadius="14"
+                        BorderColor="#00697F"
+                        BorderWidth="1.5"
+                        FontSize="14" />
+
             </VerticalStackLayout>
 
             <!-- ═══════════════════════════════════════════ -->
