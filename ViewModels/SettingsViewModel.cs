@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using Campus.Services;
 using Campus.Models;
+using System.Collections.ObjectModel;
 
 namespace Campus.ViewModels
 {
@@ -60,5 +61,12 @@ namespace Campus.ViewModels
                 _settingsService.SaveNotificationsEnabled(value);
             }
         }
+
+        public ObservableCollection<string> SupportedLanguages { get; } =
+            new ObservableCollection<string>
+            {
+                "English",    
+                "Vietnamese"
+            };
     }
 }
