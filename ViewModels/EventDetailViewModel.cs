@@ -79,20 +79,65 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
 
     private void UpdateEventStatus()
     {
-        if (Date > DateTime.Now)
+        var now = DateTime.Now;
+        var eventDate = Date.Date;
+        var todayDate = now.Date;
+        var daysUntilEvent = (eventDate - todayDate).Days;
+        DaysRemaining = daysUntilEvent < 0 ? 0 : daysUntilEvent;
+        string timeString = Date.ToString("h:mm tt");
+
+        if (daysUntilEvent < 0)
         {
-            EventStatus = "Upcoming";
+            EventStatus = "Past";
+            IsUpcoming = false;
+            IsPast = true;
+            FormattedDate = Date.ToString("MMM dd, yyyy 'at' h:mm tt");
+            StatusColor = Colors.Gray;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent == 0)
+        {
+            EventStatus = "Today";
             IsUpcoming = true;
             IsPast = false;
+            FormattedDate = $"Today at {timeString}";
+            StatusColor = Colors.Red;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent == 1)
+        {
+            EventStatus = "Tomorrow";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"Tomorrow at {timeString}";
+            StatusColor = Colors.Orange;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent <= 7)
+        {
+            EventStatus = "This Week";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"{Date:dddd} at {timeString}";
+            StatusColor = Colors.Yellow;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent <= 30)
+        {
+            EventStatus = "Coming Soon";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"{Date:MMM dd} ({daysUntilEvent} days from now)";
             StatusColor = Colors.Green;
             StatusIcon = "";
         }
         else
         {
-            EventStatus = "Past";
-            IsUpcoming = false;
-            IsPast = true;
-            StatusColor = Colors.Gray;
+            EventStatus = "Upcoming";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = Date.ToString("MMM dd, yyyy");
+            StatusColor = Colors.Green;
             StatusIcon = "";
         }
     }
