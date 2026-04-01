@@ -10,7 +10,7 @@
         <VerticalStackLayout Spacing="15" Padding="20">
             
            
-            <Border x:Name="ImageRegion" StrokeShape="RoundRectangle 12" BackgroundColor="#F0F0F0" HeightRequest="200" StrokeThickness="0" IsClippedToBounds="True">
+            <Border x:Name="ImageRegion" StrokeShape="RoundRectangle 12" BackgroundColor="#F0F0F0" HeightRequest="200" StrokeThickness="0">
                <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" />
             </Border>
 
