@@ -114,7 +114,12 @@
                         ColumnDefinitions="*,Auto"
                         RowDefinitions="Auto,Auto">
                     </Grid>
-
+                    <Label
+                        Text="App Language"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="#111827"
+                        VerticalOptions="Center" />
 
                 </VerticalStackLayout>
 
