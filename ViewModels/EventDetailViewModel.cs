@@ -39,6 +39,12 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     [ObservableProperty]
     private bool _isPast;
 
+    [ObservableProperty]
+    private Color _statusColor = Colors.Gray;
+
+    [ObservableProperty]
+    private string _statusIcon = string.Empty;
+
     public EventDetailViewModel()
     {
     }
@@ -72,12 +78,16 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
             EventStatus = "Upcoming";
             IsUpcoming = true;
             IsPast = false;
+            StatusColor = Colors.Green;
+            StatusIcon = "🟢";
         }
         else
         {
             EventStatus = "Past";
             IsUpcoming = false;
             IsPast = true;
+            StatusColor = Colors.Gray;
+            StatusIcon = "⚫";
         }
     }
 
