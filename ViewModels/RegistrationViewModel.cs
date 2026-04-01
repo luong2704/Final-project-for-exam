@@ -71,8 +71,8 @@ public partial class RegistrationViewModel : ObservableObject
     [RelayCommand]
     private async Task GoToMyEvents()
     {
-        // Navigate to My Events tab (Shell route is "LoginPage" -> MyEventsPage)
-        await Shell.Current.GoToAsync("//LoginPage");
+        // Navigate to My Events tab
+        await Shell.Current.GoToAsync("//MyEventsPage");
     }
 
     [RelayCommand]
