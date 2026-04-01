@@ -39,5 +39,9 @@ namespace Campus.Services
         {
             return Preferences.Default.Get(LanguageKey, "English");
         }
+        public void SaveLanguage(string language)
+        {
+            Preferences.Default.Set(LanguageKey, language);
+        }
     }
 }
