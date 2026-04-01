@@ -120,6 +120,10 @@
                         FontAttributes="Bold"
                         TextColor="#111827"
                         VerticalOptions="Center" />
+                    <Picker
+                        Grid.Column="1"
+                        WidthRequest="150"
+                        Title="Select language" />
 
                 </VerticalStackLayout>
 
