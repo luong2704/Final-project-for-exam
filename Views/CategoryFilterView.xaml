@@ -1,13 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:Campus.Converters"
              x:Class="Campus.Views.CategoryFilterView"
              BackgroundColor="#F7FAFC"
              Title="Filter by Category">
-
-    <ContentPage.Resources>
-        <converters:EmptyCollectionConverter x:Key="EmptyCollectionConverter"/>
-    </ContentPage.Resources>
 
     <ScrollView>
 
@@ -99,8 +94,7 @@
                     <VerticalStackLayout
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Padding="30"
-                        IsVisible="{Binding FilteredEvents.Count, Converter={StaticResource EmptyCollectionConverter}}">
+                        Padding="30">
                         <Label
                             Text="No events match your filter"
                             FontSize="18"
