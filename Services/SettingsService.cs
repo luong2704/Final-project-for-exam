@@ -10,6 +10,8 @@ namespace Campus.Services
     {
         private const string ThemeKey = "settings_theme_mode";
         private const string NotificationKey = "settings_notifications_enabled";
+        private const string LanguageKey = "settings_language";
+
 
         public SettingsPreferences GetSettings()
         {
