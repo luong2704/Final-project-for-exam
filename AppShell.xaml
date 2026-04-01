@@ -8,12 +8,15 @@
 
     <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate views:LoginPage}"
+        ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="LoginPage" />
 
     <ShellContent
         Title="Categories"
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
-        Route="CategoryFilterView" />
+        Route="categoryfilter" />
 
+	<ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}" />
 </Shell>

@@ -37,21 +37,19 @@
                        TextColor="#00697F"/>
 
                     <Label Text="Name" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding FullName}" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="#00697F"/>
 
-                    <Label Text="User Name" FontSize="16" FontAttributes="Bold" TextColor="#00697F"/>
-
-                    <Label Text="Email"
-                           FontSize="12"
-                           TextColor="Gray"/>
-                    <Label Text="user@email.com"
+                    <Label Text="Email" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding Email}"
                            FontSize="16"
                            FontAttributes="Bold"
                            TextColor="#00697F"/>
 
-                    <Label Text="Student ID"
-                           FontSize="12"
-                           TextColor="Gray"/>
-                    <Label Text="123456"
+                    <Label Text="Student ID" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding StudentId}"
                            FontSize="16"
                            FontAttributes="Bold"
                            TextColor="#00697F"/>

@@ -85,6 +85,3 @@ coverage/
 *.coverage
 *.coveragexml
 
-.planning
-*.md
-.planning/
