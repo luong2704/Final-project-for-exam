@@ -131,36 +131,51 @@ public partial class EventViewModels : ObservableObject
 	[RelayCommand]
 	private async Task Unregister(Event eventItem)
 	{
-		if (eventItem == null) return;
+		if (eventItem == null || IsBusy) return;
 
-		// Hỏi xác nhận trước khi hủy đăng ký
+		// Confirm before unregistering
 		bool confirmed = await Shell.Current.DisplayAlert(
-			"Unregister",
+			"Cancel Registration",
 			$"Are you sure you want to unregister from \"{eventItem.Title}\"?",
 			"Yes, Unregister",
-			"Cancel");
+			"Keep My Spot");
 
 		if (!confirmed) return;
 
-		var success = await _eventService.UnregisterEventAsync(eventItem.Id);
+		IsBusy = true;
 
-		if (success)
+		try
 		{
-			EventsList.Remove(eventItem);
-			IsEmpty = EventsList.Count == 0;
+			var success = await _eventService.UnregisterEventAsync(eventItem.Id);
 
-			// Hiện thông báo thành công
+			if (success)
+			{
+				EventsList.Remove(eventItem);
+				IsEmpty = EventsList.Count == 0;
+
+				await Shell.Current.DisplayAlert(
+					"Unregistered",
+					$"You have been unregistered from \"{eventItem.Title}\".",
+					"OK");
+			}
+			else
+			{
+				await Shell.Current.DisplayAlert(
+					"Failed",
+					"Could not unregister. Please try again.",
+					"OK");
+			}
+		}
+		catch (Exception)
+		{
 			await Shell.Current.DisplayAlert(
-				"✅ Unregistered",
-				$"You have successfully unregistered from \"{eventItem.Title}\".",
+				"Error",
+				"An unexpected error occurred. Please check your connection and try again.",
 				"OK");
 		}
-		else
+		finally
 		{
-			await Shell.Current.DisplayAlert(
-				"❌ Failed",
-				"Could not unregister. Please try again.",
-				"OK");
+			IsBusy = false;
 		}
 	}
 }
