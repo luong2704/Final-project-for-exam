@@ -55,52 +55,20 @@
                     </Border.Background>
 
                     <VerticalStackLayout Padding="0,35" Spacing="10" HorizontalOptions="Center">
-                        <Frame
-    HeightRequest="90"
-    WidthRequest="90"
-    CornerRadius="45"
-    IsClippedToBounds="True"
-    HorizontalOptions="Center"
-    Padding="0"
-    HasShadow="False"
-    BackgroundColor="White">
-
-                            <Image
-        Source="ictu.png"
-        Aspect="AspectFill"/>
+                        <Frame HeightRequest="90" WidthRequest="90" CornerRadius="45" IsClippedToBounds="True" HorizontalOptions="Center" Padding="0" HasShadow="False" BackgroundColor="White">
+                            <Image Source="ictu.png" Aspect="AspectFill"/>
                         </Frame>
-
-                        <Label Text="{Binding FullName}" 
-           TextColor="White" 
-           FontSize="24" 
-           FontFamily="Oswald-Bold" 
-           HorizontalOptions="Center" />
-
-                        <Label Text="{Binding StudentId}" 
-           TextColor="White" 
-           FontSize="16" 
-           FontFamily="EBGaramond-Italic" 
-           HorizontalOptions="Center" 
-           Opacity="0.8" />
-
-                        <Button Text="EDIT PROFILE" 
-           BackgroundColor="White" 
-           TextColor="{StaticResource OswaldPrimary}" 
-           FontFamily="Oswald-Regular"
-           CornerRadius="8" 
-           HeightRequest="45"
-           WidthRequest="160" 
-           Margin="0,15,0,0" />
+                        <Label Text="{Binding FullName}" TextColor="White" FontSize="24" FontFamily="Oswald-Bold" HorizontalOptions="Center" />
+                        <Label Text="{Binding StudentId}" TextColor="White" FontSize="16" FontFamily="EBGaramond-Italic" HorizontalOptions="Center" Opacity="0.8" />
+                        <Button Text="EDIT PROFILE" BackgroundColor="White" TextColor="{StaticResource OswaldPrimary}" FontFamily="Oswald-Regular" CornerRadius="8" HeightRequest="45" WidthRequest="160" Margin="0,15,0,0" />
                     </VerticalStackLayout>
                 </Border>
 
                 <Label Text="ACCOUNT MANAGEMENT" Style="{StaticResource SectionLabelStyle}" />
-
                 <Border Style="{StaticResource SettingItemBorderStyle}">
                     <Grid ColumnDefinitions="45, *, Auto">
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
-
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="Account Details" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
                             <Label Text="Update email and personal info" TextColor="#6B7280" FontSize="12" />
@@ -131,14 +99,32 @@
                             <Label Text="App Theme" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
                             <Label Text="Editorial light or night mode" TextColor="#6B7280" FontSize="12" />
                         </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="{Binding ThemeLabel}" TextColor="{StaticResource OswaldPrimary}" FontAttributes="Bold" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0"/>
+                        <Switch Grid.Column="3" IsToggled="{Binding IsDarkMode}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
+                    </Grid>
+                </Border>
 
-                        <Label Grid.Column="2" Text="LIGHT" TextColor="{StaticResource OswaldPrimary}" 
-                               FontAttributes="Bold" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0"/>
-                        <Switch Grid.Column="3" 
-                IsToggled="{Binding IsDarkMode}" 
-                Visual="Material" 
-                ThumbColor="White" 
-                OnColor="{StaticResource OswaldPrimary}"/>
+                <Border Style="{StaticResource SettingItemBorderStyle}">
+                    <Grid ColumnDefinitions="45, *, Auto">
+                        <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
+                        <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
+                            <Label Text="Notifications" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
+                            <Label Text="Receive campus reminders" TextColor="#6B7280" FontSize="12" />
+                        </VerticalStackLayout>
+                        <Switch Grid.Column="2" IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource SettingItemBorderStyle}">
+                    <Grid ColumnDefinitions="45, *, Auto">
+                        <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
+                        <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
+                            <Label Text="Language" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
+                            <Label Text="App display language" TextColor="#6B7280" FontSize="12" />
+                        </VerticalStackLayout>
+                        <Picker Grid.Column="2" WidthRequest="130" Title="Select" ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" VerticalOptions="Center"/>
                     </Grid>
                 </Border>
 
@@ -150,7 +136,6 @@
                 <Shadow Brush="Black" Offset="0,-5" Opacity="0.05" Radius="10" />
             </Border.Shadow>
             <Grid ColumnDefinitions="*, *, *, *">
-                
                 <Grid Grid.Column="3">
                     <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.1" Margin="8,10" CornerRadius="12"/>
                     <VerticalStackLayout VerticalOptions="Center">

@@ -10,6 +10,8 @@ namespace Campus.Services
     {
         private const string ThemeKey = "settings_theme_mode";
         private const string NotificationKey = "settings_notifications_enabled";
+        private const string LanguageKey = "settings_language";
+
 
         public SettingsPreferences GetSettings()
         {
@@ -31,6 +33,15 @@ namespace Campus.Services
         public void SaveNotificationsEnabled(bool enabled)
         {
             Preferences.Default.Set(NotificationKey, enabled);
+        }
+
+        public string GetLanguage()
+        {
+            return Preferences.Default.Get(LanguageKey, "English");
+        }
+        public void SaveLanguage(string language)
+        {
+            Preferences.Default.Set(LanguageKey, language);
         }
     }
 }
