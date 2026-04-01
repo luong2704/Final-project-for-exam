@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -133,12 +133,34 @@ public partial class EventViewModels : ObservableObject
 	{
 		if (eventItem == null) return;
 
+		// Hỏi xác nhận trước khi hủy đăng ký
+		bool confirmed = await Shell.Current.DisplayAlert(
+			"Unregister",
+			$"Are you sure you want to unregister from \"{eventItem.Title}\"?",
+			"Yes, Unregister",
+			"Cancel");
+
+		if (!confirmed) return;
+
 		var success = await _eventService.UnregisterEventAsync(eventItem.Id);
 
 		if (success)
 		{
 			EventsList.Remove(eventItem);
 			IsEmpty = EventsList.Count == 0;
+
+			// Hiện thông báo thành công
+			await Shell.Current.DisplayAlert(
+				"✅ Unregistered",
+				$"You have successfully unregistered from \"{eventItem.Title}\".",
+				"OK");
+		}
+		else
+		{
+			await Shell.Current.DisplayAlert(
+				"❌ Failed",
+				"Could not unregister. Please try again.",
+				"OK");
 		}
 	}
 }

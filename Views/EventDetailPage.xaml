@@ -8,31 +8,61 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="15" Padding="20">
-            
-           
-            <Border x:Name="ImageRegion" StrokeShape="RoundRectangle 12" BackgroundColor="#F0F0F0" HeightRequest="200" StrokeThickness="0" IsClippedToBounds="True">
-               <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" />
+
+            <!-- Image Banner -->
+            <Border x:Name="ImageRegion"
+                    StrokeShape="RoundRectangle 12"
+                    BackgroundColor="#F0F0F0"
+                    HeightRequest="200"
+                    StrokeThickness="0">
+                <Image Source="{Binding Image}" Aspect="AspectFill"
+                       HorizontalOptions="Fill" VerticalOptions="Fill" />
             </Border>
 
-            
+            <!-- Title & Date -->
             <VerticalStackLayout x:Name="TitleRegion" Spacing="5">
-                <Label Text="[Event Title placeholder]" FontSize="24" FontAttributes="Bold" />
+                <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" />
                 <HorizontalStackLayout Spacing="10">
-                    <Label Text="[Date placeholder]" FontSize="14" TextColor="Gray" />
+                    <Label Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}" FontSize="14" TextColor="Gray" />
                     <Label Text="•" FontSize="14" TextColor="Gray" />
-                    <Label Text="[Location placeholder]" FontSize="14" TextColor="Gray" />
+                    <Label Text="{Binding Location}" FontSize="14" TextColor="Gray" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
-           
-            <VerticalStackLayout x:Name="DescriptionRegion" Spacing="10" Margin="0, 10, 0, 0">
+            <!-- Description -->
+            <VerticalStackLayout x:Name="DescriptionRegion" Spacing="10" Margin="0,10,0,0">
                 <Label Text="About this event" FontSize="18" FontAttributes="Bold" />
-                <Label Text="{Binding Description}" FontSize="16" LineHeight="1.4" TextColor="{AppThemeBinding Light=#333333, Dark=#CCCCCC}" />
+                <Label Text="{Binding Description}" FontSize="16" LineHeight="1.4"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#CCCCCC}" />
             </VerticalStackLayout>
 
-            
-            <VerticalStackLayout x:Name="ActionRegion" Margin="0, 20, 0, 0">
-             
+            <!-- Action Region (Team 4) -->
+            <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
+
+                <!-- Register Button -->
+                <Button Text="Register for this Event →"
+                        Command="{Binding RegisterCommand}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        FontSize="15" />
+
+                <!-- Already Registered Badge -->
+                <Border IsVisible="{Binding IsRegistered}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#DCFCE7"
+                        Padding="14,10">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="✅" FontSize="16" VerticalOptions="Center" />
+                        <Label Text="You are already registered"
+                               FontSize="13" FontAttributes="Bold"
+                               TextColor="#166534" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
             </VerticalStackLayout>
 
         </VerticalStackLayout>

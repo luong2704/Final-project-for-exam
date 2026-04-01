@@ -1,4 +1,4 @@
-﻿using Campus.Services;
+using Campus.Services;
 using Campus.Models;
 
 namespace Campus.Services
@@ -100,7 +100,7 @@ namespace Campus.Services
 			var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
 			if (eventItem != null)
 			{
-				_allEvents.Remove(eventItem);
+				eventItem.IsRegistered = false;
 				return Task.FromResult(true);
 			}
 			return Task.FromResult(false);

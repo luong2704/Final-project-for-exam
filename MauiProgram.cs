@@ -22,23 +22,19 @@ namespace Campus
             builder.Services.AddSingleton<IEventService, MockEventService>();
             builder.Services.AddTransient<EventViewModels>();
             builder.Services.AddTransient<RegistrationViewModel>();
+            builder.Services.AddTransient<Views.RegistrationPage>();
             builder.Services.AddTransient<Views.MyEventsPage>();
             builder.Services.AddTransient<EventDetailViewModel>();
- Team-3-Display-Event-images
-            builder.Services.AddTransient<EventDetailPage>();
-
+            builder.Services.AddTransient<EventDetailPage>();  // Team 3
             builder.Services.AddTransient<CategoryViewModel>();
- main
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
- Team-3-Display-Event-images
-            Routing.RegisterRoute("EventDetailPage", typeof(EventDetailPage));
-
+            Routing.RegisterRoute("EventDetailPage", typeof(EventDetailPage));          // Team 3
             Routing.RegisterRoute("categoryfilter", typeof(CategoryFilterView));
- main
+            Routing.RegisterRoute("EventRegistrationPage", typeof(Views.RegistrationPage)); // Team 4
 
             return builder.Build();
         }

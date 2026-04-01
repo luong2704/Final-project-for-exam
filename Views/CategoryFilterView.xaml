@@ -119,6 +119,12 @@
                             Margin="0,5"
                             Shadow="0,2,6,#22000000">
 
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToDetailCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+
                             <VerticalStackLayout Spacing="6">
 
                                 <Label

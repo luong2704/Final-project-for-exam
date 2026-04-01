@@ -84,5 +84,13 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+	<!-- Exclude nested project folder to prevent duplicate class errors -->
+	<ItemGroup>
+		<Compile Remove="Final-project-for-exam\**\*" />
+		<MauiXaml Remove="Final-project-for-exam\**\*" />
+		<Content Remove="Final-project-for-exam\**\*" />
+		<None Remove="Final-project-for-exam\**\*" />
+		<EmbeddedResource Remove="Final-project-for-exam\**\*" />
+	</ItemGroup>
 
 </Project>
