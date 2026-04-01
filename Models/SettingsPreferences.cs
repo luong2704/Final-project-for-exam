@@ -8,5 +8,7 @@ namespace Campus.Models
     {
         public ThemeMode ThemeMode { get; set; } = ThemeMode.Light;
         public bool NotificationsEnabled { get; set; } = true;
+        // Bổ sung thuộc tính lưu ngôn ngữ
+        public string Language { get; set; } = "English"; 
     }
 }
