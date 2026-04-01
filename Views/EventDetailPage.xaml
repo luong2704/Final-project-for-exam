@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Campus.ViewModels"
+             xmlns:conv="clr-namespace:Campus.Converters"
              x:Class="Campus.Views.EventDetailPage"
              x:DataType="viewmodels:EventDetailViewModel"
              Title="Event Details">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:InvertBoolConverter x:Key="InvertBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout Spacing="15" Padding="20">
@@ -39,9 +46,10 @@
             <!-- Action Region (Team 4) -->
             <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
 
-                <!-- Register Button -->
+                <!-- Register Button: chỉ hiện khi CHƯA đăng ký -->
                 <Button Text="Register for this Event →"
                         Command="{Binding RegisterCommand}"
+                        IsVisible="{Binding IsRegistered, Converter={StaticResource InvertBoolConverter}}"
                         BackgroundColor="#00697F"
                         TextColor="White"
                         HeightRequest="52"

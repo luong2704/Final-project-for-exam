@@ -127,16 +127,34 @@
 
                             <VerticalStackLayout Spacing="6">
 
-                                <Label
-                                    Text="{Binding Title}"
-                                    FontSize="18"
-                                    FontAttributes="Bold"
-                                    TextColor="#1A202C"/>
+                                <!-- Title row với Registered badge -->
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        TextColor="#1A202C"
+                                        HorizontalOptions="FillAndExpand"/>
+                                    <!-- ✅ Registered badge -->
+                                    <Border IsVisible="{Binding IsRegistered}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="#DCFCE7"
+                                            Padding="8,3"
+                                            VerticalOptions="Center">
+                                        <Label Text="✅ Registered"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="#166534" />
+                                    </Border>
+                                </HorizontalStackLayout>
 
                                 <Label
                                     Text="{Binding Description}"
                                     FontSize="14"
-                                    TextColor="#666666"/>
+                                    TextColor="#666666"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"/>
 
                                 <HorizontalStackLayout Spacing="6" Margin="0,5,0,0">
                                     <Label
@@ -154,6 +172,12 @@
                                         FontSize="12"
                                         TextColor="#00697F"/>
                                 </HorizontalStackLayout>
+
+                                <!-- Tap hint -->
+                                <Label Text="Tap to view details →"
+                                       FontSize="11"
+                                       TextColor="#00697F"
+                                       HorizontalOptions="End" />
 
                             </VerticalStackLayout>
 

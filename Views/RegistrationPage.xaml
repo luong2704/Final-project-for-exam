@@ -28,15 +28,20 @@
                                  VerticalOptions="Center"
                                  Margin="0,40,0,0">
 
-                <!-- Success Icon -->
+                <!-- Success Icon: large green circle with checkmark -->
                 <Border StrokeThickness="0"
-                        StrokeShape="RoundRectangle 60"
-                        BackgroundColor="#DCFCE7"
-                        WidthRequest="120"
-                        HeightRequest="120"
+                        StrokeShape="RoundRectangle 64"
+                        BackgroundColor="#10B981"
+                        WidthRequest="128"
+                        HeightRequest="128"
                         HorizontalOptions="Center">
-                    <Label Text="✅"
-                           FontSize="54"
+                    <Border.Shadow>
+                        <Shadow Brush="#4410B981" Offset="0,8" Radius="24" Opacity="0.4" />
+                    </Border.Shadow>
+                    <Label Text="✓"
+                           FontSize="64"
+                           FontAttributes="Bold"
+                           TextColor="White"
                            HorizontalOptions="Center"
                            VerticalOptions="Center" />
                 </Border>
@@ -48,10 +53,9 @@
                        TextColor="#166534"
                        HorizontalTextAlignment="Center" />
 
-                <!-- Success Subtitle -->
                 <Label Text="{Binding StatusMessage}"
                        FontSize="14"
-                       TextColor="#4B5563"
+                       TextColor="#6B7280"
                        HorizontalTextAlignment="Center"
                        LineBreakMode="WordWrap"
                        Margin="20,0" />
@@ -73,15 +77,35 @@
                                FontSize="16"
                                FontAttributes="Bold"
                                TextColor="#1A202C" />
-                        <HorizontalStackLayout Spacing="6" Margin="0,4,0,0">
-                            <Label Text="📅" FontSize="13" VerticalOptions="Center" />
+                        <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
+                            <!-- Calendar icon -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="#00697F"
+                                    Padding="6,4"
+                                    VerticalOptions="Center">
+                                <Label Text="▦"
+                                       FontSize="11"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+                            </Border>
                             <Label Text="{Binding SelectedEvent.Date, StringFormat='{}{0:ddd, MMM dd yyyy · HH:mm}'}"
                                    FontSize="13"
                                    TextColor="#6B7280"
                                    VerticalOptions="Center" />
                         </HorizontalStackLayout>
-                        <HorizontalStackLayout Spacing="6">
-                            <Label Text="📍" FontSize="13" VerticalOptions="Center" />
+                        <HorizontalStackLayout Spacing="8">
+                            <!-- Location icon -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="#0891B2"
+                                    Padding="6,4"
+                                    VerticalOptions="Center">
+                                <Label Text="◆"
+                                       FontSize="11"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+                            </Border>
                             <Label Text="{Binding SelectedEvent.Location}"
                                    FontSize="13"
                                    TextColor="#6B7280"
@@ -91,7 +115,7 @@
                 </Border>
 
                 <!-- Back to Events Button -->
-                <Button Text="← Back to Events"
+                <Button Text="Back to Events"
                         Command="{Binding CancelCommand}"
                         BackgroundColor="#00697F"
                         TextColor="White"
@@ -133,12 +157,15 @@
                     <VerticalStackLayout Spacing="14">
 
                         <!-- Card Header -->
-                        <HorizontalStackLayout Spacing="8">
+                        <HorizontalStackLayout Spacing="10">
+                            <!-- Event icon: teal rounded square with ▣ -->
                             <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 8"
-                                    BackgroundColor="#E0F2F7"
-                                    Padding="8,6">
-                                <Label Text="🎫" FontSize="18" />
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#00697F"
+                                    Padding="10,8">
+                                <Label Text="▣"
+                                       FontSize="18"
+                                       TextColor="White" />
                             </Border>
                             <Label Text="Event Details"
                                    FontSize="16"
@@ -163,13 +190,16 @@
                         </VerticalStackLayout>
 
                         <!-- Date Row -->
-                        <HorizontalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Calendar icon: teal rounded square -->
                             <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 8"
-                                    BackgroundColor="#F3F4F6"
-                                    Padding="8,6"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#E0F2F7"
+                                    Padding="10,9"
                                     VerticalOptions="Start">
-                                <Label Text="📅" FontSize="16" />
+                                <Label Text="▦"
+                                       FontSize="16"
+                                       TextColor="#00697F" />
                             </Border>
                             <VerticalStackLayout Spacing="2" VerticalOptions="Center">
                                 <Label Text="DATE &amp; TIME"
@@ -187,13 +217,16 @@
                         </HorizontalStackLayout>
 
                         <!-- Location Row -->
-                        <HorizontalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Location icon: blue rounded square -->
                             <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 8"
-                                    BackgroundColor="#F3F4F6"
-                                    Padding="8,6"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#E0F4FF"
+                                    Padding="10,9"
                                     VerticalOptions="Start">
-                                <Label Text="📍" FontSize="16" />
+                                <Label Text="◆"
+                                       FontSize="14"
+                                       TextColor="#0891B2" />
                             </Border>
                             <VerticalStackLayout Spacing="2" VerticalOptions="Center">
                                 <Label Text="LOCATION"
@@ -202,30 +235,39 @@
                                        CharacterSpacing="1.5" />
                                 <Label Text="{Binding SelectedEvent.Location}"
                                        FontSize="14"
+                                       FontAttributes="Bold"
                                        TextColor="#374151"
                                        LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </HorizontalStackLayout>
 
-                        <!-- Category Badge -->
-                        <HorizontalStackLayout Spacing="10">
+                        <!-- Category Row -->
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Category icon: purple rounded square -->
                             <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 8"
-                                    BackgroundColor="#F3F4F6"
-                                    Padding="8,6"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#F3E8FF"
+                                    Padding="10,9"
                                     VerticalOptions="Center">
-                                <Label Text="🏷️" FontSize="16" />
+                                <Label Text="▤"
+                                       FontSize="14"
+                                       TextColor="#7C3AED" />
                             </Border>
-                            <Border StrokeThickness="0"
-                                    StrokeShape="RoundRectangle 20"
-                                    BackgroundColor="#E0F2F7"
-                                    Padding="14,6"
-                                    VerticalOptions="Center">
-                                <Label Text="{Binding SelectedEvent.Category}"
-                                       FontSize="13"
-                                       FontAttributes="Bold"
-                                       TextColor="#00697F" />
-                            </Border>
+                            <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                <Label Text="CATEGORY"
+                                       FontSize="10"
+                                       TextColor="#9CA3AF"
+                                       CharacterSpacing="1.5" />
+                                <Border StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 20"
+                                        BackgroundColor="#E0F2F7"
+                                        Padding="12,5">
+                                    <Label Text="{Binding SelectedEvent.Category}"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#00697F" />
+                                </Border>
+                            </VerticalStackLayout>
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>
@@ -237,11 +279,22 @@
                         StrokeShape="RoundRectangle 16"
                         BackgroundColor="#FFFBEB"
                         Padding="16,14">
-                    <HorizontalStackLayout Spacing="12">
-                        <Label Text="⚠️"
-                               FontSize="22"
-                               VerticalOptions="Start"
-                               Margin="0,2,0,0" />
+                    <HorizontalStackLayout Spacing="14">
+                        <!-- Warning icon: amber circle with ! -->
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 20"
+                                BackgroundColor="#F59E0B"
+                                WidthRequest="32"
+                                HeightRequest="32"
+                                VerticalOptions="Start"
+                                Margin="0,1,0,0">
+                            <Label Text="!"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
                         <VerticalStackLayout Spacing="4">
                             <Label Text="Please Confirm"
                                    FontSize="14"
@@ -261,8 +314,21 @@
                         StrokeShape="RoundRectangle 12"
                         BackgroundColor="#FEE2E2"
                         Padding="14,10">
-                    <HorizontalStackLayout Spacing="8">
-                        <Label Text="❌" FontSize="16" VerticalOptions="Center" />
+                    <HorizontalStackLayout Spacing="10">
+                        <!-- Error icon: red circle with × -->
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 16"
+                                BackgroundColor="#EF4444"
+                                WidthRequest="28"
+                                HeightRequest="28"
+                                VerticalOptions="Center">
+                            <Label Text="✕"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
                         <Label Text="{Binding StatusMessage}"
                                FontSize="13"
                                TextColor="#991B1B"
@@ -278,7 +344,7 @@
                                    HorizontalOptions="Center" />
 
                 <!-- ─── Confirm Button ─── -->
-                <Button Text="✅  Confirm Registration"
+                <Button Text="Confirm Registration"
                         Command="{Binding ConfirmRegistrationCommand}"
                         IsEnabled="{Binding IsLoading, Converter={StaticResource InvertBoolConverter}}"
                         BackgroundColor="#00697F"

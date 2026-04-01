@@ -9,4 +9,14 @@ public partial class EventDetailPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        // Refresh IsRegistered từ Event object khi quay lại từ RegistrationPage
+        if (BindingContext is EventDetailViewModel vm && vm.Event != null)
+        {
+            vm.IsRegistered = vm.Event.IsRegistered;
+        }
+    }
 }
