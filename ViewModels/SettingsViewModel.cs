@@ -49,6 +49,7 @@ namespace Campus.ViewModels
         }
 
         private bool _isNotificationsEnabled;
+        private string? _selectedLanguage;
 
         public bool IsNotificationsEnabled
         {
