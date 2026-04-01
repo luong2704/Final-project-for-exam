@@ -104,6 +104,16 @@
                     <RoundRectangle CornerRadius="16" />
                 </Border.StrokeShape>
 
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        Text="Language"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#111827" />
+
+
+                </VerticalStackLayout>
+
             </Border>
 
             <!-- Save Button -->
