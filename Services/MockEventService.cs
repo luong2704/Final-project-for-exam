@@ -1,4 +1,3 @@
-using Campus.Services;
 using Campus.Models;
 
 namespace Campus.Services
