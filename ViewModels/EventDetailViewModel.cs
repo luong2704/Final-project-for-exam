@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
 
@@ -45,6 +45,12 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     [ObservableProperty]
     private string _statusIcon = string.Empty;
 
+    [ObservableProperty]
+    private int _daysRemaining;
+
+    [ObservableProperty]
+    private string _formattedDate = string.Empty;
+
     public EventDetailViewModel()
     {
     }
@@ -79,7 +85,7 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
             IsUpcoming = true;
             IsPast = false;
             StatusColor = Colors.Green;
-            StatusIcon = "🟢";
+            StatusIcon = "";
         }
         else
         {
@@ -87,7 +93,7 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
             IsUpcoming = false;
             IsPast = true;
             StatusColor = Colors.Gray;
-            StatusIcon = "⚫";
+            StatusIcon = "";
         }
     }
 
@@ -96,7 +102,6 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     {
         if (Event == null) return;
 
-        // Navigate to Registration confirmation page
         await Shell.Current.GoToAsync("EventRegistrationPage", new Dictionary<string, object>
         {
             { "SelectedEvent", Event }
