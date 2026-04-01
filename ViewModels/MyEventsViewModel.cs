@@ -5,14 +5,14 @@ namespace Campus.ViewModels;
 
 public class MyEventsViewModel
 {
-	public ObservableCollection<Event> Events { get; set; }
+	public ObservableCollection<Event> MyEventsList { get; set; }
 
 	public MyEventsViewModel()
 	{
-		Events = new ObservableCollection<Event>
-		{
-			new Event { Title = "Event 1", Description = "Description 1" },
-			new Event { Title = "Event 2", Description = "Description 2" }
-		};
+		MyEventsList = new ObservableCollection<Event>
+	{
+		new Event { Title = "Event 1", Description = "Description 1" },
+		new Event { Title = "Event 2", Description = "Description 2" }
+	};
 	}
 }

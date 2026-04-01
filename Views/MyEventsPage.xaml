@@ -3,7 +3,7 @@
              xmlns:views="clr-namespace:Campus.Views"
              x:Class="Campus.Views.MyEventsPage">
 
-    <CollectionView ItemsSource="{Binding Events}">
+    <CollectionView ItemsSource="{Binding MyEventsList}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <views:EventCardView />
