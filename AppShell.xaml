@@ -11,4 +11,9 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
 
+    <ShellContent
+        Title="Categories"
+        ContentTemplate="{DataTemplate views:CategoryFilterView}"
+        Route="categoryfilter" />
+
 </Shell>

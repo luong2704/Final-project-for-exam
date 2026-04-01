@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(git show-branch:*)",
+      "Bash(find /Users/tranthihuyentrang/Desktop/Team-5- -type f -name \"*.cs\" -exec file {})",
+      "Bash(dotnet --version)",
+      "Bash(dotnet workload:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(ls /Users/tranthihuyentrang/Desktop/Team-5-/*.sln* /Users/tranthihuyentrang/Desktop/Team-5-/*.csproj)",
+      "Bash(dotnet build:*)",
+      "Bash(xcode-select -p)",
+      "Read(//Applications/**)"
+    ]
+  }
+}

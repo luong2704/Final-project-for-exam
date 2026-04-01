@@ -1,4 +1,7 @@
-﻿using Campus.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Campus.Models;
 
 namespace Campus.Services
@@ -84,23 +87,23 @@ namespace Campus.Services
             return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
         }
 
-        public Task<bool> UnregisterEventAsync(Guid eventId)
-        {
-            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
-            if (eventItem != null)
-            {
-                _allEvents.Remove(eventItem);
-                return Task.FromResult(true);
-            }
-            return Task.FromResult(false);
-        }
-
         public Task<bool> RegisterEventAsync(Guid eventId)
         {
             var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
             if (eventItem != null)
             {
                 eventItem.IsRegistered = true;
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
+
+        public Task<bool> UnregisterEventAsync(Guid eventId)
+        {
+            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
+            if (eventItem != null)
+            {
+                _allEvents.Remove(eventItem);
                 return Task.FromResult(true);
             }
             return Task.FromResult(false);
