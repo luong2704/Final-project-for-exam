@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.DashboardPage"
+             Title="Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header -->
+            <Label Text="Dashboard" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   TextColor="#333333" />
+
+            <!-- Statistics Cards Grid -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto" ColumnSpacing="12" RowSpacing="12">
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
