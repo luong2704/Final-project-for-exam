@@ -25,5 +25,10 @@
         Title="Categories"
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
         Route="CategoryFilterView" />
-
+    
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate views:DashboardPage}"
+        Route="DashboardPage" />
+    
 </Shell>
