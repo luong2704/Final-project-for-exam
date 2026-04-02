@@ -68,6 +68,24 @@
                                TextColor="#4CAF50" />
                     </VerticalStackLayout>
                 </Frame>
+                
+                <!-- Saved Events Card -->
+                <Frame Grid.Row="1" Grid.Column="1" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Đã Lưu" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="5" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#9C27B0" />
+                    </VerticalStackLayout>
+                </Frame>
 
             </Grid>
 
