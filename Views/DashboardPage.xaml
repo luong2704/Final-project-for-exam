@@ -51,6 +51,24 @@
                     </VerticalStackLayout>
                 </Frame>
 
+                <!-- Attended Events Card -->
+                <Frame Grid.Row="1" Grid.Column="0" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Đã Tham Gia" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="12" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#4CAF50" />
+                    </VerticalStackLayout>
+                </Frame>
+
             </Grid>
 
         </VerticalStackLayout>
