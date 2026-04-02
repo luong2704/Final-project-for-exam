@@ -19,55 +19,60 @@ namespace Campus.Services
                     Id = Guid.NewGuid(),
                     Title = "Tech Talk: Introduction to .NET MAUI",
                     Description = "Learn the basics of .NET MAUI for cross-platform mobile development.",
-                    Date = new DateTime(2026, 4, 15, 9, 0, 0),
+                    Date = DateTime.Now.AddHours(2),
                     Location = "Hall A - Building 1",
                     Image = "dotnet_maui.png",
                     Category = "Academic",
-                    IsRegistered = true
+                    IsRegistered = true,
+                    Status = "Live"
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Campus Music Festival",
                     Description = "Annual music festival featuring student bands and solo performers.",
-                    Date = new DateTime(2026, 4, 20, 18, 0, 0),
+                    Date = DateTime.Now.AddDays(2),
                     Location = "Open Air Theater",
                     Image = "music_fest.png",
                     Category = "Cultural",
-                    IsRegistered = true
+                    IsRegistered = true,
+                    Status = "Featured"
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Career Fair 2026",
                     Description = "Meet top employers and explore internship opportunities.",
-                    Date = new DateTime(2026, 5, 10, 8, 30, 0),
+                    Date = DateTime.Now.AddDays(15),
                     Location = "Convention Center",
                     Image = "career_fair.png",
                     Category = "Social",
-                    IsRegistered = false
+                    IsRegistered = true,
+                    Status = "Popular"
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Workshop: UI/UX Design Principles",
                     Description = "Hands-on workshop covering modern UI/UX design fundamentals.",
-                    Date = new DateTime(2026, 5, 5, 14, 0, 0),
+                    Date = DateTime.Now.AddDays(5),
                     Location = "Lab 3 - Building 2",
                     Image = "uiux_workshop.png",
                     Category = "Academic",
-                    IsRegistered = false
+                    IsRegistered = true,
+                    Status = "Limited"
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Volleyball Tournament",
                     Description = "Inter-department volleyball tournament. All skill levels welcome!",
-                    Date = new DateTime(2026, 4, 25, 15, 0, 0),
+                    Date = DateTime.Now.AddDays(3),
                     Location = "Sports Complex",
                     Image = "volleyball.png",
                     Category = "Sports",
-                    IsRegistered = false
+                    IsRegistered = true,
+                    Status = "Soon"
                 }
             };
         }
@@ -87,12 +92,16 @@ namespace Campus.Services
             return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
         }
 
-        public Task<bool> RegisterEventAsync(Guid eventId)
+        public Task<bool> RegisterEventAsync(Guid eventId, string? status = null)
         {
             var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
             if (eventItem != null)
             {
                 eventItem.IsRegistered = true;
+                if (!string.IsNullOrEmpty(status))
+                {
+                    eventItem.Status = status;
+                }
                 return Task.FromResult(true);
             }
             return Task.FromResult(false);

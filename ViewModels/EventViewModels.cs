@@ -131,7 +131,7 @@ public partial class EventViewModels : ObservableObject
 	{
 		if (eventItem == null || IsBusy) return;
 
-		// Confirm before unregistering
+		// Xác nhận trước khi hủy đăng ký
 		bool confirmed = await Shell.Current.DisplayAlert(
 			"Cancel Registration",
 			$"Are you sure you want to unregister from \"{eventItem.Title}\"?",

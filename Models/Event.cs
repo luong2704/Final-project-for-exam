@@ -16,5 +16,8 @@ namespace Campus.Models
         // → CollectionView badge updates in real-time without list reload
         [ObservableProperty]
         private bool _isRegistered;
+
+        [ObservableProperty]
+        private string _status = "Upcoming";
     }
 }
