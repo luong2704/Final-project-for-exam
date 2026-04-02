@@ -109,6 +109,12 @@
                             <Label Text="18/04/2026" FontSize="12" TextColor="#999999" />
                         </VerticalStackLayout>
                     </Frame>
+                    <Frame CornerRadius="6" BorderColor="#F0F0F0" Padding="10" Background="#F9F9F9">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Hackathon" FontAttributes="Bold" FontSize="14" />
+                            <Label Text="20/04/2026" FontSize="12" TextColor="#999999" />
+                        </VerticalStackLayout>
+                    </Frame>
 
                 </VerticalStackLayout>
             </Frame>
