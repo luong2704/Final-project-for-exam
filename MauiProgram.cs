@@ -10,6 +10,7 @@ namespace Campus
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -27,6 +28,11 @@ namespace Campus
             builder.Services.AddTransient<EventDetailViewModel>();
             builder.Services.AddTransient<EventDetailPage>();  // Team 3
             builder.Services.AddTransient<CategoryViewModel>();
+
+            builder.Services.AddSingleton<CampusService>();
+            builder.Services.AddTransient<MainPage>();
+
+            
 
 #if DEBUG
             builder.Logging.AddDebug();

@@ -1,37 +1,17 @@
-# Build results
-bin/
-obj/
-out/
-
 # Visual Studio
 .vs/
 *.user
-*.userosscache
-*.sln.docstates
-*.rsuser
 *.suo
-*.suo.credentials
-*.userprefs
+
+# Build folders
+bin/
+obj/
+
+# VS Code / Rider
 .vscode/
-
-# .NET
-*.dll
-*.exe
-*.pdb
-*.cache
-*.log
-*.userosscache
-*.sln.docstates
-
-# NuGet
-*.nupkg
-.nuget/
-packages/
-
-# Rider
 .idea/
 
-# MacOS
+# OS files
 .DS_Store
 
 # Android
@@ -85,3 +65,4 @@ coverage/
 *.coverage
 *.coveragexml
 
+Thumbs.db
