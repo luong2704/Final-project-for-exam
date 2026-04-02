@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campus.Views.SettingsPage"
-             BackgroundColor="#F8FAFB"
+             BackgroundColor="{AppThemeBinding Light=#F8FAFB, Dark=#121212}"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -14,13 +14,13 @@
             <Style x:Key="SectionLabelStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Oswald-Regular" />
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="TextColor" Value="#374151" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=#374151, Dark=#9CA3AF}" />
                 <Setter Property="CharacterSpacing" Value="1.5" />
                 <Setter Property="Margin" Value="20,25,0,10" />
             </Style>
 
             <Style x:Key="SettingItemBorderStyle" TargetType="Border">
-                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#1E1E1E}" />
                 <Setter Property="StrokeThickness" Value="0" />
                 <Setter Property="Padding" Value="16" />
                 <Setter Property="Margin" Value="16,0,16,12" />
@@ -31,7 +31,7 @@
                 </Setter>
                 <Setter Property="Shadow">
                     <Setter.Value>
-                        <Shadow Brush="Black" Offset="0,2" Opacity="0.05" Radius="5" />
+                        <Shadow Brush="Black" Offset="0,2" Opacity="{AppThemeBinding Light=0.05, Dark=0.3}" Radius="5" />
                     </Setter.Value>
                 </Setter>
             </Style>
@@ -70,8 +70,8 @@
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="Account Details" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
-                            <Label Text="Update email and personal info" TextColor="#6B7280" FontSize="12" />
+                            <Label Text="Account Details" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
+                            <Label Text="Update email and personal info" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Image Grid.Column="2" Source="chevron_right.png" HeightRequest="14" Opacity="0.4" />
                     </Grid>
@@ -84,8 +84,8 @@
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="Security" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
-                            <Label Text="Password and biometric access" TextColor="#6B7280" FontSize="12" />
+                            <Label Text="Security" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
+                            <Label Text="Password and biometric access" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Image Grid.Column="2" Source="chevron_right.png" HeightRequest="14" Opacity="0.4" />
                     </Grid>
@@ -96,8 +96,8 @@
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="App Theme" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
-                            <Label Text="Editorial light or night mode" TextColor="#6B7280" FontSize="12" />
+                            <Label Text="App Theme" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
+                            <Label Text="Editorial light or night mode" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Label Grid.Column="2" Text="{Binding ThemeLabel}" TextColor="{StaticResource OswaldPrimary}" FontAttributes="Bold" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0"/>
                         <Switch Grid.Column="3" IsToggled="{Binding IsDarkMode}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
@@ -109,8 +109,8 @@
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="Notifications" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
-                            <Label Text="Receive campus reminders" TextColor="#6B7280" FontSize="12" />
+                            <Label Text="Notifications" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
+                            <Label Text="Receive campus reminders" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Switch Grid.Column="2" IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
                     </Grid>
@@ -121,19 +121,19 @@
                         <BoxView Color="{StaticResource OswaldTertiary}" Opacity="0.2" CornerRadius="22" WidthRequest="44" HeightRequest="44" />
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="Language" FontSize="16" FontAttributes="Bold" TextColor="#111827" />
-                            <Label Text="App display language" TextColor="#6B7280" FontSize="12" />
+                            <Label Text="Language" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
+                            <Label Text="App display language" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
-                        <Picker Grid.Column="2" WidthRequest="130" Title="Select" ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" VerticalOptions="Center"/>
+                        <Picker Grid.Column="2" WidthRequest="130" Title="Select" ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" VerticalOptions="Center" TextColor="{AppThemeBinding Light=#111827, Dark=White}"/>
                     </Grid>
                 </Border>
 
             </VerticalStackLayout>
         </ScrollView>
 
-        <Border Grid.Row="1" BackgroundColor="White" StrokeThickness="0">
+        <Border Grid.Row="1" BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}" StrokeThickness="0">
             <Border.Shadow>
-                <Shadow Brush="Black" Offset="0,-5" Opacity="0.05" Radius="10" />
+                <Shadow Brush="Black" Offset="0,-5" Opacity="{AppThemeBinding Light=0.05, Dark=0.3}" Radius="10" />
             </Border.Shadow>
             <Grid ColumnDefinitions="*, *, *, *">
                 <Grid Grid.Column="3">
