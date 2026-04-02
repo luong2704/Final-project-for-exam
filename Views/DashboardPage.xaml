@@ -15,6 +15,23 @@
 
             <!-- Statistics Cards Grid -->
             <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto" ColumnSpacing="12" RowSpacing="12">
+                <!-- Total Events Card -->
+                <Frame Grid.Row="0" Grid.Column="0" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Tổng Sự Kiện" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="24" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#2196F3" />
+                    </VerticalStackLayout>
+                </Frame>
 
             </Grid>
 
