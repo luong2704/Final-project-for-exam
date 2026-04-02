@@ -3,6 +3,13 @@
              x:Class="Campus.Views.ProfilePage"
              BackgroundColor="White"
              Title="Profile">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="⚙️" 
+                     Order="Primary" 
+                     Clicked="OnSettingsClicked" />
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <VerticalStackLayout Padding="25" Spacing="20">
 
@@ -20,7 +27,6 @@
                     Aspect="AspectFill"/>
             </Frame>
 
-            <!-- Info Card -->
             <Border
                 StrokeThickness="0"
                 StrokeShape="RoundRectangle 20"
@@ -59,15 +65,24 @@
             </Border>
 
             <Button
-            Text="Logout"
-            BackgroundColor="#00697F"
-            TextColor="White"
-            HeightRequest="50"
-            CornerRadius="10"
-            FontAttributes="Bold"/>
+                Text="⚙️ Settings"
+                BackgroundColor="White"
+                TextColor="#00697F"
+                BorderColor="#00697F"
+                BorderWidth="2"
+                HeightRequest="50"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                Clicked="OnSettingsClicked"/>
+
+            <Button
+                Text="Logout"
+                BackgroundColor="#00697F"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10"
+                FontAttributes="Bold"/>
 
         </VerticalStackLayout>
     </ScrollView>
-
-
 </ContentPage>
