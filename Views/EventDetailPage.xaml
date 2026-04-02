@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Campus.ViewModels"
+             x:Class="Campus.Views.EventDetailPage"
+             x:DataType="vm:EventDetailViewModel"
+             Title="Event Details"
+             BackgroundColor="#F7FAFC">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+
+            <!-- ═══ Event Image Hero ═══ -->
+            <Border StrokeThickness="0"
+                    HeightRequest="220"
+                    StrokeShape="RoundRectangle 0,0,20,20"
+                    BackgroundColor="#E2E8F0">
+                <Image Source="{Binding Image}"
+                       Aspect="AspectFill" />
+            </Border>
+
+            <!-- ═══ Content Card ═══ -->
+            <Border Margin="16,-30,16,16"
+                    Padding="20"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 16"
+                    BackgroundColor="White">
+                <Border.Shadow>
+                    <Shadow Brush="#22000000" Offset="0,4" Radius="12" Opacity="0.15" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Category + Status badges -->
+                    <HorizontalStackLayout Spacing="8">
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 6"
+                                BackgroundColor="#E8F4FD"
+                                Padding="10,5">
+                            <Label Text="{Binding Category}"
+                                   FontSize="12"
+                                   TextColor="#00697F"
+                                   FontAttributes="Bold" />
+                        </Border>
+
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 6"
+                                Padding="10,5">
+                            <!-- Upcoming = green, Past = gray -->
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border"
+                                             Binding="{Binding IsUpcoming}"
+                                             Value="True">
+                                    <Setter Property="BackgroundColor" Value="#C6F6D5" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Border"
+                                             Binding="{Binding IsPast}"
+                                             Value="True">
+                                    <Setter Property="BackgroundColor" Value="#E2E8F0" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <Label Text="{Binding EventStatus}"
+                                   FontSize="12"
+                                   FontAttributes="Bold">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsUpcoming}"
+                                                 Value="True">
+                                        <Setter Property="TextColor" Value="#276749" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsPast}"
+                                                 Value="True">
+                                        <Setter Property="TextColor" Value="#718096" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </Border>
+                    </HorizontalStackLayout>
+
+                    <!-- Title -->
+                    <Label Text="{Binding Title}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#1A202C"
+                           LineBreakMode="WordWrap" />
+
+                    <!-- Separator -->
+                    <BoxView HeightRequest="1"
+                             Color="#E2E8F0"
+                             Margin="0,4" />
+
+                    <!-- Date -->
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="📅"
+                               FontSize="16"
+                               VerticalOptions="Center" />
+                        <VerticalStackLayout>
+                            <Label Text="Date &amp; Time"
+                                   FontSize="11"
+                                   TextColor="#A0AEC0" />
+                            <Label Text="{Binding Date, StringFormat='{0:dddd, MMMM dd, yyyy · HH:mm}'}"
+                                   FontSize="14"
+                                   TextColor="#2D3748"
+                                   FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Location -->
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="📍"
+                               FontSize="16"
+                               VerticalOptions="Center" />
+                        <VerticalStackLayout>
+                            <Label Text="Location"
+                                   FontSize="11"
+                                   TextColor="#A0AEC0" />
+                            <Label Text="{Binding Location}"
+                                   FontSize="14"
+                                   TextColor="#2D3748"
+                                   FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Separator -->
+                    <BoxView HeightRequest="1"
+                             Color="#E2E8F0"
+                             Margin="0,4" />
+
+                    <!-- Description -->
+                    <Label Text="About this event"
+                           FontSize="14"
+                           TextColor="#718096"
+                           FontAttributes="Bold" />
+                    <Label Text="{Binding Description}"
+                           FontSize="14"
+                           TextColor="#4A5568"
+                           LineBreakMode="WordWrap" />
+
+                    <!-- Registration status -->
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            BackgroundColor="#F0FFF4"
+                            Padding="14,10"
+                            IsVisible="{Binding IsRegistered}"
+                            Margin="0,8,0,0">
+                        <HorizontalStackLayout Spacing="8"
+                                                HorizontalOptions="Center">
+                            <Label Text="✅"
+                                   FontSize="16"
+                                   VerticalOptions="Center" />
+                            <Label Text="You are registered for this event"
+                                   FontSize="13"
+                                   TextColor="#276749"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ═══ Action Buttons ═══ -->
+            <VerticalStackLayout Padding="16,0,16,24"
+                                 Spacing="10">
+
+                <!-- Register button (only if upcoming & not registered) -->
+                <Button Text="Register for Event"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Command="{Binding RegisterCommand}"
+                        IsVisible="{Binding IsUpcoming}" />
+
+                <!-- Go back button -->
+                <Button Text="← Back to Events"
+                        BackgroundColor="#EDF2F7"
+                        TextColor="#4A5568"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        FontSize="14"
+                        Command="{Binding GoBackCommand}" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
