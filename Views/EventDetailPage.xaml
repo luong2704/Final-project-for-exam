@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Campus.ViewModels"
+             xmlns:conv="clr-namespace:Campus.Converters"
+             x:Class="Campus.Views.EventDetailPage"
+             x:DataType="viewmodels:EventDetailViewModel"
+             Title="Event Details">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:InvertBoolConverter x:Key="InvertBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+            <!-- Image Banner -->
+            <Border x:Name="ImageRegion"
+                    StrokeShape="RoundRectangle 12"
+                    BackgroundColor="#F0F0F0"
+                    HeightRequest="200"
+                    StrokeThickness="0">
+                <Image Source="{Binding Image}" Aspect="AspectFill"
+                       HorizontalOptions="Fill" VerticalOptions="Fill" />
+            </Border>
+
+            <!-- Title & Date -->
+            <VerticalStackLayout x:Name="TitleRegion" Spacing="5">
+                <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" />
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}" FontSize="14" TextColor="Gray" />
+                    <Label Text="•" FontSize="14" TextColor="Gray" />
+                    <Label Text="{Binding Location}" FontSize="14" TextColor="Gray" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Description -->
+            <VerticalStackLayout x:Name="DescriptionRegion" Spacing="10" Margin="0,10,0,0">
+                <Label Text="About this event" FontSize="18" FontAttributes="Bold" />
+                <Label Text="{Binding Description}" FontSize="16" LineHeight="1.4"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#CCCCCC}" />
+            </VerticalStackLayout>
+
+            <!-- Action Region (Team 4) -->
+            <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
+
+                <!-- Register Button: chỉ hiện khi CHƯA đăng ký -->
+                <Button Text="Register for this Event →"
+                        Command="{Binding RegisterCommand}"
+                        IsVisible="{Binding IsRegistered, Converter={StaticResource InvertBoolConverter}}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        FontSize="15" />
+
+                <!-- Already Registered Status Badge (Team 4) -->
+                <Border IsVisible="{Binding IsRegistered}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#DCFCE7"
+                        Padding="14,10">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#16A34A"
+                                Padding="6,4"
+                                VerticalOptions="Center">
+                            <Label Text="✓"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="You are already registered"
+                               FontSize="13" FontAttributes="Bold"
+                               TextColor="#166534" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

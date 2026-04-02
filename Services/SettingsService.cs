@@ -1,4 +1,4 @@
-﻿using Campus.Models;
+using Campus.Models;
 using Campus.Services;
 using Campus.Session;
 using System.Collections.ObjectModel;
@@ -81,12 +81,11 @@ namespace Campus.ViewModels
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     _settingsService.SaveLanguage(value);
-
-                    
                     ApplyLanguageChange(value);
                 }
             }
         }
+
         private void ApplyLanguageChange(string language)
         {
             var cultureCode = language == "Vietnamese" ? "vi-VN" : "en-US";
@@ -94,21 +93,18 @@ namespace Campus.ViewModels
 
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
-
-            
         }
+
         public ObservableCollection<string> SupportedLanguages { get; } = new ObservableCollection<string>
         {
             "English",
-"Vietnamese"
+            "Vietnamese"
         };
 
-        
         public SettingsViewModel()
         {
             _settingsService = new SettingsService();
 
-           
             var user = AppSession.CurrentUser;
             if (user != null)
             {
@@ -117,7 +113,6 @@ namespace Campus.ViewModels
                 StudentId = user.StudentId;
             }
 
-        
             var currentSettings = _settingsService.GetSettings();
             _isDarkMode = currentSettings.ThemeMode == ThemeMode.Dark;
             ThemeLabel = _isDarkMode ? "DARK" : "LIGHT";

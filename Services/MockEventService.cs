@@ -1,4 +1,7 @@
-﻿using Campus.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Campus.Models;
 
 namespace Campus.Services
@@ -16,7 +19,7 @@ namespace Campus.Services
                     Id = Guid.NewGuid(),
                     Title = "Tech Talk: Introduction to .NET MAUI",
                     Description = "Learn the basics of .NET MAUI for cross-platform mobile development.",
-                    Date = new DateTime(2026, 3, 15, 9, 0, 0),
+                    Date = new DateTime(2026, 4, 15, 9, 0, 0),
                     Location = "Hall A - Building 1",
                     Image = "dotnet_maui.png",
                     Category = "Academic",
@@ -27,7 +30,7 @@ namespace Campus.Services
                     Id = Guid.NewGuid(),
                     Title = "Campus Music Festival",
                     Description = "Annual music festival featuring student bands and solo performers.",
-                    Date = new DateTime(2026, 3, 20, 18, 0, 0),
+                    Date = new DateTime(2026, 4, 20, 18, 0, 0),
                     Location = "Open Air Theater",
                     Image = "music_fest.png",
                     Category = "Cultural",
@@ -38,33 +41,33 @@ namespace Campus.Services
                     Id = Guid.NewGuid(),
                     Title = "Career Fair 2026",
                     Description = "Meet top employers and explore internship opportunities.",
-                    Date = new DateTime(2026, 3, 10, 8, 30, 0),
+                    Date = new DateTime(2026, 5, 10, 8, 30, 0),
                     Location = "Convention Center",
                     Image = "career_fair.png",
                     Category = "Social",
-                    IsRegistered = true
+                    IsRegistered = false
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Workshop: UI/UX Design Principles",
                     Description = "Hands-on workshop covering modern UI/UX design fundamentals.",
-                    Date = new DateTime(2026, 4, 5, 14, 0, 0),
+                    Date = new DateTime(2026, 5, 5, 14, 0, 0),
                     Location = "Lab 3 - Building 2",
                     Image = "uiux_workshop.png",
                     Category = "Academic",
-                    IsRegistered = true
+                    IsRegistered = false
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Volleyball Tournament",
                     Description = "Inter-department volleyball tournament. All skill levels welcome!",
-                    Date = new DateTime(2026, 3, 25, 15, 0, 0),
+                    Date = new DateTime(2026, 4, 25, 15, 0, 0),
                     Location = "Sports Complex",
                     Image = "volleyball.png",
                     Category = "Sports",
-                    IsRegistered = true
+                    IsRegistered = false
                 }
             };
         }
@@ -84,23 +87,23 @@ namespace Campus.Services
             return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
         }
 
-        public Task<bool> UnregisterEventAsync(Guid eventId)
-        {
-            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
-            if (eventItem != null)
-            {
-                _allEvents.Remove(eventItem);
-                return Task.FromResult(true);
-            }
-            return Task.FromResult(false);
-        }
-
         public Task<bool> RegisterEventAsync(Guid eventId)
         {
             var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
             if (eventItem != null)
             {
                 eventItem.IsRegistered = true;
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
+
+        public Task<bool> UnregisterEventAsync(Guid eventId)
+        {
+            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
+            if (eventItem != null)
+            {
+                eventItem.IsRegistered = false;
                 return Task.FromResult(true);
             }
             return Task.FromResult(false);

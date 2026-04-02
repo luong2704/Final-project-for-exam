@@ -1,0 +1,194 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.CategoryFilterView"
+             BackgroundColor="#F7FAFC"
+             Title="Filter by Category">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="15">
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}"
+                Color="#00697F"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HeightRequest="40"
+                WidthRequest="40"/>
+
+            <!-- Title -->
+            <Label
+                Text="Filter Events"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                TextColor="#00697F"/>
+
+            <!-- Filter Card -->
+            <Border
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="White"
+                Padding="20"
+                Shadow="0,4,10,#22000000">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Category Label -->
+                    <Label
+                        Text="Select Category"
+                        FontSize="14"
+                        TextColor="#00697F"/>
+
+                    <!-- Category Picker -->
+                    <Picker
+                        Title="Choose a category"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding SelectedCategory}"
+                        ItemDisplayBinding="{Binding CategoryName}"
+                        BackgroundColor="#F1F5F9"
+                        HeightRequest="45"/>
+
+                    <!-- Selected Category Feedback -->
+                    <Label
+                        Text="{Binding SelectedCategory.CategoryName}"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        TextColor="#00697F"
+                        IsVisible="{Binding IsFiltered}"
+                        HorizontalOptions="Center"/>
+
+                    <!-- Apply Filter Button -->
+                    <Button
+                        Text="Apply Filter"
+                        Command="{Binding ApplyFilterCommand}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="45"
+                        CornerRadius="12"
+                        FontAttributes="Bold"/>
+
+                    <!-- Clear Filter Button -->
+                    <Button
+                        Text="Clear Filter"
+                        Command="{Binding ClearFilterCommand}"
+                        IsVisible="{Binding IsFiltered}"
+                        BackgroundColor="#F1F5F9"
+                        TextColor="#00697F"
+                        HeightRequest="45"
+                        CornerRadius="12"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Filtered Events List -->
+            <CollectionView
+                ItemsSource="{Binding FilteredEvents}">
+
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Padding="30">
+                        <Label
+                            Text="No events match your filter"
+                            FontSize="18"
+                            TextColor="#666666"
+                            HorizontalTextAlignment="Center"/>
+                        <Label
+                            Text="Try selecting a different category"
+                            FontSize="14"
+                            TextColor="#999999"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 12"
+                            BackgroundColor="White"
+                            Padding="15"
+                            Margin="0,5"
+                            Shadow="0,2,6,#22000000">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToDetailCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <!-- Title row với Registered badge -->
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        TextColor="#1A202C"
+                                        HorizontalOptions="FillAndExpand"/>
+                                    <!-- Registered badge -->
+                                    <Border IsVisible="{Binding IsRegistered}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="#DCFCE7"
+                                            Padding="8,3"
+                                            VerticalOptions="Center">
+                                        <Label Text="Registered"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="#166534" />
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                                <Label
+                                    Text="{Binding Description}"
+                                    FontSize="14"
+                                    TextColor="#666666"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"/>
+
+                                <HorizontalStackLayout Spacing="6" Margin="0,5,0,0">
+                                    <Label
+                                        Text="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}"
+                                        FontSize="12"
+                                        TextColor="#999999"/>
+                                    <Label Text=" | " TextColor="#999999"/>
+                                    <Label
+                                        Text="{Binding Location}"
+                                        FontSize="12"
+                                        TextColor="#999999"/>
+                                    <Label Text=" | " TextColor="#999999"/>
+                                    <Label
+                                        Text="{Binding Category}"
+                                        FontSize="12"
+                                        TextColor="#00697F"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Tap hint -->
+                                <Label Text="Tap to view details →"
+                                       FontSize="11"
+                                       TextColor="#00697F"
+                                       HorizontalOptions="End" />
+
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
