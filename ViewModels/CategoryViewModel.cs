@@ -21,6 +21,9 @@ public partial class CategoryViewModel : ObservableObject
     [ObservableProperty]
     private bool _isFiltered;
 
+    [ObservableProperty]
+    private bool _isLoading;
+
     public CategoryViewModel(ICategoryService categoryService, IEventService eventService)
     {
         _categoryService = categoryService;
@@ -58,22 +61,56 @@ public partial class CategoryViewModel : ObservableObject
 
     public async Task LoadCategoriesAsync()
     {
-        var categories = await _categoryService.GetAllCategoriesAsync();
-        Categories.Clear();
-        foreach (var category in categories)
+        try
         {
-            Categories.Add(category);
+            IsLoading = true;
+            var categories = await _categoryService.GetAllCategoriesAsync();
+            Categories.Clear();
+            foreach (var category in categories)
+            {
+                Categories.Add(category);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error loading categories: {ex.Message}");
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 
     public async Task LoadEventsAsync()
     {
-        var events = await _eventService.GetAllEventsAsync();
-        _allEvents = events;
-        FilteredEvents.Clear();
-        foreach (var evt in events)
+        try
         {
-            FilteredEvents.Add(evt);
+            IsLoading = true;
+            var events = await _eventService.GetAllEventsAsync();
+            _allEvents = events;
+            FilteredEvents.Clear();
+            foreach (var evt in events)
+            {
+                FilteredEvents.Add(evt);
+            }
         }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error loading events: {ex.Message}");
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task NavigateToDetail(Event? selectedEvent)
+    {
+        if (selectedEvent == null) return;
+        await Shell.Current.GoToAsync("EventDetailPage", new Dictionary<string, object>
+        {
+            { "Event", selectedEvent }
+        });
     }
 }

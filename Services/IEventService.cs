@@ -7,7 +7,7 @@ namespace Campus.Services
 		Task<List<Event>> GetAllEventsAsync();
 		Task<List<Event>> GetEventsByCategoryAsync(int categoryId);
 		Task<List<Event>> GetMyEventsAsync();
-		Task<bool> RegisterEventAsync(Guid eventId);
+        Task<bool> RegisterEventAsync(Guid eventId);
 		Task<bool> UnregisterEventAsync(Guid eventId);
 	}
 }
