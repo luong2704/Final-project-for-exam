@@ -86,8 +86,14 @@
                                TextColor="#9C27B0" />
                     </VerticalStackLayout>
                 </Frame>
-
             </Grid>
+            <!-- Recent Events Section -->
+            <Label Text="Sự Kiện Gần Đây" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   Margin="0,10,0,0" />
+
 
         </VerticalStackLayout>
     </ScrollView>
