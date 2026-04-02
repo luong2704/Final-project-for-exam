@@ -39,6 +39,12 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     [ObservableProperty]
     private bool _isPast;
 
+    [ObservableProperty]
+    private Color _statusColor = Colors.Gray;
+
+    [ObservableProperty]
+    private string _statusIcon = string.Empty;
+
     public EventDetailViewModel()
     {
     }
@@ -72,12 +78,16 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
             EventStatus = "Upcoming";
             IsUpcoming = true;
             IsPast = false;
+            StatusColor = Colors.Green;
+            StatusIcon = "🟢";
         }
         else
         {
             EventStatus = "Past";
             IsUpcoming = false;
             IsPast = true;
+            StatusColor = Colors.Gray;
+            StatusIcon = "⚫";
         }
     }
 
@@ -86,10 +96,10 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     {
         if (Event == null) return;
 
-        // Navigate to Registration page (Team 4 will handle this)
+        // Navigate to Registration confirmation page
         await Shell.Current.GoToAsync("EventRegistrationPage", new Dictionary<string, object>
         {
-            { "Event", Event }
+            { "SelectedEvent", Event }
         });
     }
 

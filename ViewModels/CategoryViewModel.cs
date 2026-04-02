@@ -103,4 +103,14 @@ public partial class CategoryViewModel : ObservableObject
             IsLoading = false;
         }
     }
+
+    [RelayCommand]
+    private async Task NavigateToDetail(Event? selectedEvent)
+    {
+        if (selectedEvent == null) return;
+        await Shell.Current.GoToAsync("EventDetailPage", new Dictionary<string, object>
+        {
+            { "Event", selectedEvent }
+        });
+    }
 }

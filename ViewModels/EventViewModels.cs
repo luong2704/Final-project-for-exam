@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
@@ -131,14 +129,51 @@ public partial class EventViewModels : ObservableObject
 	[RelayCommand]
 	private async Task Unregister(Event eventItem)
 	{
-		if (eventItem == null) return;
+		if (eventItem == null || IsBusy) return;
 
-		var success = await _eventService.UnregisterEventAsync(eventItem.Id);
+		// Confirm before unregistering
+		bool confirmed = await Shell.Current.DisplayAlert(
+			"Cancel Registration",
+			$"Are you sure you want to unregister from \"{eventItem.Title}\"?",
+			"Yes, Unregister",
+			"Keep My Spot");
 
-		if (success)
+		if (!confirmed) return;
+
+		IsBusy = true;
+
+		try
 		{
-			EventsList.Remove(eventItem);
-			IsEmpty = EventsList.Count == 0;
+			var success = await _eventService.UnregisterEventAsync(eventItem.Id);
+
+			if (success)
+			{
+				EventsList.Remove(eventItem);
+				IsEmpty = EventsList.Count == 0;
+
+				await Shell.Current.DisplayAlert(
+					"Unregistered",
+					$"You have been unregistered from \"{eventItem.Title}\".",
+					"OK");
+			}
+			else
+			{
+				await Shell.Current.DisplayAlert(
+					"Failed",
+					"Could not unregister. Please try again.",
+					"OK");
+			}
+		}
+		catch (Exception)
+		{
+			await Shell.Current.DisplayAlert(
+				"Error",
+				"An unexpected error occurred. Please check your connection and try again.",
+				"OK");
+		}
+		finally
+		{
+			IsBusy = false;
 		}
 	}
 }
