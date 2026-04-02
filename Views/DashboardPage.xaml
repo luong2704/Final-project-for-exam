@@ -33,6 +33,24 @@
                     </VerticalStackLayout>
                 </Frame>
 
+                <!-- Upcoming Events Card -->
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Sự Kiện Sắp Tới" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="8" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#FF9800" />
+                    </VerticalStackLayout>
+                </Frame>
+
             </Grid>
 
         </VerticalStackLayout>
