@@ -79,7 +79,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <!-- Unregister Button -->
+    <!-- Unregister Button -->
                 <Button Grid.Column="2"
                         Text="Unregister"
                         FontSize="12"
@@ -91,9 +91,11 @@
                         VerticalOptions="Center"
                         Command="{Binding Source={x:Reference cardRoot}, Path=UnregisterCommand}"
                         CommandParameter="{Binding .}" />
+            
             </Grid>
 
         </Grid>
     </Border>
 
 </ContentView>
+``

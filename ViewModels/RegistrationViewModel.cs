@@ -34,6 +34,14 @@ public partial class RegistrationViewModel : ObservableObject
     {
         if (SelectedEvent == null || IsLoading) return;
 
+        // Guard: already registered
+        if (SelectedEvent.IsRegistered)
+        {
+            IsSuccess = true;
+            StatusMessage = "You are already registered for this event.";
+            return;
+        }
+
         IsLoading = true;
         StatusMessage = string.Empty;
 
@@ -51,13 +59,24 @@ public partial class RegistrationViewModel : ObservableObject
             }
             else
             {
-                StatusMessage = "Registration failed. Please try again.";
+                StatusMessage = "Registration failed. The event may be full or unavailable.";
             }
+        }
+        catch (Exception)
+        {
+            StatusMessage = "An unexpected error occurred. Please check your connection and try again.";
         }
         finally
         {
             IsLoading = false;
         }
+    }
+
+    [RelayCommand]
+    private async Task GoToMyEvents()
+    {
+        // Navigate to My Events tab
+        await Shell.Current.GoToAsync("//MyEventsPage");
     }
 
     [RelayCommand]
