@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Campus.ViewModels"
+             xmlns:models="clr-namespace:Campus.Models"
+             x:Class="Campus.Views.EventListPage"
+             x:DataType="vm:MainEventViewModel"
+             Title="Events"
+             BackgroundColor="#F7FAFC">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*"
+          RowSpacing="0">
+
+        <!-- ═══ Header ═══ -->
+        <VerticalStackLayout Grid.Row="0"
+                             Padding="20,16,20,8">
+            <Label Text="Campus Events"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#1A202C" />
+            <Label Text="Discover and register for events around campus"
+                   FontSize="13"
+                   TextColor="#718096"
+                   Margin="0,2,0,0" />
+        </VerticalStackLayout>
+
+        <!-- ═══ Search Bar ═══ -->
+        <Border Grid.Row="1"
+                Margin="20,8,20,4"
+                Padding="0"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="White">
+            <Border.Shadow>
+                <Shadow Brush="#18000000" Offset="0,1" Radius="4" Opacity="0.1" />
+            </Border.Shadow>
+            <SearchBar Placeholder="Search events..."
+                       Text="{Binding SearchText}"
+                       BackgroundColor="Transparent"
+                       CancelButtonColor="#00697F"
+                       HeightRequest="44" />
+        </Border>
+
+        <!-- ═══ Category Filter Chips ═══ -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Categories}"
+                        SelectionMode="None"
+                        HeightRequest="52"
+                        Margin="0,4,0,0">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="8" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <HorizontalStackLayout Padding="20,0,8,0">
+                    <!-- "All" chip -->
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 16"
+                            Padding="14,8"
+                            BackgroundColor="#00697F">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClearFilterCommand}" />
+                        </Border.GestureRecognizers>
+                        <Label Text="✨ All"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Category">
+                    <Border StrokeThickness="0"
+                            StrokeShape="RoundRectangle 16"
+                            Padding="14,8"
+                            BackgroundColor="#EDF2F7">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainEventViewModel}}, Path=SelectCategoryCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="4">
+                            <Label Text="{Binding Icon}"
+                                   FontSize="13"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding CategoryName}"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#4A5568"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- ═══ Loading Indicator ═══ -->
+        <ActivityIndicator Grid.Row="3"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           Color="#00697F"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+
+        <!-- ═══ Main Event List (Task 7 – Bind CollectionView) ═══ -->
+        <RefreshView Grid.Row="3"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}">
+
+            <CollectionView ItemsSource="{Binding FilteredEvents}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedEvent}"
+                            SelectionChangedCommand="{Binding EventSelectedCommand}"
+                            SelectionChangedCommandParameter="{Binding SelectedEvent}">
+
+                <!-- Empty State -->
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout VerticalOptions="Center"
+                                         HorizontalOptions="Center"
+                                         Spacing="12"
+                                         Margin="0,80,0,0">
+                        <Label Text="📭"
+                               FontSize="64"
+                               HorizontalOptions="Center" />
+                        <Label Text="No events found"
+                               FontSize="16"
+                               TextColor="#718096"
+                               HorizontalOptions="Center" />
+                        <Label Text="Try a different search or category filter."
+                               FontSize="13"
+                               TextColor="#A0AEC0"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <!-- Item Template -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Event">
+                        <Border Margin="16,6"
+                                Padding="12"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="White">
+                            <Border.Shadow>
+                                <Shadow Brush="#22000000" Offset="0,2" Radius="8" Opacity="0.15" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="80,*"
+                                  RowDefinitions="Auto,Auto,Auto,Auto"
+                                  ColumnSpacing="12"
+                                  RowSpacing="4">
+
+                                <!-- Event Image -->
+                                <Border Grid.Column="0"
+                                        Grid.RowSpan="4"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        HeightRequest="100"
+                                        WidthRequest="80"
+                                        VerticalOptions="Center"
+                                        BackgroundColor="#EDF2F7">
+                                    <Image Source="{Binding Image}"
+                                           Aspect="AspectFill" />
+                                </Border>
+
+                                <!-- Title -->
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding Title}"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="#1A202C"
+                                       LineBreakMode="WordWrap" />
+
+                                <!-- Date -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="4">
+                                    <Label Text="🕐" FontSize="12" VerticalOptions="Center" />
+                                    <Label Text="{Binding Date, StringFormat='{0:ddd, MMM dd · HH:mm}'}"
+                                           FontSize="12"
+                                           TextColor="#718096"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+
+                                <!-- Location -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="2" Spacing="4">
+                                    <Label Text="📍" FontSize="12" VerticalOptions="Center" />
+                                    <Label Text="{Binding Location}"
+                                           FontSize="12"
+                                           TextColor="#718096"
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+
+                                <!-- Category Badge -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="3"
+                                                        Spacing="8"
+                                                        Margin="0,4,0,0">
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 6"
+                                            BackgroundColor="#E8F4FD"
+                                            Padding="8,4">
+                                        <Label Text="{Binding Category}"
+                                               FontSize="11"
+                                               TextColor="#00697F"
+                                               FontAttributes="Bold" />
+                                    </Border>
+
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 6"
+                                            BackgroundColor="#C6F6D5"
+                                            Padding="8,4"
+                                            IsVisible="{Binding IsRegistered}">
+                                        <Label Text="✅ Registered"
+                                               FontSize="11"
+                                               TextColor="#276749"
+                                               FontAttributes="Bold" />
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </RefreshView>
+
+    </Grid>
+
+</ContentPage>
