@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.EventCardView"
+             x:Name="cardRoot">
+
+    <Border Margin="16,6"
+            Padding="12"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 12"
+            BackgroundColor="White">
+        <Border.Shadow>
+            <Shadow Brush="#22000000" Offset="0,2" Radius="8" Opacity="0.15" />
+        </Border.Shadow>
+
+        <Grid ColumnDefinitions="80,*"
+              RowDefinitions="Auto,Auto,Auto,Auto"
+              ColumnSpacing="12"
+              RowSpacing="4">
+
+            <!-- Event Image -->
+            <Border Grid.Column="0"
+                    Grid.RowSpan="4"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 8"
+                    HeightRequest="100"
+                    WidthRequest="80"
+                    VerticalOptions="Center">
+                <Image Source="{Binding Image}"
+                       Aspect="AspectFill" />
+            </Border>
+
+            <!-- Title -->
+            <Label Grid.Column="1" Grid.Row="0"
+                   Text="{Binding Title}"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="#1A202C"
+                   LineBreakMode="WordWrap" />
+
+            <!-- Date -->
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="4">
+                <Label Text="🕐" FontSize="12" VerticalOptions="Center" />
+                <Label Text="{Binding Date, StringFormat='{0:ddd, MMM dd · HH:mm}'}"
+                       FontSize="12"
+                       TextColor="#718096"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <!-- Location -->
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="2" Spacing="4">
+                <Label Text="📍" FontSize="12" VerticalOptions="Center" />
+                <Label Text="{Binding Location}"
+                       FontSize="12"
+                       TextColor="#718096"
+                       LineBreakMode="TailTruncation"
+                       VerticalOptions="Center" />
+            </HorizontalStackLayout>
+
+            <!-- Status Badge + Unregister Button -->
+            <Grid Grid.Column="1" Grid.Row="3"
+                  ColumnDefinitions="Auto,*,Auto"
+                  Margin="0,6,0,0">
+
+                <!-- Registered Badge -->
+                <Border Grid.Column="0"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 6"
+                        BackgroundColor="#C6F6D5"
+                        Padding="8,4"
+                        VerticalOptions="Center">
+                    <HorizontalStackLayout Spacing="4">
+                        <Label Text="✅" FontSize="11" VerticalOptions="Center" />
+                        <Label Text="Registered"
+                               FontSize="11"
+                               TextColor="#276749"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
+    <!-- Unregister Button -->
+                <Button Grid.Column="2"
+                        Text="Unregister"
+                        FontSize="12"
+                        HeightRequest="34"
+                        Padding="12,0"
+                        CornerRadius="8"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        Command="{Binding Source={x:Reference cardRoot}, Path=UnregisterCommand}"
+                        CommandParameter="{Binding .}" />
+            
+            </Grid>
+
+        </Grid>
+    </Border>
+
+</ContentView>
+``

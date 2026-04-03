@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Campus.ViewModels"
+             xmlns:conv="clr-namespace:Campus.Converters"
+             x:Class="Campus.Views.RegistrationPage"
+             x:DataType="vm:RegistrationViewModel"
+             BackgroundColor="#F7FAFC"
+             Title="Event Registration">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:StringNotEmptyConverter x:Key="StringNotEmptyConverter" />
+            <conv:BoolToColorConverter    x:Key="BoolToColorConverter" />
+            <conv:InvertBoolConverter     x:Key="InvertBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,20" Spacing="20">
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!--   SUCCESS STATE  (visible after register)  -->
+            <!-- ═══════════════════════════════════════════ -->
+            <VerticalStackLayout IsVisible="{Binding IsSuccess}"
+                                 Spacing="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Margin="0,40,0,0">
+
+                <!-- Success Icon: large green circle with checkmark -->
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 64"
+                        BackgroundColor="#10B981"
+                        WidthRequest="128"
+                        HeightRequest="128"
+                        HorizontalOptions="Center">
+                    <Border.Shadow>
+                        <Shadow Brush="#4410B981" Offset="0,8" Radius="24" Opacity="0.4" />
+                    </Border.Shadow>
+                    <Label Text="✓"
+                           FontSize="64"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+
+                <!-- Success Title -->
+                <Label Text="Registration Confirmed!"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#166534"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Text="{Binding StatusMessage}"
+                       FontSize="14"
+                       TextColor="#6B7280"
+                       HorizontalTextAlignment="Center"
+                       LineBreakMode="WordWrap"
+                       Margin="20,0" />
+
+                <!-- Event Name Recap -->
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16"
+                        BackgroundColor="White"
+                        Padding="20,16"
+                        Margin="0,8,0,0">
+                    <Border.Shadow>
+                        <Shadow Brush="#22000000" Offset="0,2" Radius="8" Opacity="0.12" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Registered for"
+                               FontSize="12"
+                               TextColor="#9CA3AF" />
+                        <Label Text="{Binding SelectedEvent.Title}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#1A202C" />
+                        <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
+                            <!-- Calendar icon -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="#00697F"
+                                    Padding="6,4"
+                                    VerticalOptions="Center">
+                                <Label Text="▦"
+                                       FontSize="11"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="{Binding SelectedEvent.Date, StringFormat='{}{0:ddd, MMM dd yyyy · HH:mm}'}"
+                                   FontSize="13"
+                                   TextColor="#6B7280"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="8">
+                            <!-- Location icon -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 6"
+                                    BackgroundColor="#0891B2"
+                                    Padding="6,4"
+                                    VerticalOptions="Center">
+                                <Label Text="◆"
+                                       FontSize="11"
+                                       TextColor="White"
+                                       VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="{Binding SelectedEvent.Location}"
+                                   FontSize="13"
+                                   TextColor="#6B7280"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Back to Events Button -->
+                <Button Text="Back to Events"
+                        Command="{Binding CancelCommand}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        Margin="0,12,0,0" />
+
+                <!-- View My Events Button -->
+                <Button Text="View My Events"
+                        Command="{Binding GoToMyEventsCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="#00697F"
+                        HeightRequest="48"
+                        CornerRadius="14"
+                        BorderColor="#00697F"
+                        BorderWidth="1.5"
+                        FontSize="14" />
+
+            </VerticalStackLayout>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!--   CONFIRMATION STATE  (default, pre-submit) -->
+            <!-- ═══════════════════════════════════════════ -->
+            <VerticalStackLayout IsVisible="{Binding IsSuccess, Converter={StaticResource InvertBoolConverter}}"
+                                 Spacing="20">
+
+                <!-- Page Header -->
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Registration Confirmation"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#1A202C" />
+                    <Label Text="Review event details before confirming"
+                           FontSize="13"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#9CA3AF" />
+                </VerticalStackLayout>
+
+                <!-- ─── Event Detail Card ─── -->
+                <Border StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20"
+                        BackgroundColor="White"
+                        Padding="20">
+                    <Border.Shadow>
+                        <Shadow Brush="#22000000" Offset="0,4" Radius="12" Opacity="0.12" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="14">
+
+                        <!-- Card Header -->
+                        <HorizontalStackLayout Spacing="10">
+                            <!-- Event icon: teal rounded square with ▣ -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#00697F"
+                                    Padding="10,8">
+                                <Label Text="▣"
+                                       FontSize="18"
+                                       TextColor="White" />
+                            </Border>
+                            <Label Text="Event Details"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#00697F"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                        <BoxView HeightRequest="1" Color="#F1F5F9" />
+
+                        <!-- Title Row -->
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="EVENT"
+                                   FontSize="10"
+                                   TextColor="#9CA3AF"
+                                   CharacterSpacing="1.5" />
+                            <Label Text="{Binding SelectedEvent.Title}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A202C"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+
+                        <!-- Date Row -->
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Calendar icon: teal rounded square -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#E0F2F7"
+                                    Padding="10,9"
+                                    VerticalOptions="Start">
+                                <Label Text="▦"
+                                       FontSize="16"
+                                       TextColor="#00697F" />
+                            </Border>
+                            <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                <Label Text="DATE &amp; TIME"
+                                       FontSize="10"
+                                       TextColor="#9CA3AF"
+                                       CharacterSpacing="1.5" />
+                                <Label Text="{Binding SelectedEvent.Date, StringFormat='{}{0:dddd, MMM dd yyyy}'}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#374151" />
+                                <Label Text="{Binding SelectedEvent.Date, StringFormat='{}{0:HH:mm}'}"
+                                       FontSize="12"
+                                       TextColor="#6B7280" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- Location Row -->
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Location icon: blue rounded square -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#E0F4FF"
+                                    Padding="10,9"
+                                    VerticalOptions="Start">
+                                <Label Text="◆"
+                                       FontSize="14"
+                                       TextColor="#0891B2" />
+                            </Border>
+                            <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                <Label Text="LOCATION"
+                                       FontSize="10"
+                                       TextColor="#9CA3AF"
+                                       CharacterSpacing="1.5" />
+                                <Label Text="{Binding SelectedEvent.Location}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#374151"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <!-- Category Row -->
+                        <HorizontalStackLayout Spacing="12">
+                            <!-- Category icon: purple rounded square -->
+                            <Border StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="#F3E8FF"
+                                    Padding="10,9"
+                                    VerticalOptions="Center">
+                                <Label Text="▤"
+                                       FontSize="14"
+                                       TextColor="#7C3AED" />
+                            </Border>
+                            <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                <Label Text="CATEGORY"
+                                       FontSize="10"
+                                       TextColor="#9CA3AF"
+                                       CharacterSpacing="1.5" />
+                                <Border StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 20"
+                                        BackgroundColor="#E0F2F7"
+                                        Padding="12,5">
+                                    <Label Text="{Binding SelectedEvent.Category}"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#00697F" />
+                                </Border>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ─── Confirmation Notice Card ─── -->
+                <Border StrokeThickness="1.5"
+                        Stroke="#FDE68A"
+                        StrokeShape="RoundRectangle 16"
+                        BackgroundColor="#FFFBEB"
+                        Padding="16,14">
+                    <HorizontalStackLayout Spacing="14">
+                        <!-- Warning icon: amber circle with ! -->
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 20"
+                                BackgroundColor="#F59E0B"
+                                WidthRequest="32"
+                                HeightRequest="32"
+                                VerticalOptions="Start"
+                                Margin="0,1,0,0">
+                            <Label Text="!"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Please Confirm"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#92400E" />
+                            <Label Text="By confirming, you will be registered for this event. You can cancel your registration at any time from My Events."
+                                   FontSize="12"
+                                   TextColor="#B45309"
+                                   LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- ─── Error Message (if failed) ─── -->
+                <Border IsVisible="{Binding StatusMessage, Converter={StaticResource StringNotEmptyConverter}}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#FEE2E2"
+                        Padding="14,10">
+                    <HorizontalStackLayout Spacing="10">
+                        <!-- Error icon: red circle with × -->
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 16"
+                                BackgroundColor="#EF4444"
+                                WidthRequest="28"
+                                HeightRequest="28"
+                                VerticalOptions="Center">
+                            <Label Text="✕"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="{Binding StatusMessage}"
+                               FontSize="13"
+                               TextColor="#991B1B"
+                               VerticalOptions="Center"
+                               LineBreakMode="WordWrap" />
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- ─── Loading Indicator ─── -->
+                <ActivityIndicator IsRunning="{Binding IsLoading}"
+                                   IsVisible="{Binding IsLoading}"
+                                   Color="#00697F"
+                                   HorizontalOptions="Center" />
+
+                <!-- ─── Confirm Button (Team 4 - Registration) ─── -->
+                <Button Text="Confirm Registration"
+                        Command="{Binding ConfirmRegistrationCommand}"
+                        IsEnabled="{Binding IsLoading, Converter={StaticResource InvertBoolConverter}}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        FontSize="15" />
+
+                <!-- ─── Cancel Button ─── -->
+                <Button Text="Cancel"
+                        Command="{Binding CancelCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="#6B7280"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        BorderColor="#E5E7EB"
+                        BorderWidth="1.5"
+                        FontSize="15" />
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

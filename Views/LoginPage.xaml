@@ -1,0 +1,122 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campus.Views.LoginPage"
+             BackgroundColor="#F7FAFC"
+             Title="Login">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="25"
+            Spacing="15"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            MaximumWidthRequest="350">
+
+            <!-- Logo -->
+            <Image
+                Source="ictu.png"
+                HeightRequest="80"
+                HorizontalOptions="Center"/>
+
+            <!-- Title -->
+            <Label
+                Text="Campus Activity Manager"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                TextColor="#00697F"/>
+
+            <!-- Card -->
+            <Border
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="White"
+                Padding="20"
+                Shadow="0,4,10,#22000000">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Entry
+                        Placeholder="Email"
+                        Keyboard="Email"
+                        HeightRequest="45"
+                        BackgroundColor="{Binding EmailBackgroundColor}"
+                        Text="{Binding Email}" />
+
+                    <Entry
+                        Placeholder="Password"
+                        IsPassword="True"
+                        HeightRequest="45"
+                        BackgroundColor="{Binding PasswordBackgroundColor}"
+                        Text="{Binding Password}" />
+
+                    <Label
+                        Text="Forgot Password?"
+                        TextColor="#00697F"
+                        FontSize="12"
+                        HorizontalOptions="End">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnForgotPasswordTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <Button
+                        Text="Login"
+                        HeightRequest="45"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        CornerRadius="12"
+                        FontAttributes="Bold"
+                        Command="{Binding LoginCommand}" />
+                    
+                    <!-- Register Section -->
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="5"
+                        Margin="0,10,0,0">
+
+                        <Label
+                            Text="Don't have an account?"
+                            FontSize="12"
+                            TextColor="Gray"/>
+
+                        <Label
+                            Text="Register"
+                            FontSize="12"
+                            TextColor="#00697F"
+                            TextDecorations="Underline"
+                            FontAttributes="Bold">
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                    </HorizontalStackLayout>
+
+                    <!-- Error Message -->
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        TextColor="Red"
+                        FontSize="12"
+                        IsVisible="{Binding HasError}"
+                        HorizontalOptions="Center"/>
+
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

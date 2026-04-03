@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Campus.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Campus.Views"
+    Title="Campus">
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <ShellContent
+        Title="My Events"
+        ContentTemplate="{DataTemplate views:MyEventsPage}"
+        Route="MyEventsPage" />
+
+    <ShellContent
+        Title="Categories"
+        ContentTemplate="{DataTemplate views:CategoryFilterView}"
+        Route="categoryfilter" />
+
+    <ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}" />
+
+</Shell>
