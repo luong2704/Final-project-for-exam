@@ -1,47 +1,145 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Campus.Models;
-using Microsoft.Maui.Storage;
+using Campus.Services;
+using Campus.Session;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace Campus.Services
+namespace Campus.ViewModels
 {
-    public class SettingsService
+    public class SettingsViewModel : INotifyPropertyChanged
     {
-        private const string ThemeKey = "settings_theme_mode";
-        private const string NotificationKey = "settings_notifications_enabled";
-        private const string LanguageKey = "settings_language";
+        private readonly SettingsService _settingsService;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-
-        public SettingsPreferences GetSettings()
+        private string? _fullName;
+        public string? FullName
         {
-            var themeValue = Preferences.Default.Get(ThemeKey, (int)ThemeMode.Light);
-            var notificationsEnabled = Preferences.Default.Get(NotificationKey, true);
+            get => _fullName;
+            set { _fullName = value; OnPropertyChanged(); }
+        }
 
-            return new SettingsPreferences
+        private string? _email;
+        public string? Email
+        {
+            get => _email;
+            set { _email = value; OnPropertyChanged(); }
+        }
+
+        private string? _studentId;
+        public string? StudentId
+        {
+            get => _studentId;
+            set { _studentId = value; OnPropertyChanged(); }
+        }
+
+        private bool _isDarkMode;
+        public bool IsDarkMode
+        {
+            get => _isDarkMode;
+            set
             {
-                ThemeMode = (ThemeMode)themeValue,
-                NotificationsEnabled = notificationsEnabled
-            };
+                if (_isDarkMode != value)
+                {
+                    _isDarkMode = value;
+                    OnPropertyChanged();
+                    ApplyThemeChange(value);
+                }
+            }
         }
 
-        public void SaveThemeMode(ThemeMode themeMode)
+        private string _themeLabel = "LIGHT";
+        public string ThemeLabel
         {
-            Preferences.Default.Set(ThemeKey, (int)themeMode);
+            get => _themeLabel;
+            set { _themeLabel = value; OnPropertyChanged(); }
         }
 
-        public void SaveNotificationsEnabled(bool enabled)
+        private bool _isNotificationsEnabled;
+        public bool IsNotificationsEnabled
         {
-            Preferences.Default.Set(NotificationKey, enabled);
+            get => _isNotificationsEnabled;
+            set
+            {
+                if (_isNotificationsEnabled == value) return;
+                _isNotificationsEnabled = value;
+                OnPropertyChanged();
+                _settingsService.SaveNotificationsEnabled(value);
+            }
         }
 
-        public string GetLanguage()
+        private string? _selectedLanguage;
+        public string? SelectedLanguage
         {
-            return Preferences.Default.Get(LanguageKey, "English");
+            get => _selectedLanguage;
+            set
+            {
+                if (_selectedLanguage == value) return;
+                _selectedLanguage = value;
+                OnPropertyChanged();
+
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    _settingsService.SaveLanguage(value);
+                    ApplyLanguageChange(value);
+                }
+            }
         }
-        public void SaveLanguage(string language)
+
+        private void ApplyLanguageChange(string language)
         {
-            Preferences.Default.Set(LanguageKey, language);
+            var cultureCode = language == "Vietnamese" ? "vi-VN" : "en-US";
+            var culture = new System.Globalization.CultureInfo(cultureCode);
+
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
+        }
+
+        public ObservableCollection<string> SupportedLanguages { get; } = new ObservableCollection<string>
+        {
+            "English",
+            "Vietnamese"
+        };
+
+        public SettingsViewModel()
+        {
+            _settingsService = new SettingsService();
+
+            var user = AppSession.CurrentUser;
+            if (user != null)
+            {
+                FullName = user.Username;
+                Email = user.Email;
+                StudentId = user.StudentId;
+            }
+
+            var currentSettings = _settingsService.GetSettings();
+            _isDarkMode = currentSettings.ThemeMode == ThemeMode.Dark;
+            ThemeLabel = _isDarkMode ? "DARK" : "LIGHT";
+            _isNotificationsEnabled = currentSettings.NotificationsEnabled;
+
+            _selectedLanguage = _settingsService.GetLanguage();
+            if (string.IsNullOrWhiteSpace(_selectedLanguage))
+            {
+                _selectedLanguage = SupportedLanguages[0];
+            }
+        }
+
+        private void ApplyThemeChange(bool isDark)
+        {
+            _settingsService.SaveThemeMode(isDark ? ThemeMode.Dark : ThemeMode.Light);
+            
+            if (Application.Current != null)
+            {
+                Application.Current.UserAppTheme = isDark ? AppTheme.Dark : AppTheme.Light;
+            }
+            
+            ThemeLabel = isDark ? "DARK" : "LIGHT";
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
