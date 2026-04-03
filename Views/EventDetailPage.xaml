@@ -29,6 +29,28 @@
             <!-- Title & Date -->
             <VerticalStackLayout x:Name="TitleRegion" Spacing="5">
                 <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" />
+                
+                <HorizontalStackLayout Spacing="8">
+                    <!-- Status Badge -->
+                    <Border StrokeThickness="0" 
+                            BackgroundColor="{Binding StatusColor}" 
+                            StrokeShape="RoundRectangle 8" 
+                            Padding="8,4">
+                        <HorizontalStackLayout Spacing="4">
+                            <Label Text="{Binding StatusIcon}" TextColor="White" FontSize="12" VerticalOptions="Center" />
+                            <Label Text="{Binding EventStatus}" TextColor="White" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    
+                    <!-- Category Badge -->
+                    <Border StrokeThickness="0" 
+                            BackgroundColor="#E5E7EB" 
+                            StrokeShape="RoundRectangle 8" 
+                            Padding="8,4">
+                        <Label Text="{Binding Category}" TextColor="#374151" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
+
                 <HorizontalStackLayout Spacing="10">
                     <Label Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}" FontSize="14" TextColor="Gray" />
                     <Label Text="•" FontSize="14" TextColor="Gray" />
