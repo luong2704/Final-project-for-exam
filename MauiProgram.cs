@@ -31,12 +31,17 @@ namespace Campus
             builder.Services.AddTransient<Views.EventListPage>();
             builder.Services.AddTransient<Views.EventDetailPage>();
 
+            // Dashboard ViewModel and Page
+            builder.Services.AddTransient<DashboardViewModel>();
+            builder.Services.AddTransient<Views.DashboardPage>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
             Routing.RegisterRoute("categoryfilter", typeof(CategoryFilterView));
             Routing.RegisterRoute(nameof(Views.EventDetailPage), typeof(Views.EventDetailPage));
+            Routing.RegisterRoute(nameof(Views.DashboardPage), typeof(Views.DashboardPage));
 
             return builder.Build();
         }
