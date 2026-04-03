@@ -2,6 +2,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
 using Campus.Services;
+using CommunityToolkit.Mvvm.Messaging;
+using Campus.Messages;
 
 namespace Campus.ViewModels;
 
@@ -44,6 +46,8 @@ public partial class RegistrationViewModel : ObservableObject
                 SelectedEvent.IsRegistered = true;
                 IsSuccess = true;
                 StatusMessage = "You have successfully registered for this event!";
+                // Notify that an event was updated
+                WeakReferenceMessenger.Default.Send(new EventUpdatedMessage(SelectedEvent));
             }
             else
             {

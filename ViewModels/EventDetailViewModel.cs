@@ -1,6 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
+using CommunityToolkit.Mvvm.Messaging;
+using Campus.Messages;
 
 namespace Campus.ViewModels;
 
@@ -63,6 +65,19 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
         IsRegistered = selectedEvent.IsRegistered;
 
         UpdateEventStatus();
+    }
+    //team 8 added this method 
+    [RelayCommand]
+    private async Task ToggleRegistration()
+    {
+        if (Event == null) return;
+
+        // toggle registration status
+        Event.IsRegistered = !Event.IsRegistered;
+
+        // notify to refresh 
+        WeakReferenceMessenger.Default.Send(new EventUpdatedMessage(Event));
+        await Task.CompletedTask;
     }
 
     private void UpdateEventStatus()

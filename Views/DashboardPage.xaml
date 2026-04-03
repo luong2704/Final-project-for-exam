@@ -23,7 +23,7 @@
                        HasShadow="True"
                        Background="White">
                     <VerticalStackLayout Spacing="8" VerticalOptions="Center">
-                        <Label Text="Tổng Sự Kiện" 
+                        <Label Text="Total Events" 
                                FontSize="14" 
                                TextColor="#999999" />
                         <Label Text="{Binding TotalEvents}" 
@@ -41,7 +41,7 @@
                        HasShadow="True"
                        Background="White">
                     <VerticalStackLayout Spacing="8" VerticalOptions="Center">
-                        <Label Text="Sự Kiện Sắp Tới" 
+                        <Label Text="Upcoming Events" 
                                FontSize="14" 
                                TextColor="#999999" />
                         <Label Text="{Binding UpcomingEvents}" 
@@ -59,7 +59,7 @@
                        HasShadow="True"
                        Background="White">
                     <VerticalStackLayout Spacing="8" VerticalOptions="Center">
-                        <Label Text="Đã Tham Gia" 
+                        <Label Text="Attended" 
                                FontSize="14" 
                                TextColor="#999999" />
                         <Label Text="{Binding AttendedEvents}" 
@@ -77,7 +77,7 @@
                        HasShadow="True"
                        Background="White">
                     <VerticalStackLayout Spacing="8" VerticalOptions="Center">
-                        <Label Text="Đã Lưu" 
+                        <Label Text="Saved" 
                                FontSize="14" 
                                TextColor="#999999" />
                         <Label Text="{Binding SavedEvents}" 
@@ -88,7 +88,7 @@
                 </Frame>
             </Grid>
             <!-- Recent Events Section -->
-            <Label Text="Sự Kiện Gần Đây" 
+            <Label Text="Recent Events" 
                    FontSize="18" 
                    FontAttributes="Bold"
                    TextColor="#333333"
@@ -113,12 +113,12 @@
 						</CollectionView.ItemTemplate>
 					</CollectionView>
 
-					<!-- Empty State -->
-					<Label Text="Không có sự kiện sắp tới"
-						   FontSize="14"
-						   TextColor="#999999"
-						   HorizontalTextAlignment="Center"
-						   IsVisible="{Binding RecentEvents.Count, Converter={StaticResource InvertedBoolConverter}}" />
+                    <!-- Empty State -->
+                    <Label Text="No upcoming events"
+                           FontSize="14"
+                           TextColor="#999999"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding RecentEvents.Count, Converter={StaticResource InvertedBoolConverter}}" />
 				</VerticalStackLayout>
 			</Frame>
 
