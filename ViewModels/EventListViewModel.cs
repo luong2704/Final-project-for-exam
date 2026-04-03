@@ -48,4 +48,18 @@ public partial class EventListViewModel : ObservableObject
         }
     }
 
+    // ─────────────────────────────
+    // TASK 9 — SELECT EVENT
+    // ─────────────────────────────
+    [RelayCommand]
+    private async Task SelectEvent(Event? selectedEvent)
+    {
+        if (selectedEvent == null) return;
+
+        await Shell.Current.GoToAsync("EventDetailPage", new Dictionary<string, object>
+        {
+            { "Event", selectedEvent }
+        });
+    }
+
 }
