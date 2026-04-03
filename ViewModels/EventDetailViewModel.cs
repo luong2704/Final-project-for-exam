@@ -98,17 +98,6 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     }
 
     [RelayCommand]
-    private async Task Register()
-    {
-        if (Event == null) return;
-
-        await Shell.Current.GoToAsync("EventRegistrationPage", new Dictionary<string, object>
-        {
-            { "SelectedEvent", Event }
-        });
-    }
-
-    [RelayCommand]
     private async Task GoBack()
     {
         await Shell.Current.GoToAsync("..");
