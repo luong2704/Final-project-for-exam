@@ -67,12 +67,39 @@
 
             <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
                 <Button Text="Register for this Event →"
+                        Command="{Binding RegisterCommand}"
+                        IsVisible="{Binding IsRegistered, Converter={StaticResource InvertBoolConverter}}"
                         BackgroundColor="#00697F"
                         TextColor="White"
                         HeightRequest="52"
                         CornerRadius="14"
                         FontAttributes="Bold"
                         FontSize="15" />
+
+                <Border IsVisible="{Binding IsRegistered}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#DCFCE7"
+                        Padding="14,10">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 14"
+                                BackgroundColor="#16A34A"
+                                Padding="6,4"
+                                VerticalOptions="Center">
+                            <Label Text="✓"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="You are already registered"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#166534"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
             </VerticalStackLayout>
 
         </VerticalStackLayout>
