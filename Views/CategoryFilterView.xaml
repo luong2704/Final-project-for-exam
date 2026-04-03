@@ -76,13 +76,58 @@
 
             </Border>
 
-            <!-- Empty State -->
-            <Label
-                Text="No categories loaded"
-                FontSize="14"
-                TextColor="Gray"
-                HorizontalOptions="Center"
-                IsVisible="False"/>
+            <!-- Filtered Events List -->
+            <CollectionView
+                ItemsSource="{Binding FilteredEvents}"
+                EmptyView="No events match your filter">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 12"
+                            BackgroundColor="White"
+                            Padding="15"
+                            Margin="0,5"
+                            Shadow="0,2,6,#22000000">
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <Label
+                                    Text="{Binding Title}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="#1A202C"/>
+
+                                <Label
+                                    Text="{Binding Description}"
+                                    FontSize="14"
+                                    TextColor="#666666"/>
+
+                                <HorizontalStackLayout Spacing="6" Margin="0,5,0,0">
+                                    <Label
+                                        Text="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}"
+                                        FontSize="12"
+                                        TextColor="#999999"/>
+                                    <Label Text=" | " TextColor="#999999"/>
+                                    <Label
+                                        Text="{Binding Location}"
+                                        FontSize="12"
+                                        TextColor="#999999"/>
+                                    <Label Text=" | " TextColor="#999999"/>
+                                    <Label
+                                        Text="{Binding Category}"
+                                        FontSize="12"
+                                        TextColor="#00697F"/>
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
 
         </VerticalStackLayout>
 
