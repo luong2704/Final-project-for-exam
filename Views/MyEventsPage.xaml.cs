@@ -7,6 +7,7 @@ public partial class MyEventsPage : ContentPage
    private readonly EventViewModels _viewModel;
 
 
+
    public MyEventsPage(EventViewModels viewModel)
    {
        InitializeComponent();
