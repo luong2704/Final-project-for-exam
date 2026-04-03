@@ -1,24 +1,37 @@
-﻿namespace Campus
+﻿using Campus.Services;
+using System.Diagnostics;
+using System.Linq;
+
+namespace Campus
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
+
+            // Run validation test for Task 4
+            TestEventDataRetrieval();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private async void TestEventDataRetrieval()
         {
-            count++;
+            // 1. Initialize Service instance
+            IEventService eventService = new MockEventService();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            // 2. Fetch mock data asynchronously
+            var events = await eventService.GetEventsAsync();
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // 3. Verify data in the Visual Studio Output Window
+            Debug.WriteLine("-------------------------------------------");
+            Debug.WriteLine("TEAM 2 SYSTEM TEST: Event Data Retrieval");
+            Debug.WriteLine($"Items Found: {events.Count()}");
+
+            foreach (var ev in events)
+            {
+                Debug.WriteLine($">> Event: {ev.Title} | Location: {ev.Location}");
+            }
+            Debug.WriteLine("-------------------------------------------");
         }
     }
 }
