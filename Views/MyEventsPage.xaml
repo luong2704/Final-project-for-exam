@@ -39,6 +39,7 @@
                        SelectionMode="None">
 
 
+         
            <!-- Empty State (Task 3) -->
            <CollectionView.EmptyView>
                <VerticalStackLayout VerticalOptions="Center"
