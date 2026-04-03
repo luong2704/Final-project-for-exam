@@ -11,6 +11,7 @@ public partial class DashboardPage : ContentPage
         InitializeComponent();
         _viewModel = viewModel;
         BindingContext = _viewModel;
+        _viewModel.RegisterForMessages();
     }
 
     protected override async void OnAppearing()
