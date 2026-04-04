@@ -16,4 +16,7 @@
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
         Route="CategoryFilterView" />
 
+	<ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}" />
 </Shell>
