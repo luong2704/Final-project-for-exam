@@ -71,7 +71,7 @@
                         VerticalOptions="Center">
                     <HorizontalStackLayout Spacing="4">
                         <Label Text="✅" FontSize="11" VerticalOptions="Center" />
-                        <Label Text="Registered"
+                        <Label Text="{Binding Status}"
                                FontSize="11"
                                TextColor="#276749"
                                FontAttributes="Bold"
@@ -98,4 +98,3 @@
     </Border>
 
 </ContentView>
-``
