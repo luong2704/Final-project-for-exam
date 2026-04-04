@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|c:\\users\\asus\\downloads\\final-project-for-exam\\views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|c:\\users\\asus\\downloads\\final-project-for-exam\\views\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\profilepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|c:\\users\\asus\\downloads\\final-project-for-exam\\views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|c:\\users\\asus\\downloads\\final-project-for-exam\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 526,
-          "SelectedChildIndex": 35,
+          "SelectedChildIndex": 34,
           "Children": [
             {
               "$type": "Bookmark",
@@ -186,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ProfilePage.xaml",
               "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Views\\ProfilePage.xaml",
               "RelativeDocumentMoniker": "Views\\ProfilePage.xaml",
@@ -199,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LoginPage.xaml",
               "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Views\\LoginPage.xaml",
               "RelativeDocumentMoniker": "Views\\LoginPage.xaml",

@@ -17,6 +17,6 @@ layout\navigationlayout;layout\navigationlayout
 layout\shellcontent;compatibility\Android\Resources\layout\shellcontent
 values\attr;values\attr
 values\colors;values\colors
-values\styles;values\styles
 values\strings;values\strings
+values\styles;values\styles
 xml\microsoft_maui_essentials_fileprovider_file_paths;resources\xml\microsoft_maui_essentials_fileprovider_file_paths
