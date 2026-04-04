@@ -35,7 +35,7 @@
 
        <!-- CollectionView with EmptyView (Task 3) -->
        <CollectionView Grid.Row="1"
-                       ItemsSource="{Binding MyEventsList}"
+                       ItemsSource="{Binding EventsList}"
                        SelectionMode="None">
 
 
