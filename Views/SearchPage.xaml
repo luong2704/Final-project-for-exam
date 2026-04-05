@@ -11,7 +11,7 @@
 
 		<!-- FILTER -->
 		<Picker
-			Title="Filter by category"
+			Title="Filter by Category"
 			ItemsSource="{Binding Categories}"
 			SelectedItem="{Binding SelectedCategory}" />
 
