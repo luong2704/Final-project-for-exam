@@ -43,5 +43,8 @@
         Title="Search"
         ContentTemplate="{DataTemplate views:SearchPage}" />
 
+	<ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}" />
 </Shell>
 >>>>>>> main

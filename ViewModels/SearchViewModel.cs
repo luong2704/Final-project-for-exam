@@ -18,6 +18,32 @@ public class SearchViewModel : INotifyPropertyChanged
 
 	private List<Event> allEvents;
 
+	// ================= FILTER LIST =================
+	public List<string> Categories { get; } = new()
+	{
+		"All",
+		"Sport",
+		"Music",
+		"Tech",
+		"Social"
+	};
+
+	private string selectedCategory = "All";
+	public string SelectedCategory
+	{
+		get => selectedCategory;
+		set
+		{
+			if (selectedCategory == value) return;
+
+			selectedCategory = value;
+			OnPropertyChanged();
+
+			_ = PerformSearch();
+		}
+	}
+
+	// ================= SEARCH TEXT =================
 	private string searchText = string.Empty;
 	public string SearchText
 	{
@@ -34,6 +60,7 @@ public class SearchViewModel : INotifyPropertyChanged
 		}
 	}
 
+	// ================= CONSTRUCTOR =================
 	public SearchViewModel()
 	{
 		allEvents = MockData();
@@ -66,18 +93,36 @@ public class SearchViewModel : INotifyPropertyChanged
 		}
 	}
 
-	// ===== LOCAL SEARCH (backup) =====
-	void LocalSearch()
+	// ================= APPLY FILTER =================
+	void ApplyFilter(IEnumerable<Event> source)
 	{
-		var keyword = SearchText.ToLower();
+		var query = source.AsEnumerable();
 
-		var result = allEvents
-			.Where(e => e.Title.ToLower().Contains(keyword));
+		// TEXT SEARCH
+		if (!string.IsNullOrWhiteSpace(SearchText))
+		{
+			query = query.Where(e =>
+				e.Title.Contains(SearchText,
+				StringComparison.OrdinalIgnoreCase));
+		}
+
+		// CATEGORY FILTER
+		if (SelectedCategory != "All")
+		{
+			query = query.Where(e =>
+				e.Category == SelectedCategory);
+		}
 
 		Events.Clear();
 
-		foreach (var e in result)
+		foreach (var e in query)
 			Events.Add(e);
+	}
+
+	// ================= LOCAL SEARCH BACKUP =================
+	void LocalSearch()
+	{
+		ApplyFilter(allEvents);
 	}
 
 	void ResetList()
