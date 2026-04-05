@@ -2,6 +2,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
 using Campus.Services;
+using CommunityToolkit.Mvvm.Messaging;
+using Campus.Messages;
 
 namespace Campus.ViewModels;
 
@@ -32,6 +34,14 @@ public partial class RegistrationViewModel : ObservableObject
     {
         if (SelectedEvent == null || IsLoading) return;
 
+        // Guard: already registered
+        if (SelectedEvent.IsRegistered)
+        {
+            IsSuccess = true;
+            StatusMessage = "You are already registered for this event.";
+            return;
+        }
+
         IsLoading = true;
         StatusMessage = string.Empty;
 
@@ -44,16 +54,29 @@ public partial class RegistrationViewModel : ObservableObject
                 SelectedEvent.IsRegistered = true;
                 IsSuccess = true;
                 StatusMessage = "You have successfully registered for this event!";
+                // Notify that an event was updated
+                WeakReferenceMessenger.Default.Send(new EventUpdatedMessage(SelectedEvent));
             }
             else
             {
-                StatusMessage = "Registration failed. Please try again.";
+                StatusMessage = "Registration failed. The event may be full or unavailable.";
             }
+        }
+        catch (Exception)
+        {
+            StatusMessage = "An unexpected error occurred. Please check your connection and try again.";
         }
         finally
         {
             IsLoading = false;
         }
+    }
+
+    [RelayCommand]
+    private async Task GoToMyEvents()
+    {
+        // Navigate to My Events tab
+        await Shell.Current.GoToAsync("//MyEventsPage");
     }
 
     [RelayCommand]

@@ -1,6 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
+using CommunityToolkit.Mvvm.Messaging;
+using Campus.Messages;
 
 namespace Campus.ViewModels;
 
@@ -39,6 +41,12 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     [ObservableProperty]
     private bool _isPast;
 
+    [ObservableProperty]
+    private Color _statusColor = Colors.Gray;
+
+    [ObservableProperty]
+    private string _statusIcon = string.Empty;
+
     public EventDetailViewModel()
     {
     }
@@ -64,6 +72,19 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
 
         UpdateEventStatus();
     }
+    //team 8 added this method 
+    [RelayCommand]
+    private async Task ToggleRegistration()
+    {
+        if (Event == null) return;
+
+        // toggle registration status
+        Event.IsRegistered = !Event.IsRegistered;
+
+        // notify to refresh 
+        WeakReferenceMessenger.Default.Send(new EventUpdatedMessage(Event));
+        await Task.CompletedTask;
+    }
 
     private void UpdateEventStatus()
     {
@@ -72,12 +93,16 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
             EventStatus = "Upcoming";
             IsUpcoming = true;
             IsPast = false;
+            StatusColor = Colors.Green;
+            StatusIcon = "🟢";
         }
         else
         {
             EventStatus = "Past";
             IsUpcoming = false;
             IsPast = true;
+            StatusColor = Colors.Gray;
+            StatusIcon = "⚫";
         }
     }
 
@@ -86,10 +111,10 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     {
         if (Event == null) return;
 
-        // Navigate to Registration page (Team 4 will handle this)
+        // Navigate to Registration confirmation page
         await Shell.Current.GoToAsync("EventRegistrationPage", new Dictionary<string, object>
         {
-            { "Event", Event }
+            { "SelectedEvent", Event }
         });
     }
 
