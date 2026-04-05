@@ -4,20 +4,47 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Linq;
 using Campus.Models;
-using Campus.Services;   // ✅ thêm
+using Campus.Services;
 using System.Threading.Tasks;
 
 namespace Campus.ViewModels;
 
 public class SearchViewModel : INotifyPropertyChanged
 {
-	// ✅ gọi backend service
+	// ================= SERVICE =================
 	private readonly SearchService service = new();
 
+	// ================= DATA =================
 	public ObservableCollection<Event> Events { get; set; }
 
 	private List<Event> allEvents;
 
+	// ================= FILTER LIST =================
+	public List<string> Categories { get; } = new()
+	{
+		"All",
+		"Sport",
+		"Music",
+		"Tech",
+		"Social"
+	};
+
+	private string selectedCategory = "All";
+	public string SelectedCategory
+	{
+		get => selectedCategory;
+		set
+		{
+			if (selectedCategory == value) return;
+
+			selectedCategory = value;
+			OnPropertyChanged();
+
+			_ = PerformSearch();
+		}
+	}
+
+	// ================= SEARCH TEXT =================
 	private string searchText = string.Empty;
 	public string SearchText
 	{
@@ -29,55 +56,64 @@ public class SearchViewModel : INotifyPropertyChanged
 			searchText = value;
 			OnPropertyChanged();
 
-			// 🔥 gọi search async
 			_ = PerformSearch();
 		}
 	}
 
+	// ================= CONSTRUCTOR =================
 	public SearchViewModel()
 	{
 		allEvents = MockData();
 		Events = new ObservableCollection<Event>(allEvents);
 	}
 
-	// ✅ SEARCH THẬT (API) + fallback local
+	// ================= SEARCH (API + FILTER) =================
 	async Task PerformSearch()
 	{
-		if (string.IsNullOrWhiteSpace(SearchText))
-		{
-			ResetList();
-			return;
-		}
-
 		try
 		{
-			// ===== CALL API =====
+			// CALL API
 			var result = await service.Search(SearchText);
 
-			Events.Clear();
-
-			foreach (var e in result)
-				Events.Add(e);
+			ApplyFilter(result);
 		}
 		catch
 		{
-			// ✅ nếu API chưa chạy → dùng local search
+			// fallback local
 			LocalSearch();
 		}
 	}
 
-	// ===== LOCAL SEARCH (backup) =====
-	void LocalSearch()
+	// ================= APPLY FILTER =================
+	void ApplyFilter(IEnumerable<Event> source)
 	{
-		var keyword = SearchText.ToLower();
+		var query = source.AsEnumerable();
 
-		var result = allEvents
-			.Where(e => e.Title.ToLower().Contains(keyword));
+		// TEXT SEARCH
+		if (!string.IsNullOrWhiteSpace(SearchText))
+		{
+			query = query.Where(e =>
+				e.Title.Contains(SearchText,
+				StringComparison.OrdinalIgnoreCase));
+		}
+
+		// CATEGORY FILTER
+		if (SelectedCategory != "All")
+		{
+			query = query.Where(e =>
+				e.Category == SelectedCategory);
+		}
 
 		Events.Clear();
 
-		foreach (var e in result)
+		foreach (var e in query)
 			Events.Add(e);
+	}
+
+	// ================= LOCAL SEARCH BACKUP =================
+	void LocalSearch()
+	{
+		ApplyFilter(allEvents);
 	}
 
 	void ResetList()
@@ -88,6 +124,7 @@ public class SearchViewModel : INotifyPropertyChanged
 			Events.Add(e);
 	}
 
+	// ================= MOCK DATA =================
 	List<Event> MockData()
 	{
 		return new()
@@ -97,10 +134,10 @@ public class SearchViewModel : INotifyPropertyChanged
 			new Event { Title = "Tech Talk: Introduction to .NET MAUI", Category = "Tech" },
 			new Event { Title = "Workshop: UI/UX Design Principles", Category = "Tech"},
 			new Event { Title = "Career Fair 2026", Category = "Social"}
-
 		};
 	}
 
+	// ================= NOTIFY =================
 	public event PropertyChangedEventHandler? PropertyChanged;
 
 	void OnPropertyChanged([CallerMemberName] string name = "")
