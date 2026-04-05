@@ -1,89 +1,89 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Downloads\\Final-project-for-exam\\",
+  "WorkspaceRootPath": "D:\\1390d\\Final-project-for-exam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\eventdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\eventdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\viewmodels\\eventviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\eventviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\services\\mockeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\mockeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\services\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\models\\categorytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\categorytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\views\\searchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\searchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\views\\searchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\views\\searchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\searchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\downloads\\final-project-for-exam\\views\\searchpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\searchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\registrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\eventdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\eventdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\viewmodels\\eventviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:viewmodels\\eventviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\searchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\services\\mockeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\mockeventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\services\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\ieventservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\models\\categorytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\categorytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\views\\searchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\searchpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|d:\\1390d\\final-project-for-exam\\views\\searchpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{74CF88D7-5193-9E5B-49EB-4E2715C5EAC1}|Campus.csproj|solutionrelative:views\\searchpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -158,23 +158,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RegistrationViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\RegistrationViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\RegistrationViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\RegistrationViewModel.cs",
-              "RelativeToolTip": "ViewModels\\RegistrationViewModel.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T15:28:50.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\LoginViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\LoginViewModel.cs",
               "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -182,24 +170,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SearchViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\SearchViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\SearchViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\SearchViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\SearchViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\SearchViewModel.cs",
               "RelativeToolTip": "ViewModels\\SearchViewModel.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAAkwGAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T14:38:55.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-31T14:38:55.815Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CategoryViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\CategoryViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\CategoryViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\CategoryViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\CategoryViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\CategoryViewModel.cs",
               "RelativeToolTip": "ViewModels\\CategoryViewModel.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -207,11 +194,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "EventDetailViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\EventDetailViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\EventDetailViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\EventDetailViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\EventDetailViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\EventDetailViewModel.cs",
               "RelativeToolTip": "ViewModels\\EventDetailViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -219,24 +206,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Event.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Models\\Event.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Models\\Event.cs",
               "RelativeDocumentMoniker": "Models\\Event.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Models\\Event.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Models\\Event.cs",
               "RelativeToolTip": "Models\\Event.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-31T15:19:57.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "SearchPage.xaml",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml",
+              "RelativeDocumentMoniker": "Views\\SearchPage.xaml",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml",
+              "RelativeToolTip": "Views\\SearchPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-31T14:59:30.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegistrationViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\RegistrationViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegistrationViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\RegistrationViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegistrationViewModel.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T15:28:50.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ProfileViewModel.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\ProfileViewModel.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\ProfileViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ProfileViewModel.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\ProfileViewModel.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\ProfileViewModel.cs",
               "RelativeToolTip": "ViewModels\\ProfileViewModel.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -244,11 +256,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "EventViewModels.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\EventViewModels.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\ViewModels\\EventViewModels.cs",
               "RelativeDocumentMoniker": "ViewModels\\EventViewModels.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\ViewModels\\EventViewModels.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\ViewModels\\EventViewModels.cs",
               "RelativeToolTip": "ViewModels\\EventViewModels.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -256,11 +268,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IEventService.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Services\\IEventService.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Services\\IEventService.cs",
               "RelativeDocumentMoniker": "Services\\IEventService.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Services\\IEventService.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Services\\IEventService.cs",
               "RelativeToolTip": "Services\\IEventService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -268,11 +280,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MockEventService.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Services\\MockEventService.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Services\\MockEventService.cs",
               "RelativeDocumentMoniker": "Services\\MockEventService.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Services\\MockEventService.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Services\\MockEventService.cs",
               "RelativeToolTip": "Services\\MockEventService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -280,11 +292,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ICategoryService.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Services\\ICategoryService.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Services\\ICategoryService.cs",
               "RelativeDocumentMoniker": "Services\\ICategoryService.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Services\\ICategoryService.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Services\\ICategoryService.cs",
               "RelativeToolTip": "Services\\ICategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -292,11 +304,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CategoryService.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Services\\CategoryService.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "Services\\CategoryService.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Services\\CategoryService.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Services\\CategoryService.cs",
               "RelativeToolTip": "Services\\CategoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -304,11 +316,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Category.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Models\\Category.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Models\\Category.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Models\\Category.cs",
               "RelativeToolTip": "Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -316,11 +328,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Models\\User.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Models\\User.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -328,11 +340,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "SearchService.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Services\\SearchService.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Services\\SearchService.cs",
               "RelativeDocumentMoniker": "Services\\SearchService.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Services\\SearchService.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Services\\SearchService.cs",
               "RelativeToolTip": "Services\\SearchService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -340,11 +352,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Registration.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Models\\Registration.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Models\\Registration.cs",
               "RelativeDocumentMoniker": "Models\\Registration.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Models\\Registration.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Models\\Registration.cs",
               "RelativeToolTip": "Models\\Registration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -352,11 +364,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "AppShell.xaml",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\AppShell.xaml",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\AppShell.xaml",
               "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\AppShell.xaml",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\AppShell.xaml",
               "RelativeToolTip": "AppShell.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -366,21 +378,22 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "SearchPage.xaml",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml",
               "RelativeDocumentMoniker": "Views\\SearchPage.xaml",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml",
               "RelativeToolTip": "Views\\SearchPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-31T14:42:43.106Z"
+              "WhenOpened": "2026-03-31T14:42:43.106Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "SearchPage.xaml.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml.cs",
               "RelativeDocumentMoniker": "Views\\SearchPage.xaml.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Views\\SearchPage.xaml.cs",
               "RelativeToolTip": "Views\\SearchPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -388,27 +401,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "CategoryType.cs",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Models\\CategoryType.cs",
+              "DocumentMoniker": "D:\\1390d\\Final-project-for-exam\\Models\\CategoryType.cs",
               "RelativeDocumentMoniker": "Models\\CategoryType.cs",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Models\\CategoryType.cs",
+              "ToolTip": "D:\\1390d\\Final-project-for-exam\\Models\\CategoryType.cs",
               "RelativeToolTip": "Models\\CategoryType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-31T15:19:56.742Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "SearchPage.xaml",
-              "DocumentMoniker": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml",
-              "RelativeDocumentMoniker": "Views\\SearchPage.xaml",
-              "ToolTip": "D:\\Downloads\\Final-project-for-exam\\Views\\SearchPage.xaml",
-              "RelativeToolTip": "Views\\SearchPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-31T14:59:30.938Z"
             }
           ]
         },

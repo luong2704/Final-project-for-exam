@@ -9,6 +9,12 @@
 			Placeholder="Search events..."
 			Text="{Binding SearchText, Mode=TwoWay}" />
 
+		<!-- FILTER -->
+		<Picker
+			Title="Filter by category"
+			ItemsSource="{Binding Categories}"
+			SelectedItem="{Binding SelectedCategory}" />
+
 		<!-- Event List -->
 		<CollectionView ItemsSource="{Binding Events}"
 						SelectionMode="None">
