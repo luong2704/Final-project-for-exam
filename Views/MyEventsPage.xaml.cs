@@ -4,21 +4,17 @@ namespace Campus.Views;
 
 public partial class MyEventsPage : ContentPage
 {
-   private readonly EventViewModels _viewModel;
+	private readonly EventViewModels _viewModel;
+
+	public MyEventsPage(EventViewModels viewModel)
+	{
+		InitializeComponent();
+		_viewModel = viewModel;
+		BindingContext = _viewModel;
+	}
 
 
-
-   public MyEventsPage(EventViewModels viewModel)
-   {
-       InitializeComponent();
-      
-       // Gán ViewModel làm BindingContext cho toàn bộ giao diện XAML
-       _viewModel = viewModel;
-       BindingContext = _viewModel;
-   }
-
-
-   protected override void OnAppearing()
+	protected override void OnAppearing()
    {
        base.OnAppearing();
       
