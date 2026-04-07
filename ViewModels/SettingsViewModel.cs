@@ -97,6 +97,8 @@ namespace Campus.ViewModels
             System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
+            Campus.Services.LocalizationResourceManager.Instance.SetCulture(culture);
+
             OnPropertyChanged(nameof(SelectedLanguage));
         }
 
