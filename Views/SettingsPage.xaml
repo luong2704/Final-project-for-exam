@@ -15,7 +15,7 @@
             <Style x:Key="SectionLabelStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Oswald-Regular" />
                 <Setter Property="FontSize" Value="14" />
-                <Setter Property="TextColor" Value="{AppThemeBinding Light=#374151, Dark=#D1D5DB}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=#374151, Dark=#9CA3AF}" />
                 <Setter Property="CharacterSpacing" Value="1.5" />
                 <Setter Property="Margin" Value="20,25,0,10" />
             </Style>
@@ -32,7 +32,7 @@
                 </Setter>
                 <Setter Property="Shadow">
                     <Setter.Value>
-                        <Shadow Brush="Black" Offset="0,2" Opacity="0.05" Radius="5" />
+                        <Shadow Brush="Black" Offset="0,2" Opacity="{AppThemeBinding Light=0.05, Dark=0.3}" Radius="5" />
                     </Setter.Value>
                 </Setter>
             </Style>
@@ -72,7 +72,7 @@
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="{Binding [AccountDetailsTitle], Source={x:Static helpers:LocalizationResourceManager.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
-                            <Label Text="{Binding [AccountDetailsDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" FontSize="12" />
+                            <Label Text="{Binding [AccountDetailsDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Image Grid.Column="2" Source="chevron_right.png" HeightRequest="14" Opacity="0.4" />
                     </Grid>
@@ -86,7 +86,7 @@
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="{Binding [SecurityTitle], Source={x:Static helpers:LocalizationResourceManager.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
-                            <Label Text="{Binding [SecurityDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" FontSize="12" />
+                            <Label Text="{Binding [SecurityDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Image Grid.Column="2" Source="chevron_right.png" HeightRequest="14" Opacity="0.4" />
                     </Grid>
@@ -98,7 +98,7 @@
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="{Binding [AppThemeTitle], Source={x:Static helpers:LocalizationResourceManager.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
-                            <Label Text="{Binding [AppThemeDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" FontSize="12" />
+                            <Label Text="{Binding [AppThemeDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Label Grid.Column="2" Text="{Binding ThemeLabel}" TextColor="{StaticResource OswaldPrimary}" FontAttributes="Bold" FontSize="13" VerticalOptions="Center" Margin="0,0,10,0"/>
                         <Switch Grid.Column="3" IsToggled="{Binding IsDarkMode}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
@@ -111,7 +111,7 @@
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="{Binding [NotificationsTitle], Source={x:Static helpers:LocalizationResourceManager.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
-                            <Label Text="{Binding [NotificationsDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" FontSize="12" />
+                            <Label Text="{Binding [NotificationsDesc], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Switch Grid.Column="2" IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" Visual="Material" ThumbColor="White" OnColor="{StaticResource OswaldPrimary}"/>
                     </Grid>
@@ -123,7 +123,7 @@
                         <Image Source="ictu.png" HeightRequest="20" HorizontalOptions="Center" />
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
                             <Label Text="{Binding [LanguageTitle], Source={x:Static helpers:LocalizationResourceManager.Instance}}" FontSize="16" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#111827, Dark=White}" />
-                            <Label Text="{Binding [LanguageDes], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" FontSize="12" />
+                            <Label Text="{Binding [LanguageDes], Source={x:Static helpers:LocalizationResourceManager.Instance}}" TextColor="{AppThemeBinding Light=#6B7280, Dark=#A1A1AA}" FontSize="12" />
                         </VerticalStackLayout>
                         <Picker Grid.Column="2" WidthRequest="130" Title="Select" ItemsSource="{Binding SupportedLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" VerticalOptions="Center" TextColor="{AppThemeBinding Light=#111827, Dark=White}"/>
                     </Grid>
@@ -134,7 +134,7 @@
 
         <Border Grid.Row="1" BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}" StrokeThickness="0">
             <Border.Shadow>
-                <Shadow Brush="Black" Offset="0,-5" Opacity="0.05" Radius="10" />
+                <Shadow Brush="Black" Offset="0,-5" Opacity="{AppThemeBinding Light=0.05, Dark=0.3}" Radius="10" />
             </Border.Shadow>
             <Grid ColumnDefinitions="*, *, *, *">
                 <Grid Grid.Column="3">
