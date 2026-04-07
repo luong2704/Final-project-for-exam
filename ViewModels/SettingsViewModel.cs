@@ -81,8 +81,23 @@ namespace Campus.ViewModels
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     _settingsService.SaveLanguage(value);
+
+                    ApplyLanguageChange(value);
                 }
             }
+        }
+
+        private void ApplyLanguageChange(string language)
+        {
+            if (string.IsNullOrWhiteSpace(language)) return;
+
+            var cultureCode = language == "Vietnamese" ? "vi-VN" : "en-US";
+            var culture = new System.Globalization.CultureInfo(cultureCode);
+
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            OnPropertyChanged(nameof(SelectedLanguage));
         }
 
         public ObservableCollection<string> SupportedLanguages { get; } = new ObservableCollection<string>
@@ -105,7 +120,6 @@ namespace Campus.ViewModels
                 StudentId = user.StudentId;
             }
 
-            // Lấy cài đặt Theme & Notification
             var currentSettings = _settingsService.GetSettings();
             _isDarkMode = currentSettings.ThemeMode == ThemeMode.Dark;
             ThemeLabel = _isDarkMode ? "DARK" : "LIGHT";
