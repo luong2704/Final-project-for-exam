@@ -1,42 +1,50 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Campus.ViewModels"
     x:Class="Campus.Views.SearchPage">
-	<VerticalStackLayout Padding="10" Spacing="10">
 
-		<!-- Search -->
-		<SearchBar
-			Placeholder="Search events..."
-			Text="{Binding SearchText, Mode=TwoWay}" />
+    <VerticalStackLayout Padding="10" Spacing="10">
 
-		<!-- FILTER -->
-		<Picker
-			Title="Filter by Category"
-			ItemsSource="{Binding Categories}"
-			SelectedItem="{Binding SelectedCategory}" />
+        <!-- Search -->
+        <SearchBar
+            Placeholder="Search events..."
+            Text="{Binding SearchText, Mode=TwoWay}" />
 
-		<!-- Event List -->
-		<CollectionView ItemsSource="{Binding Events}"
-						SelectionMode="None">
+        <!-- FILTER -->
+        <Picker
+            Title="Filter by Category"
+            ItemsSource="{Binding Categories}"
+            SelectedItem="{Binding SelectedCategory}" />
 
-			<CollectionView.ItemTemplate>
-				<DataTemplate>
-					<Frame Margin="5"
-						   Padding="10"
-						   CornerRadius="10"
-						   HasShadow="True">
+        <!-- Event List -->
+        <CollectionView ItemsSource="{Binding Events}"
+                        SelectionMode="None">
 
-						<VerticalStackLayout>
-							<Label Text="{Binding Title}"
-								   FontSize="18"
-								   FontAttributes="Bold" />
-						</VerticalStackLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:Object">
+                    <Frame Margin="5"
+                           Padding="10"
+                           CornerRadius="10"
+                           HasShadow="True">
 
-					</Frame>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+                        </VerticalStackLayout>
 
-		</CollectionView>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SearchViewModel}}, Path=GoToEventDetailCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
 
-	</VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
 </ContentPage>
