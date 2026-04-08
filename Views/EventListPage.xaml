@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Campus.ViewModels"
+             xmlns:views="clr-namespace:Campus.Views"
+             x:Class="Campus.Views.EventListPage"
+             x:DataType="viewmodels:EventListViewModel"
+             Title="Events"
+             BackgroundColor="#F7F8FA">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ─── HEADER ─── -->
+        <VerticalStackLayout Grid.Row="0" Padding="20,16,20,8">
+            <Label Text="🎓 Campus Events"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#1A202C" />
+            <Label Text="Discover what's happening on campus"
+                   FontSize="14"
+                   TextColor="#718096"
+                   Margin="0,4,0,0" />
+        </VerticalStackLayout>
+
+        <!-- ─── LOADING INDICATOR ─── -->
+        <ActivityIndicator Grid.Row="1"
+                           IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           Color="#00697F"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+
+        <!-- ─── EVENT LIST ─── -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Events}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SelectEventCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
+                        Margin="0,8,0,0">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Event"
+                              xmlns:models="clr-namespace:Campus.Models">
+                    <Grid Padding="16,6">
+                        <Border StrokeThickness="0"
+                                StrokeShape="RoundRectangle 12"
+                                BackgroundColor="White"
+                                Padding="12">
+                            <Border.Shadow>
+                                <Shadow Brush="#22000000" Offset="0,2" Radius="8" Opacity="0.15" />
+                            </Border.Shadow>
+
+                            <Grid ColumnDefinitions="80,*"
+                                  RowDefinitions="Auto,Auto,Auto,Auto"
+                                  ColumnSpacing="12"
+                                  RowSpacing="4">
+
+                                <!-- Event Image -->
+                                <Border Grid.Column="0"
+                                        Grid.RowSpan="4"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        HeightRequest="100"
+                                        WidthRequest="80"
+                                        VerticalOptions="Center">
+                                    <Image Source="{Binding Image}"
+                                           Aspect="AspectFill" />
+                                </Border>
+
+                                <!-- Title -->
+                                <Label Grid.Column="1" Grid.Row="0"
+                                       Text="{Binding Title}"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="#1A202C"
+                                       LineBreakMode="WordWrap" />
+
+                                <!-- Date -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="4">
+                                    <Label Text="🕐" FontSize="12" VerticalOptions="Center" />
+                                    <Label Text="{Binding Date, StringFormat='{0:ddd, MMM dd · HH:mm}'}"
+                                           FontSize="12"
+                                           TextColor="#718096"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+
+                                <!-- Location -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="2" Spacing="4">
+                                    <Label Text="📍" FontSize="12" VerticalOptions="Center" />
+                                    <Label Text="{Binding Location}"
+                                           FontSize="12"
+                                           TextColor="#718096"
+                                           LineBreakMode="TailTruncation"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+
+                                <!-- Category Badge -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="3" Spacing="6" Margin="0,4,0,0">
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="#EBF4FF"
+                                            Padding="8,4">
+                                        <Label Text="{Binding Category}"
+                                               FontSize="11"
+                                               TextColor="#3182CE"
+                                               FontAttributes="Bold" />
+                                    </Border>
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="#FEFCBF"
+                                            Padding="8,4">
+                                        <Label Text="{Binding Status}"
+                                               FontSize="11"
+                                               TextColor="#D69E2E"
+                                               FontAttributes="Bold" />
+                                    </Border>
+                                </HorizontalStackLayout>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
