@@ -60,6 +60,7 @@
 
             <Button
             Text="Logout"
+            Clicked="OnLogoutClicked"
             BackgroundColor="#00697F"
             TextColor="White"
             HeightRequest="50"
