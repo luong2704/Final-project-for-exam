@@ -9,6 +9,8 @@ public partial class EventDetailPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+<<<<<<< team-8-Dashboard-statistics-cards
+=======
 
     protected override void OnAppearing()
     {
@@ -19,4 +21,5 @@ public partial class EventDetailPage : ContentPage
             vm.IsRegistered = vm.Event.IsRegistered;
         }
     }
+>>>>>>> main
 }
