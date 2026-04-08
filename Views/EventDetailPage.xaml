@@ -65,10 +65,7 @@
                        TextColor="{AppThemeBinding Light=#333333, Dark=#CCCCCC}" />
             </VerticalStackLayout>
 
-            <!-- Action Region (Team 4) -->
             <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
-
-                <!-- Register Button: chỉ hiện khi CHƯA đăng ký -->
                 <Button Text="Register for this Event →"
                         Command="{Binding RegisterCommand}"
                         IsVisible="{Binding IsRegistered, Converter={StaticResource InvertBoolConverter}}"
@@ -79,7 +76,6 @@
                         FontAttributes="Bold"
                         FontSize="15" />
 
-                <!-- Already Registered Status Badge (Team 4) -->
                 <Border IsVisible="{Binding IsRegistered}"
                         StrokeThickness="0"
                         StrokeShape="RoundRectangle 12"
@@ -98,11 +94,12 @@
                                    VerticalOptions="Center" />
                         </Border>
                         <Label Text="You are already registered"
-                               FontSize="13" FontAttributes="Bold"
-                               TextColor="#166534" VerticalOptions="Center" />
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#166534"
+                               VerticalOptions="Center" />
                     </HorizontalStackLayout>
                 </Border>
-
             </VerticalStackLayout>
 
         </VerticalStackLayout>
