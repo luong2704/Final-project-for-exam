@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:Campus.Views"
+            x:Name="rootPage"
+            x:Class="Campus.Views.MyEventsPage"
+            Title="My Events"
+            BackgroundColor="#F7FAFC">
+
+
+   <Grid RowDefinitions="Auto,*">
+
+
+       <!-- Header -->
+       <VerticalStackLayout Grid.Row="0"
+               Padding="20,16,20,8">
+           <Label Text="My Events"
+                  FontSize="26"
+                  FontAttributes="Bold"
+                  TextColor="#1A202C"/>
+           <Label Text="Events you have registered for"
+                  FontSize="13"
+                  TextColor="#718096"
+                  Margin="0,2,0,0"/>
+       </VerticalStackLayout>
+
+
+       <!-- Loading Indicator -->
+       <ActivityIndicator Grid.Row="1"
+                          IsRunning="{Binding IsBusy}"
+                          IsVisible="{Binding IsBusy}"
+                          Color="#00697F"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Center"/>
+
+
+       <!-- CollectionView with EmptyView (Task 3) -->
+       <CollectionView Grid.Row="1"
+                       ItemsSource="{Binding EventsList}"
+                       SelectionMode="None">
+
+
+         
+           <!-- Empty State (Task 3) -->
+           <CollectionView.EmptyView>
+               <VerticalStackLayout VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="12"
+                                    Margin="0,80,0,0">
+                   <Label Text="😔"
+                          FontSize="64"
+                          HorizontalOptions="Center"/>
+                   <Label Text="No registered events yet"
+                          FontSize="16"
+                          TextColor="#718096"
+                          HorizontalOptions="Center"/>
+                   <Label Text="Events you register for will appear here."
+                          FontSize="13"
+                          TextColor="#A0AEC0"
+                          HorizontalOptions="Center"/>
+               </VerticalStackLayout>
+           </CollectionView.EmptyView>
+
+
+           <!-- Item Template (Task 2) -->
+           <CollectionView.ItemTemplate>
+               <DataTemplate>
+                    <views:EventCardView BindingContext="{Binding .}"
+                       UnregisterCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UnregisterCommand}"/>
+               </DataTemplate>
+           </CollectionView.ItemTemplate>
+
+
+       </CollectionView>
+
+
+   </Grid>
+
+
+</ContentPage>
+
+
+
+
+

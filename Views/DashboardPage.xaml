@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Campus.Views"
+             x:Class="Campus.Views.DashboardPage"
+             Title="Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header -->
+            <Label Text="Dashboard" 
+                   FontSize="28" 
+                   FontAttributes="Bold"
+                   TextColor="#333333" />
+
+            <!-- Statistics Cards Grid — uses reusable DashboardStatCard (Issue 6) -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto" ColumnSpacing="12" RowSpacing="12">
+
+                <views:DashboardStatCard Grid.Row="0" Grid.Column="0"
+                    Title="Total Events"
+                    Value="{Binding TotalEvents}"
+                    AccentColor="#2196F3" />
+
+                <views:DashboardStatCard Grid.Row="0" Grid.Column="1"
+                    Title="Upcoming Events"
+                    Value="{Binding UpcomingEvents}"
+                    AccentColor="#FF9800" />
+
+                <views:DashboardStatCard Grid.Row="1" Grid.Column="0"
+                    Title="Attended"
+                    Value="{Binding AttendedEvents}"
+                    AccentColor="#4CAF50" />
+
+                <views:DashboardStatCard Grid.Row="1" Grid.Column="1"
+                    Title="Saved"
+                    Value="{Binding SavedEvents}"
+                    AccentColor="#9C27B0" />
+
+            </Grid>
+            <!-- Recent Events Section -->
+            <Label Text="Recent Events" 
+                   FontSize="18" 
+                   FontAttributes="Bold"
+                   TextColor="#333333"
+                   Margin="0,10,0,0" />
+
+			<!-- Recent Events List -->
+			<Frame CornerRadius="8" BorderColor="#E0E0E0" Padding="15" HasShadow="True">
+				<VerticalStackLayout Spacing="10">
+					<CollectionView ItemsSource="{Binding RecentEvents}"
+								   SelectionMode="Single"
+								   SelectionChangedCommand="{Binding ViewEventDetailsCommand}"
+								   SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+						<CollectionView.ItemTemplate>
+							<DataTemplate>
+								<Frame CornerRadius="6" BorderColor="#F0F0F0" Padding="10" Background="#F9F9F9">
+									<VerticalStackLayout Spacing="4">
+										<Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" />
+										<Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" FontSize="12" TextColor="#999999" />
+									</VerticalStackLayout>
+								</Frame>
+							</DataTemplate>
+						</CollectionView.ItemTemplate>
+					</CollectionView>
+
+                    <!-- Empty State -->
+                    <Label Text="No upcoming events"
+                           FontSize="14"
+                           TextColor="#999999"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding RecentEvents.Count, Converter={StaticResource InvertedBoolConverter}}" />
+				</VerticalStackLayout>
+			</Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

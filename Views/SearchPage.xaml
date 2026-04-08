@@ -1,0 +1,42 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Campus.Views.SearchPage">
+	<VerticalStackLayout Padding="10" Spacing="10">
+
+		<!-- Search -->
+		<SearchBar
+			Placeholder="Search events..."
+			Text="{Binding SearchText, Mode=TwoWay}" />
+
+		<!-- FILTER -->
+		<Picker
+			Title="Filter by Category"
+			ItemsSource="{Binding Categories}"
+			SelectedItem="{Binding SelectedCategory}" />
+
+		<!-- Event List -->
+		<CollectionView ItemsSource="{Binding Events}"
+						SelectionMode="None">
+
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Frame Margin="5"
+						   Padding="10"
+						   CornerRadius="10"
+						   HasShadow="True">
+
+						<VerticalStackLayout>
+							<Label Text="{Binding Title}"
+								   FontSize="18"
+								   FontAttributes="Bold" />
+						</VerticalStackLayout>
+
+					</Frame>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+
+		</CollectionView>
+
+	</VerticalStackLayout>
+</ContentPage>
