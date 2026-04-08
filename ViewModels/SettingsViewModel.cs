@@ -81,22 +81,31 @@ namespace Campus.ViewModels
                 if (!string.IsNullOrWhiteSpace(value))
                 {
                     _settingsService.SaveLanguage(value);
+                    ApplyLanguageChange(value);
                 }
             }
         }
 
+        private void ApplyLanguageChange(string language)
+        {
+            var cultureCode = language == "Vietnamese" ? "vi-VN" : "en-US";
+            var culture = new System.Globalization.CultureInfo(cultureCode);
+
+            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
+            Campus.Services.LocalizationResourceManager.Instance.SetCulture(culture);
+        }
+
         public ObservableCollection<string> SupportedLanguages { get; } = new ObservableCollection<string>
         {
-            "English",    
+            "English",
             "Vietnamese"
         };
 
-        
         public SettingsViewModel()
         {
             _settingsService = new SettingsService();
 
-           
             var user = AppSession.CurrentUser;
             if (user != null)
             {
@@ -105,7 +114,6 @@ namespace Campus.ViewModels
                 StudentId = user.StudentId;
             }
 
-            // Lấy cài đặt Theme & Notification
             var currentSettings = _settingsService.GetSettings();
             _isDarkMode = currentSettings.ThemeMode == ThemeMode.Dark;
             ThemeLabel = _isDarkMode ? "DARK" : "LIGHT";
@@ -121,12 +129,12 @@ namespace Campus.ViewModels
         private void ApplyThemeChange(bool isDark)
         {
             _settingsService.SaveThemeMode(isDark ? ThemeMode.Dark : ThemeMode.Light);
-            
+
             if (Application.Current != null)
             {
                 Application.Current.UserAppTheme = isDark ? AppTheme.Dark : AppTheme.Light;
             }
-            
+
             ThemeLabel = isDark ? "DARK" : "LIGHT";
         }
 
