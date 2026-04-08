@@ -67,60 +67,63 @@ public class SearchViewModel : INotifyPropertyChanged
 		Events = new ObservableCollection<Event>(allEvents);
 	}
 
-	// ✅ SEARCH THẬT (API) + fallback local
-	async Task PerformSearch()
-	{
-		if (string.IsNullOrWhiteSpace(SearchText))
-		{
-			ResetList();
-			return;
-		}
+    // ✅ SEARCH THẬT (API) + fallback local
+    // Cập nhật lại hàm PerformSearch
+    async Task PerformSearch()
+    {
+        IEnumerable<Event> sourceData;
 
-		try
-		{
-			// ===== CALL API =====
-			var result = await service.Search(SearchText);
+        try
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                // Nếu không search text -> lấy toàn bộ data gốc
+                sourceData = allEvents;
+            }
+            else
+            {
+                // Gọi API lấy kết quả theo SearchText
+                var apiResult = await service.Search(SearchText);
+                sourceData = apiResult;
 
-			Events.Clear();
+                // Nếu API không trả về gì hoặc lỗi, fallback về local search
+                if (apiResult == null || !apiResult.Any())
+                    sourceData = allEvents.Where(e => e.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+        catch
+        {
+            // Fallback local nếu API sập
+            sourceData = allEvents.Where(e => e.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+        }
 
-			foreach (var e in result)
-				Events.Add(e);
-		}
-		catch
-		{
-			// ✅ nếu API chưa chạy → dùng local search
-			LocalSearch();
-		}
-	}
+        // Sau khi có nguồn dữ liệu (từ API hoặc Local), tiến hành lọc theo Category
+        ApplyFilter(sourceData);
+    }
 
-	// ================= APPLY FILTER =================
-	void ApplyFilter(IEnumerable<Event> source)
-	{
-		var query = source.AsEnumerable();
+    // Hàm này đóng vai trò "chốt chặn" cuối cùng để hiển thị lên UI
+    void ApplyFilter(IEnumerable<Event> source)
+    {
+        var query = source.AsEnumerable();
 
-		// TEXT SEARCH
-		if (!string.IsNullOrWhiteSpace(SearchText))
-		{
-			query = query.Where(e =>
-				e.Title.Contains(SearchText,
-				StringComparison.OrdinalIgnoreCase));
-		}
+        // Lọc theo Category nếu người dùng chọn khác "All"
+        if (SelectedCategory != "All")
+        {
+            query = query.Where(e => e.Category == SelectedCategory);
+        }
 
-		// CATEGORY FILTER
-		if (SelectedCategory != "All")
-		{
-			query = query.Where(e =>
-				e.Category == SelectedCategory);
-		}
+        // Cập nhật ObservableCollection trên UI thread
+        MainThread.BeginInvokeOnMainThread(() => {
+            Events.Clear();
+            foreach (var e in query)
+            {
+                Events.Add(e);
+            }
+        });
+    }
 
-		Events.Clear();
-
-		foreach (var e in query)
-			Events.Add(e);
-	}
-
-	// ================= LOCAL SEARCH BACKUP =================
-	void LocalSearch()
+    // ================= LOCAL SEARCH BACKUP =================
+    void LocalSearch()
 	{
 		ApplyFilter(allEvents);
 	}
