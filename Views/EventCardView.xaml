@@ -13,6 +13,13 @@
             <Shadow Brush="#22000000" Offset="0,2" Radius="8" Opacity="0.15" />
         </Border.Shadow>
 
+        <!-- TapGestureRecognizer to make the card clickable -->
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding Source={x:Reference cardRoot}, Path=TapCommand}"
+                CommandParameter="{Binding .}" />
+        </Border.GestureRecognizers>
+
         <Grid ColumnDefinitions="80,*"
               RowDefinitions="Auto,Auto,Auto,Auto"
               ColumnSpacing="12"
@@ -57,29 +64,26 @@
                        VerticalOptions="Center" />
             </HorizontalStackLayout>
 
-            <!-- Status Badge + Unregister Button -->
+            <!-- Status Badge & Action Button -->
             <Grid Grid.Column="1" Grid.Row="3"
                   ColumnDefinitions="Auto,*,Auto"
                   Margin="0,6,0,0">
 
-                <!-- Registered Badge -->
+                <!-- Category Badge -->
                 <Border Grid.Column="0"
                         StrokeThickness="0"
                         StrokeShape="RoundRectangle 6"
-                        BackgroundColor="#C6F6D5"
+                        BackgroundColor="#EBF4FF"
                         Padding="8,4"
                         VerticalOptions="Center">
-                    <HorizontalStackLayout Spacing="4">
-                        <Label Text="✅" FontSize="11" VerticalOptions="Center" />
-                        <Label Text="Registered"
-                               FontSize="11"
-                               TextColor="#276749"
-                               FontAttributes="Bold"
-                               VerticalOptions="Center" />
-                    </HorizontalStackLayout>
+                    <Label Text="{Binding Category}"
+                           FontSize="11"
+                           TextColor="#3182CE"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" />
                 </Border>
 
-    <!-- Unregister Button -->
+                <!-- Unregister Button (Visible only when ShowActions=true) -->
                 <Button Grid.Column="2"
                         Text="Unregister"
                         FontSize="12"
@@ -89,9 +93,10 @@
                         BackgroundColor="#00697F"
                         TextColor="White"
                         VerticalOptions="Center"
+                        IsVisible="{Binding Source={x:Reference cardRoot}, Path=ShowActions}"
                         Command="{Binding Source={x:Reference cardRoot}, Path=UnregisterCommand}"
                         CommandParameter="{Binding .}" />
-            
+
             </Grid>
 
         </Grid>
