@@ -1,0 +1,164 @@
+commit 173c5be5afae4deeb21f3b8671fb8b67cc8e23bb
+Merge: e1d8aa1 29c81fb
+Author: Shanea2023 <chapotererashanea@gmail.com>
+Date:   Sat Apr 4 10:12:45 2026 +0700
+
+    Resolved merge conflict in EventService
+
+commit 29c81fb4142b7538155217c2e6615a940834df42
+Merge: 29f90c1 d1d0128
+Author: luong2704 <70437935+luong2704@users.noreply.github.com>
+Date:   Sat Apr 4 05:25:57 2026 +0700
+
+    Merge pull request #144 from luong2704/hoangem/event-architecture
+    
+    feat(issue-2): complete architecture for Event module (Task 1-4)
+
+commit e1d8aa1b95c3a29be69d1e1ebbbe9ddebd8076a9
+Author: Shanea2023 <chapotererashanea@gmail.com>
+Date:   Sat Apr 4 00:29:54 2026 +0700
+
+    Added EventListViewModel (Task 9)
+
+M	ViewModels/EventListViewModel.cs
+
+commit 96c08316ad11bb16da767ffdde242464ac6e1556
+Merge: 29f90c1 5e455be
+Author: Shanea2023 <chapotererashanea@gmail.com>
+Date:   Sat Apr 4 00:26:06 2026 +0700
+
+    Added EventListViewModel (Task 6,7,9)
+
+commit d1d0128684f369ec3d5254d3ee6ccca74293da1e
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 23:22:41 2026 +0700
+
+    test(issue-2): test data retrieval in MainPage
+
+M	MainPage.xaml.cs
+
+commit 5e455be0dbc030e3caf27c5ca9762dd85e1cdb1f
+Merge: e692b46 fa484e0
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:18:36 2026 +0700
+
+    Merge pull request #143 from luong2704/Team-5-My-Registered-Events
+    
+    Task 2.1 to 2.5 Huyen Trang team 5
+
+commit fa484e0ebc9dcde7cd145c4d81dcbca2eb0e378e
+Merge: 7ceab2e c4affb5
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:17:19 2026 +0700
+
+    Merge pull request #142 from luong2704/Team-5-HuyenTrang-UI
+    
+    Task 2.4 and Task 2.5
+
+commit 7ceab2e86c42ddfbe0e46e9966f528e249cd59ac
+Merge: c4950bc e692b46
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:16:03 2026 +0700
+
+    Task 2.1 to 2.3 MyEventsPage.xaml and EvenCardView.xaml
+    
+    Task 2.1 to 2.3 MyEventsPage.xaml and EvenCardView.xaml
+
+commit c4affb58e9df94bfd3ae7ba2e77a1272843a97c3
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:14:06 2026 +0700
+
+    feat(T5-20): implement EmptyView state for CollectionView in MyEventsPage
+
+M	Views/MyEventsPage.xaml
+M	Views/MyEventsPage.xaml.cs
+
+commit 46cd2fa4bb93ef1c4726090d3a4aa62ed3f7cb7d
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:12:21 2026 +0700
+
+    feat(T5-19): add Unregister button and BindableProperty to EventCardView
+
+M	Views/EventCardView.xaml
+M	Views/EventCardView.xaml.cs
+
+commit 1498629567ed23acbc3a0cc3c9581e56aa8f275d
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 23:08:05 2026 +0700
+
+    feat(issue-2): implement MockEventService
+
+A	Services/MockEventService.cs
+
+commit e692b4621eec225d8aeabd990c2c2e76f1f3a4df
+Merge: 91a37f8 214842f
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:01:00 2026 +0700
+
+    Task 2.1 to 2.3 MyEventsPage.xaml and EvenCardView.xaml
+    
+    Task 2.1 to 2.3 MyEventsPage.xaml and EvenCardView.xaml
+
+commit 214842fab65a026665cc00b516b0befc0b16c5f1
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:58:28 2026 +0700
+
+    feat(T5-18): design layout details (image, title, date) for EventCardView
+
+M	Views/EventCardView.xaml
+
+commit c25f7e3bc0f9832523828086d349daa075027451
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:57:37 2026 +0700
+
+    feat(T5-17): create reusable EventCardView component
+
+M	Views/EventCardView.xaml
+M	Views/EventCardView.xaml.cs
+
+commit 5db817f6069926e28cf1a32350990e1e6365415f
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:57:29 2026 +0700
+
+    feat(T5-16): layout main MyEventsPage with title and margins
+
+M	Views/MyEventsPage.xaml
+M	Views/MyEventsPage.xaml.cs
+
+commit b73ff352e314a782d50478626e87c659bf854014
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 22:54:16 2026 +0700
+
+    feat(issue-2): define Event service interface
+
+A	Services/IEventService.cs
+
+commit 795f2dcdd8d51258038605fa386b91fa02fdbaa2
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 22:48:49 2026 +0700
+
+    feat(issue-2): create Event data model
+
+A	Models/Event.cs
+
+commit 67c915a354893c85975676f0aaf857123a1f40ac
+Merge: 29f90c1 197faec
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 22:36:47 2026 +0700
+
+    Merge remote-tracking branch 'origin/Team-1-Login-and-Profile' into hoangem/event-architecture
+
+commit 91a37f8c47d4a5a8a13258c84f61e85d53c9d649
+Merge: 74a3cd0 c4950bc
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:27:26 2026 +0700
+
+    Merge pull request #139 from luong2704/Team-5-My-Registered-Events
+    
+    Solve is 16 and 33
+
+commit 29f90c17a256460b7bcee6a737fe50e9d4b9f725
+Author: Shanea2023 <chapotererashanea@gmail.com>
+Date:   Fri Apr 3 22:12:29 2026 +0700
+
+    Make branch empty for Team 2

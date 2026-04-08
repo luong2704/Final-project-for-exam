@@ -1,4 +1,4 @@
-﻿using Campus.Services;
+using Campus.Services;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,7 +20,7 @@ namespace Campus
             IEventService eventService = new MockEventService();
 
             // 2. Fetch mock data asynchronously
-            var events = await eventService.GetEventsAsync();
+            var events = await eventService.GetAllEventsAsync();
 
             // 3. Verify data in the Visual Studio Output Window
             Debug.WriteLine("-------------------------------------------");
