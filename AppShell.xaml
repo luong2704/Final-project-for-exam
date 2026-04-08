@@ -21,6 +21,7 @@
         ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="MyEventsPage" />
 
+
     <ShellContent
         Title="Categories"
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
@@ -33,6 +34,6 @@
 
     <ShellContent
         Title="Search"
-        ContentTemplate="{DataTemplate views:SearchPage}" />
-
+        ContentTemplate="{DataTemplate views:SearchPage}"
+        Route="SearchPage" />
 </Shell>
