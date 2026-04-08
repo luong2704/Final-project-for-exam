@@ -42,6 +42,7 @@ namespace Campus
             Routing.RegisterRoute("EventDetailPage", typeof(EventDetailPage));          // Team 3
             Routing.RegisterRoute("categoryfilter", typeof(CategoryFilterView));
             Routing.RegisterRoute("EventRegistrationPage", typeof(Views.RegistrationPage)); // Team 4
+            Routing.RegisterRoute("EventListPage", typeof(Views.EventListPage)); // Team 2
 
             return builder.Build();
         }

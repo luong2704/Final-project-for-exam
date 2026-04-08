@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Campus.ViewModels"
              xmlns:views="clr-namespace:Campus.Views"
+             xmlns:models="clr-namespace:Campus.Models"
              x:Class="Campus.Views.EventListPage"
              x:DataType="viewmodels:EventListViewModel"
              Title="Events"
@@ -39,8 +40,7 @@
                         Margin="0,8,0,0">
 
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Event"
-                              xmlns:models="clr-namespace:Campus.Models">
+                <DataTemplate x:DataType="models:Event">
                     <Grid Padding="16,6">
                         <Border StrokeThickness="0"
                                 StrokeShape="RoundRectangle 12"
