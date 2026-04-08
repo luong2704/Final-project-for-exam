@@ -9,4 +9,10 @@ public partial class ProfilePage : ContentPage
         InitializeComponent();
         BindingContext = new ProfileViewModel();
     }
+        private async void OnLogoutClicked(object sender, EventArgs e)
+    {
+        Preferences.Remove("UserToken");
+
+        await Shell.Current.GoToAsync("//LoginPage");
+    }
 }
