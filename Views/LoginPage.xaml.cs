@@ -13,4 +13,8 @@ public partial class LoginPage : ContentPage
     {
         await DisplayAlert("Forgot Password", "Password recovery feature coming soon!", "OK");
     }
+    private async void OnRegisterTapped(object sender, EventArgs e)
+    {
+        await DisplayAlert("Register", "Navigate to register page (not implemented yet).", "OK");
+    }
 }
