@@ -3,6 +3,13 @@
              x:Class="Campus.Views.ProfilePage"
              BackgroundColor="White"
              Title="Profile">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="⚙️" 
+                     Order="Primary" 
+                     Clicked="OnSettingsClicked" />
+    </ContentPage.ToolbarItems>
+
     <ScrollView>
         <VerticalStackLayout Padding="25" Spacing="20">
 
@@ -20,7 +27,6 @@
                     Aspect="AspectFill"/>
             </Frame>
 
-            <!-- Info Card -->
             <Border
                 StrokeThickness="0"
                 StrokeShape="RoundRectangle 20"
@@ -37,21 +43,19 @@
                        TextColor="#00697F"/>
 
                     <Label Text="Name" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding FullName}" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="#00697F"/>
 
-                    <Label Text="User Name" FontSize="16" FontAttributes="Bold" TextColor="#00697F"/>
-
-                    <Label Text="Email"
-                           FontSize="12"
-                           TextColor="Gray"/>
-                    <Label Text="user@email.com"
+                    <Label Text="Email" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding Email}"
                            FontSize="16"
                            FontAttributes="Bold"
                            TextColor="#00697F"/>
 
-                    <Label Text="Student ID"
-                           FontSize="12"
-                           TextColor="Gray"/>
-                    <Label Text="123456"
+                    <Label Text="Student ID" FontSize="12" TextColor="Gray"/>
+                    <Label Text="{Binding StudentId}"
                            FontSize="16"
                            FontAttributes="Bold"
                            TextColor="#00697F"/>
@@ -61,15 +65,25 @@
             </Border>
 
             <Button
-            Text="Logout"
-            BackgroundColor="#00697F"
-            TextColor="White"
-            HeightRequest="50"
-            CornerRadius="10"
-            FontAttributes="Bold"/>
+                Text="⚙️ Settings"
+                BackgroundColor="White"
+                TextColor="#00697F"
+                BorderColor="#00697F"
+                BorderWidth="2"
+                HeightRequest="50"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                Clicked="OnSettingsClicked"/>
+
+            <Button
+                Text="Logout"
+                BackgroundColor="#00697F"
+                TextColor="White"
+                HeightRequest="50"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                Clicked="OnLogoutClicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
-
-
 </ContentPage>

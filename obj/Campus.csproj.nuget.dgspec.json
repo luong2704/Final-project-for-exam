@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Campus.csproj": {}
+    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Final-project-for-exam\\Campus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Campus.csproj": {
+    "C:\\Users\\ASUS\\OneDrive\\Desktop\\Final-project-for-exam\\Campus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Campus.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Final-project-for-exam\\Campus.csproj",
         "projectName": "Campus",
-        "projectPath": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\Campus.csproj",
+        "projectPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Final-project-for-exam\\Campus.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Downloads\\Final-project-for-exam\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\OneDrive\\Desktop\\Final-project-for-exam\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
