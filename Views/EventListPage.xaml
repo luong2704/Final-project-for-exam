@@ -38,6 +38,27 @@
                         SelectionChangedCommand="{Binding SelectEventCommand}"
                         SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}"
                         Margin="0,8,0,0">
+            <!-- ─── EMPTY STATE (TASK 12) ─── -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="12"
+                                     Margin="0,120,0,0">
+                    <Label Text="📅"
+                           FontSize="72"
+                           HorizontalOptions="Center"/>
+                    <Label Text="No events available"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1A202C"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Check back later for new campus events!"
+                           FontSize="14"
+                           TextColor="#A0AEC0"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <!-- ────────────────────────────── -->
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Event">
