@@ -34,6 +34,9 @@
 
     <ShellContent
         Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}" />
+
+</Shell>
         ContentTemplate="{DataTemplate views:SearchPage}"
         Route="SearchPage" />
 </Shell>
