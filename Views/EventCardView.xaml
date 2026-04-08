@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:converters="clr-namespace:Campus.Converters"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campus.Views.EventCardView"
              x:Name="cardRoot">
-
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:StatusColorConverter x:Key="StatusColorConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <Border Margin="16,6"
             Padding="12"
             StrokeThickness="0"
@@ -66,12 +71,12 @@
                 <Border Grid.Column="0"
                         StrokeThickness="0"
                         StrokeShape="RoundRectangle 6"
-                        BackgroundColor="#C6F6D5"
+                        BackgroundColor="{Binding Status, Converter={StaticResource StatusColorConverter}}"
                         Padding="8,4"
                         VerticalOptions="Center">
                     <HorizontalStackLayout Spacing="4">
                         <Label Text="✅" FontSize="11" VerticalOptions="Center" />
-                        <Label Text="Registered"
+                        <Label Text="{Binding Status}"
                                FontSize="11"
                                TextColor="#276749"
                                FontAttributes="Bold"
@@ -98,4 +103,3 @@
     </Border>
 
 </ContentView>
-``
