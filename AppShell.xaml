@@ -12,11 +12,14 @@
         Route="LoginPage" />
 
     <ShellContent
+<<<<<<< team-8-Dashboard-statistics-cards
         Title="Events"
         ContentTemplate="{DataTemplate views:EventListPage}"
         Route="EventListPage" />
 
     <ShellContent
+=======
+>>>>>>> main
         Title="My Events"
         ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="MyEventsPage" />
@@ -24,16 +27,18 @@
     <ShellContent
         Title="Categories"
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
-        Route="categoryfilter" />
-
+<<<<<<< team-8-Dashboard-statistics-cards
+        Route="CategoryFilterView" />
+    
     <ShellContent
         Title="Dashboard"
         ContentTemplate="{DataTemplate views:DashboardPage}"
         Route="DashboardPage" />
-
-<<<<<<< HEAD
+    
 </Shell>
 =======
+        Route="categoryfilter" />
+
     <ShellContent
         Title="Search"
         ContentTemplate="{DataTemplate views:SearchPage}" />
@@ -43,4 +48,3 @@
         ContentTemplate="{DataTemplate views:SearchPage}" />
 </Shell>
 >>>>>>> main
->>>>>>> 34ac2bea923ff09537f496dc6cba5964e93ed1f9
