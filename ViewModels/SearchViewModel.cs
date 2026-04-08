@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Campus.Models;
+using Campus.Services;   // ✅ thêm
+using Campus.Views;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Linq;
-using Campus.Models;
-using Campus.Services;   // ✅ thêm
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Campus.ViewModels;
 
@@ -151,4 +154,14 @@ public class SearchViewModel : INotifyPropertyChanged
 	void OnPropertyChanged([CallerMemberName] string name = "")
 		=> PropertyChanged?.Invoke(this,
 			new PropertyChangedEventArgs(name));
+
+    public ICommand GoToEventDetailCommand => new Command<Event>(async (selectedEvent) =>
+    {
+        if (selectedEvent == null) return;
+
+        await Shell.Current.GoToAsync(nameof(EventDetailPage), true, new Dictionary<string, object>
+    {
+        { "Event", selectedEvent }
+    });
+    });
 }
