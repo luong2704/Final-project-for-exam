@@ -8,15 +8,31 @@
 
     <ShellContent
         Title="Login"
-        ContentTemplate="{DataTemplate views:MyEventsPage}"
+        ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
+
+    <ShellContent
+        Title="Events"
+        ContentTemplate="{DataTemplate views:EventListPage}"
+        Route="EventListPage" />
+
+    <ShellContent
+        Title="My Events"
+        ContentTemplate="{DataTemplate views:MyEventsPage}"
+        Route="MyEventsPage" />
 
     <ShellContent
         Title="Categories"
         ContentTemplate="{DataTemplate views:CategoryFilterView}"
-        Route="CategoryFilterView" />
+        Route="categoryfilter" />
 
-	<ShellContent
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate views:DashboardPage}"
+        Route="DashboardPage" />
+
+    <ShellContent
         Title="Search"
-        ContentTemplate="{DataTemplate views:SearchPage}" />
+        ContentTemplate="{DataTemplate views:SearchPage}"
+        Route="SearchPage" />
 </Shell>
