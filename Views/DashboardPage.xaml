@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Campus.Views"
              x:Class="Campus.Views.DashboardPage"
              Title="Dashboard">
 
@@ -14,29 +13,79 @@
                    FontAttributes="Bold"
                    TextColor="#333333" />
 
-            <!-- Statistics Cards Grid — uses reusable DashboardStatCard (Issue 6) -->
+            <!-- Statistics Cards Grid -->
             <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto" ColumnSpacing="12" RowSpacing="12">
+                <!-- Total Events Card -->
+                <Frame Grid.Row="0" Grid.Column="0" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Total Events" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="{Binding TotalEvents}" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#2196F3" />
+                    </VerticalStackLayout>
+                </Frame>
 
-                <views:DashboardStatCard Grid.Row="0" Grid.Column="0"
-                    Title="Total Events"
-                    Value="{Binding TotalEvents}"
-                    AccentColor="#2196F3" />
+                <!-- Upcoming Events Card -->
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Upcoming Events" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="{Binding UpcomingEvents}" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#FF9800" />
+                    </VerticalStackLayout>
+                </Frame>
 
-                <views:DashboardStatCard Grid.Row="0" Grid.Column="1"
-                    Title="Upcoming Events"
-                    Value="{Binding UpcomingEvents}"
-                    AccentColor="#FF9800" />
-
-                <views:DashboardStatCard Grid.Row="1" Grid.Column="0"
-                    Title="Attended"
-                    Value="{Binding AttendedEvents}"
-                    AccentColor="#4CAF50" />
-
-                <views:DashboardStatCard Grid.Row="1" Grid.Column="1"
-                    Title="Saved"
-                    Value="{Binding SavedEvents}"
-                    AccentColor="#9C27B0" />
-
+                <!-- Attended Events Card -->
+                <Frame Grid.Row="1" Grid.Column="0" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Attended" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="{Binding AttendedEvents}" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#4CAF50" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <!-- Saved Events Card -->
+                <Frame Grid.Row="1" Grid.Column="1" 
+                       CornerRadius="12" 
+                       BorderColor="#E0E0E0" 
+                       Padding="15"
+                       HasShadow="True"
+                       Background="White">
+                    <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Saved" 
+                               FontSize="14" 
+                               TextColor="#999999" />
+                        <Label Text="{Binding SavedEvents}" 
+                               FontSize="36" 
+                               FontAttributes="Bold"
+                               TextColor="#9C27B0" />
+                    </VerticalStackLayout>
+                </Frame>
             </Grid>
             <!-- Recent Events Section -->
             <Label Text="Recent Events" 
