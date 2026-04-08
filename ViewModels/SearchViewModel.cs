@@ -4,17 +4,16 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Linq;
 using Campus.Models;
-using Campus.Services;
+using Campus.Services;   // ✅ thêm
 using System.Threading.Tasks;
 
 namespace Campus.ViewModels;
 
 public class SearchViewModel : INotifyPropertyChanged
 {
-	// ================= SERVICE =================
+	// ✅ gọi backend service
 	private readonly SearchService service = new();
 
-	// ================= DATA =================
 	public ObservableCollection<Event> Events { get; set; }
 
 	private List<Event> allEvents;
@@ -56,6 +55,7 @@ public class SearchViewModel : INotifyPropertyChanged
 			searchText = value;
 			OnPropertyChanged();
 
+			// 🔥 gọi search async
 			_ = PerformSearch();
 		}
 	}
@@ -67,19 +67,28 @@ public class SearchViewModel : INotifyPropertyChanged
 		Events = new ObservableCollection<Event>(allEvents);
 	}
 
-	// ================= SEARCH (API + FILTER) =================
+	// ✅ SEARCH THẬT (API) + fallback local
 	async Task PerformSearch()
 	{
+		if (string.IsNullOrWhiteSpace(SearchText))
+		{
+			ResetList();
+			return;
+		}
+
 		try
 		{
-			// CALL API
+			// ===== CALL API =====
 			var result = await service.Search(SearchText);
 
-			ApplyFilter(result);
+			Events.Clear();
+
+			foreach (var e in result)
+				Events.Add(e);
 		}
 		catch
 		{
-			// fallback local
+			// ✅ nếu API chưa chạy → dùng local search
 			LocalSearch();
 		}
 	}
@@ -124,7 +133,6 @@ public class SearchViewModel : INotifyPropertyChanged
 			Events.Add(e);
 	}
 
-	// ================= MOCK DATA =================
 	List<Event> MockData()
 	{
 		return new()
@@ -134,10 +142,10 @@ public class SearchViewModel : INotifyPropertyChanged
 			new Event { Title = "Tech Talk: Introduction to .NET MAUI", Category = "Tech" },
 			new Event { Title = "Workshop: UI/UX Design Principles", Category = "Tech"},
 			new Event { Title = "Career Fair 2026", Category = "Social"}
+
 		};
 	}
 
-	// ================= NOTIFY =================
 	public event PropertyChangedEventHandler? PropertyChanged;
 
 	void OnPropertyChanged([CallerMemberName] string name = "")
