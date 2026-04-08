@@ -81,8 +81,10 @@
                 TextColor="White"
                 HeightRequest="50"
                 CornerRadius="10"
-                FontAttributes="Bold"/>
+                FontAttributes="Bold"
+                Clicked="OnLogoutClicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+
