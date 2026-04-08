@@ -19,30 +19,57 @@
                        Aspect="AspectFill" />
             </Border>
 
-            <!-- ═══ Content Card ═══ -->
-            <Border Margin="16,-30,16,16"
-                    Padding="20"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 16"
-                    BackgroundColor="White">
-                <Border.Shadow>
-                    <Shadow Brush="#22000000" Offset="0,4" Radius="12" Opacity="0.15" />
-                </Border.Shadow>
+            <!-- Title & Date -->
+            <VerticalStackLayout x:Name="TitleRegion" Spacing="5">
+                <Label Text="{Binding Title}" FontSize="24" FontAttributes="Bold" />
+                
+                <HorizontalStackLayout Spacing="8">
+                    <!-- Status Badge -->
+                    <Border StrokeThickness="0" 
+                            BackgroundColor="{Binding StatusColor}" 
+                            StrokeShape="RoundRectangle 8" 
+                            Padding="8,4">
+                        <HorizontalStackLayout Spacing="4">
+                            <Label Text="{Binding StatusIcon}" TextColor="White" FontSize="12" VerticalOptions="Center" />
+                            <Label Text="{Binding EventStatus}" TextColor="White" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    
+                    <!-- Category Badge -->
+                    <Border StrokeThickness="0" 
+                            BackgroundColor="#E5E7EB" 
+                            StrokeShape="RoundRectangle 8" 
+                            Padding="8,4">
+                        <Label Text="{Binding Category}" TextColor="#374151" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                    </Border>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="{Binding Date, StringFormat='{}{0:MMM dd, yyyy}'}" FontSize="14" TextColor="Gray" />
+                    <Label Text="•" FontSize="14" TextColor="Gray" />
+                    <Label Text="{Binding Location}" FontSize="14" TextColor="Gray" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="12">
 
-                    <!-- Category + Status badges -->
-                    <HorizontalStackLayout Spacing="8">
-                        <Border StrokeThickness="0"
-                                StrokeShape="RoundRectangle 6"
-                                BackgroundColor="#E8F4FD"
-                                Padding="10,5">
-                            <Label Text="{Binding Category}"
-                                   FontSize="12"
-                                   TextColor="#00697F"
-                                   FontAttributes="Bold" />
-                        </Border>
+            <VerticalStackLayout x:Name="ActionRegion" Margin="0,20,0,0" Spacing="12">
+                <Button Text="Register for this Event →"
+                        Command="{Binding RegisterCommand}"
+                        IsVisible="{Binding IsRegistered, Converter={StaticResource InvertBoolConverter}}"
+                        BackgroundColor="#00697F"
+                        TextColor="White"
+                        HeightRequest="52"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        FontSize="15" />
 
+                <Border IsVisible="{Binding IsRegistered}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="#DCFCE7"
+                        Padding="14,10">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
                         <Border StrokeThickness="0"
                                 StrokeShape="RoundRectangle 6"
                                 Padding="10,5">
