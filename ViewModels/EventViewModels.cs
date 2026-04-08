@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
 using Campus.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Campus.ViewModels;
 
@@ -43,7 +45,7 @@ public partial class EventViewModels : ObservableObject
 	private bool _isEmpty;
 
 	public ObservableCollection<Event> EventsList { get; } = new();
-
+	
 	private async Task LoadDataAsync()
 	{
 		IsLoading = true;
@@ -131,7 +133,7 @@ public partial class EventViewModels : ObservableObject
 	{
 		if (eventItem == null || IsBusy) return;
 
-		// Confirm before unregistering
+		// Xác nhận trước khi hủy đăng ký
 		bool confirmed = await Shell.Current.DisplayAlert(
 			"Cancel Registration",
 			$"Are you sure you want to unregister from \"{eventItem.Title}\"?",
@@ -175,5 +177,7 @@ public partial class EventViewModels : ObservableObject
 		{
 			IsBusy = false;
 		}
+
 	}
+
 }
