@@ -28,7 +28,8 @@ namespace Campus
             builder.Services.AddTransient<EventDetailViewModel>();
             builder.Services.AddTransient<EventDetailPage>();  // Team 3
             builder.Services.AddTransient<CategoryViewModel>();
-
+            builder.Services.AddTransient<EventListViewModel>();              // Team 2 — Event List (Thao)
+            builder.Services.AddTransient<Views.EventListPage>();
             builder.Services.AddSingleton<CampusService>();
             builder.Services.AddTransient<MainPage>();
 
