@@ -17,6 +17,11 @@
         Route="EventListPage" />
 
     <ShellContent
+        Title="Events"
+        ContentTemplate="{DataTemplate views:EventListPage}"
+        Route="EventListPage" />
+
+    <ShellContent
         Title="My Events"
         ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="MyEventsPage" />
@@ -27,7 +32,12 @@
         Route="categoryfilter" />
 
     <ShellContent
-        Title="Search"
-        ContentTemplate="{DataTemplate views:SearchPage}" />
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate views:DashboardPage}"
+        Route="DashboardPage" />
 
+    <ShellContent
+        Title="Search"
+        ContentTemplate="{DataTemplate views:SearchPage}"
+        Route="SearchPage" />
 </Shell>

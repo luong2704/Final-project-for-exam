@@ -8,78 +8,120 @@ namespace Campus.Services
 {
     public class MockEventService : IEventService
     {
-        private readonly List<Event> _events;
+        private readonly List<Event> _allEvents;
 
         public MockEventService()
         {
-            _events = new List<Event>
+            _allEvents = new List<Event>
             {
                 new Event
                 {
                     Id = Guid.NewGuid(),
                     Title = "Tech Talk: Introduction to .NET MAUI",
-                    Description = "Learn the basics of .NET MAUI.",
-                    Date = DateTime.Now.AddDays(2),
-                    Location = "Hall A",
+                    Description = "Learn the basics of .NET MAUI for cross-platform mobile development.",
+                    Date = DateTime.Now.AddHours(2),
+                    Location = "Hall A - Building 1",
+                    Image = "dotnet_maui.png",
                     Category = "Academic",
-                    Status = "Live",
-                    IsRegistered = false
+                    IsRegistered = true,
+                    Status = "Live"
                 },
                 new Event
                 {
                     Id = Guid.NewGuid(),
-                    Title = "Campus Marathon",
-                    Description = "Annual 5km run.",
+                    Title = "Campus Music Festival",
+                    Description = "Annual music festival featuring student bands and solo performers.",
+                    Date = DateTime.Now.AddDays(2),
+                    Location = "Open Air Theater",
+                    Image = "music_fest.png",
+                    Category = "Cultural",
+                    IsRegistered = true,
+                    Status = "Featured"
+                },
+                new Event
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "Career Fair 2026",
+                    Description = "Meet top employers and explore internship opportunities.",
+                    Date = DateTime.Now.AddDays(15),
+                    Location = "Convention Center",
+                    Image = "career_fair.png",
+                    Category = "Social",
+                    IsRegistered = true,
+                    Status = "Popular"
+                },
+                new Event
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "Workshop: UI/UX Design Principles",
+                    Description = "Hands-on workshop covering modern UI/UX design fundamentals.",
                     Date = DateTime.Now.AddDays(5),
-                    Location = "Main Square",
+                    Location = "Lab 3 - Building 2",
+                    Image = "uiux_workshop.png",
+                    Category = "Academic",
+                    IsRegistered = true,
+                    Status = "Limited"
+                },
+                new Event
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "Volleyball Tournament",
+                    Description = "Inter-department volleyball tournament. All skill levels welcome!",
+                    Date = DateTime.Now.AddDays(3),
+                    Location = "Sports Complex",
+                    Image = "volleyball.png",
                     Category = "Sports",
-                    Status = "Upcoming",
-                    IsRegistered = false
+                    IsRegistered = true,
+                    Status = "Soon"
                 }
             };
         }
 
         public Task<List<Event>> GetAllEventsAsync()
         {
-            return Task.FromResult(_events.ToList());
+            return Task.FromResult(_allEvents.ToList());
         }
 
         public Task<List<Event>> GetEventsByCategoryAsync(int categoryId)
         {
-            // TEMP: Adjust when CategoryId exists
-            return Task.FromResult(_events.ToList());
+            return Task.FromResult(_allEvents.ToList());
         }
 
         public Task<List<Event>> GetMyEventsAsync()
         {
-            return Task.FromResult(_events.Where(e => e.IsRegistered).ToList());
+            return Task.FromResult(_allEvents.Where(e => e.IsRegistered).ToList());
         }
 
         public Task<Event> GetEventByIdAsync(Guid id)
         {
-            var ev = _events.FirstOrDefault(e => e.Id == id);
+            var ev = _allEvents.FirstOrDefault(e => e.Id == id);
             return Task.FromResult(ev);
         }
 
         public Task<bool> RegisterEventAsync(Guid eventId, string? status = null)
         {
-            var ev = _events.FirstOrDefault(e => e.Id == eventId);
-            if (ev == null) return Task.FromResult(false);
-
-            ev.IsRegistered = true;
-            if (!string.IsNullOrEmpty(status))
-                ev.Status = status;
-
-            return Task.FromResult(true);
+            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
+            if (eventItem != null)
+            {
+                eventItem.IsRegistered = true;
+                if (!string.IsNullOrEmpty(status))
+                {
+                    eventItem.Status = status;
+                }
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
         }
 
         public Task<bool> UnregisterEventAsync(Guid eventId)
         {
-            var ev = _events.FirstOrDefault(e => e.Id == eventId);
-            if (ev == null) return Task.FromResult(false);
-
-            ev.IsRegistered = false;
-            return Task.FromResult(true);
+            var eventItem = _allEvents.FirstOrDefault(e => e.Id == eventId);
+            if (eventItem != null)
+            {
+                eventItem.IsRegistered = false;
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
         }
     }
 }

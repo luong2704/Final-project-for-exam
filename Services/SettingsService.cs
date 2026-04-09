@@ -10,7 +10,7 @@ namespace Campus.Services
     {
         private const string ThemeKey = "settings_theme_mode";
         private const string NotificationKey = "settings_notifications_enabled";
-        private const string LanguageKey = "settings_language"; // Thêm key cho ngôn ngữ
+        private const string LanguageKey = "settings_language";
 
         public SettingsPreferences GetSettings()
         {
@@ -21,10 +21,8 @@ namespace Campus.Services
             return new SettingsPreferences
             {
                 ThemeMode = (ThemeMode)themeValue,
-                // QUAN TRỌNG: Phải có dấu phẩy ở cuối dòng này
-                NotificationsEnabled = notificationsEnabled, 
-                // Gán giá trị ngôn ngữ
-                Language = language 
+                NotificationsEnabled = notificationsEnabled,
+                Language = language
             };
         }
 
@@ -38,13 +36,11 @@ namespace Campus.Services
             Preferences.Default.Set(NotificationKey, enabled);
         }
 
-        // Bổ sung hàm lưu ngôn ngữ
         public void SaveLanguage(string language)
         {
             Preferences.Default.Set(LanguageKey, language);
         }
 
-        // Bổ sung hàm lấy ngôn ngữ
         public string GetLanguage()
         {
             return Preferences.Default.Get(LanguageKey, "English");

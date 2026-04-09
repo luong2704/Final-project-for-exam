@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Campus.Views"
+            x:Name="rootPage"
             x:Class="Campus.Views.MyEventsPage"
             Title="My Events"
             BackgroundColor="#F7FAFC">
@@ -64,7 +65,7 @@
            <!-- Item Template (Task 2) -->
            <CollectionView.ItemTemplate>
                <DataTemplate>
-                   <views:EventCardView
+                    <views:EventCardView BindingContext="{Binding .}"
                        UnregisterCommand="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UnregisterCommand}"/>
                </DataTemplate>
            </CollectionView.ItemTemplate>

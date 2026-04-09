@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Campus.Models;
+using Campus.Services;   // ✅ thêm
+using Campus.Views;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Linq;
-using Campus.Models;
-using Campus.Services;   // ✅ thêm
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Campus.ViewModels;
 
@@ -18,6 +21,32 @@ public class SearchViewModel : INotifyPropertyChanged
 
 	private List<Event> allEvents;
 
+	// ================= FILTER LIST =================
+	public List<string> Categories { get; } = new()
+	{
+		"All",
+		"Sport",
+		"Music",
+		"Tech",
+		"Social"
+	};
+
+	private string selectedCategory = "All";
+	public string SelectedCategory
+	{
+		get => selectedCategory;
+		set
+		{
+			if (selectedCategory == value) return;
+
+			selectedCategory = value;
+			OnPropertyChanged();
+
+			_ = PerformSearch();
+		}
+	}
+
+	// ================= SEARCH TEXT =================
 	private string searchText = string.Empty;
 	public string SearchText
 	{
@@ -34,50 +63,72 @@ public class SearchViewModel : INotifyPropertyChanged
 		}
 	}
 
+	// ================= CONSTRUCTOR =================
 	public SearchViewModel()
 	{
 		allEvents = MockData();
 		Events = new ObservableCollection<Event>(allEvents);
 	}
 
-	// ✅ SEARCH THẬT (API) + fallback local
-	async Task PerformSearch()
+    // ✅ SEARCH THẬT (API) + fallback local
+    // Cập nhật lại hàm PerformSearch
+    async Task PerformSearch()
+    {
+        IEnumerable<Event> sourceData;
+
+        try
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                // Nếu không search text -> lấy toàn bộ data gốc
+                sourceData = allEvents;
+            }
+            else
+            {
+                // Gọi API lấy kết quả theo SearchText
+                var apiResult = await service.Search(SearchText);
+                sourceData = apiResult;
+
+                // Nếu API không trả về gì hoặc lỗi, fallback về local search
+                if (apiResult == null || !apiResult.Any())
+                    sourceData = allEvents.Where(e => e.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+        catch
+        {
+            // Fallback local nếu API sập
+            sourceData = allEvents.Where(e => e.Title.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Sau khi có nguồn dữ liệu (từ API hoặc Local), tiến hành lọc theo Category
+        ApplyFilter(sourceData);
+    }
+
+    // Hàm này đóng vai trò "chốt chặn" cuối cùng để hiển thị lên UI
+    void ApplyFilter(IEnumerable<Event> source)
+    {
+        var query = source.AsEnumerable();
+
+        // Lọc theo Category nếu người dùng chọn khác "All"
+        if (SelectedCategory != "All")
+        {
+            query = query.Where(e => e.Category == SelectedCategory);
+        }
+
+        // Cập nhật ObservableCollection trên UI thread
+        MainThread.BeginInvokeOnMainThread(() => {
+            Events.Clear();
+            foreach (var e in query)
+            {
+                Events.Add(e);
+            }
+        });
+    }
+
+    // ================= LOCAL SEARCH BACKUP =================
+    void LocalSearch()
 	{
-		if (string.IsNullOrWhiteSpace(SearchText))
-		{
-			ResetList();
-			return;
-		}
-
-		try
-		{
-			// ===== CALL API =====
-			var result = await service.Search(SearchText);
-
-			Events.Clear();
-
-			foreach (var e in result)
-				Events.Add(e);
-		}
-		catch
-		{
-			// ✅ nếu API chưa chạy → dùng local search
-			LocalSearch();
-		}
-	}
-
-	// ===== LOCAL SEARCH (backup) =====
-	void LocalSearch()
-	{
-		var keyword = SearchText.ToLower();
-
-		var result = allEvents
-			.Where(e => e.Title.ToLower().Contains(keyword));
-
-		Events.Clear();
-
-		foreach (var e in result)
-			Events.Add(e);
+		ApplyFilter(allEvents);
 	}
 
 	void ResetList()
@@ -106,4 +157,14 @@ public class SearchViewModel : INotifyPropertyChanged
 	void OnPropertyChanged([CallerMemberName] string name = "")
 		=> PropertyChanged?.Invoke(this,
 			new PropertyChangedEventArgs(name));
+
+    public ICommand GoToEventDetailCommand => new Command<Event>(async (selectedEvent) =>
+    {
+        if (selectedEvent == null) return;
+
+        await Shell.Current.GoToAsync(nameof(EventDetailPage), true, new Dictionary<string, object>
+    {
+        { "Event", selectedEvent }
+    });
+    });
 }

@@ -28,12 +28,20 @@ namespace Campus
             builder.Services.AddTransient<EventDetailViewModel>();
             builder.Services.AddTransient<EventDetailPage>();  // Team 3
             builder.Services.AddTransient<CategoryViewModel>();
-            builder.Services.AddTransient<EventListViewModel>();              // Team 2 — Event List (Thao)
+            
+            // Team 2 — Event List
+            builder.Services.AddTransient<EventListViewModel>();
             builder.Services.AddTransient<Views.EventListPage>();
+
+            // Task 6, 7, 9 — Centralized ViewModel + pages
+            builder.Services.AddTransient<MainEventViewModel>();
+
+            // Dashboard ViewModel and Page
+            builder.Services.AddTransient<DashboardViewModel>();
+            builder.Services.AddTransient<Views.DashboardPage>();
+
             builder.Services.AddSingleton<CampusService>();
             builder.Services.AddTransient<MainPage>();
-
-            
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -41,6 +49,7 @@ namespace Campus
 
             Routing.RegisterRoute("EventDetailPage", typeof(EventDetailPage));          // Team 3
             Routing.RegisterRoute("categoryfilter", typeof(CategoryFilterView));
+            Routing.RegisterRoute(nameof(Views.DashboardPage), typeof(Views.DashboardPage));
             Routing.RegisterRoute("EventRegistrationPage", typeof(Views.RegistrationPage)); // Team 4
             Routing.RegisterRoute("EventListPage", typeof(Views.EventListPage)); // Team 2
 

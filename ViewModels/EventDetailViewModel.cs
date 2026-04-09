@@ -1,6 +1,8 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Campus.Models;
+using CommunityToolkit.Mvvm.Messaging;
+using Campus.Messages;
 
 namespace Campus.ViewModels;
 
@@ -45,6 +47,12 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     [ObservableProperty]
     private string _statusIcon = string.Empty;
 
+    [ObservableProperty]
+    private int _daysRemaining;
+
+    [ObservableProperty]
+    private string _formattedDate = string.Empty;
+
     public EventDetailViewModel()
     {
     }
@@ -70,24 +78,82 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
 
         UpdateEventStatus();
     }
+    //team 8 added this method 
+    [RelayCommand]
+    private async Task ToggleRegistration()
+    {
+        if (Event == null) return;
+
+        // toggle registration status
+        Event.IsRegistered = !Event.IsRegistered;
+
+        // notify to refresh 
+        WeakReferenceMessenger.Default.Send(new EventUpdatedMessage(Event));
+        await Task.CompletedTask;
+    }
 
     private void UpdateEventStatus()
     {
-        if (Date > DateTime.Now)
-        {
-            EventStatus = "Upcoming";
-            IsUpcoming = true;
-            IsPast = false;
-            StatusColor = Colors.Green;
-            StatusIcon = "🟢";
-        }
-        else
+        var now = DateTime.Now;
+        var eventDate = Date.Date;
+        var todayDate = now.Date;
+        var daysUntilEvent = (eventDate - todayDate).Days;
+        DaysRemaining = daysUntilEvent < 0 ? 0 : daysUntilEvent;
+        string timeString = Date.ToString("h:mm tt");
+
+        if (daysUntilEvent < 0)
         {
             EventStatus = "Past";
             IsUpcoming = false;
             IsPast = true;
+            FormattedDate = Date.ToString("MMM dd, yyyy 'at' h:mm tt");
             StatusColor = Colors.Gray;
-            StatusIcon = "⚫";
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent == 0)
+        {
+            EventStatus = "Today";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"Today at {timeString}";
+            StatusColor = Colors.Red;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent == 1)
+        {
+            EventStatus = "Tomorrow";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"Tomorrow at {timeString}";
+            StatusColor = Colors.Orange;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent <= 7)
+        {
+            EventStatus = "This Week";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"{Date:dddd} at {timeString}";
+            StatusColor = Colors.Yellow;
+            StatusIcon = "";
+        }
+        else if (daysUntilEvent <= 30)
+        {
+            EventStatus = "Coming Soon";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = $"{Date:MMM dd} ({daysUntilEvent} days from now)";
+            StatusColor = Colors.Green;
+            StatusIcon = "";
+        }
+        else
+        {
+            EventStatus = "Upcoming";
+            IsUpcoming = true;
+            IsPast = false;
+            FormattedDate = Date.ToString("MMM dd, yyyy");
+            StatusColor = Colors.Green;
+            StatusIcon = "";
         }
     }
 
@@ -96,7 +162,6 @@ public partial class EventDetailViewModel : ObservableObject, IQueryAttributable
     {
         if (Event == null) return;
 
-        // Navigate to Registration confirmation page
         await Shell.Current.GoToAsync("EventRegistrationPage", new Dictionary<string, object>
         {
             { "SelectedEvent", Event }
