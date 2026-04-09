@@ -17,11 +17,6 @@
         Route="EventListPage" />
 
     <ShellContent
-        Title="Events"
-        ContentTemplate="{DataTemplate views:EventListPage}"
-        Route="EventListPage" />
-
-    <ShellContent
         Title="My Events"
         ContentTemplate="{DataTemplate views:MyEventsPage}"
         Route="MyEventsPage" />

@@ -21,7 +21,7 @@ namespace Campus.Services
                     Description = "Learn the basics of .NET MAUI for cross-platform mobile development.",
                     Date = DateTime.Now.AddHours(2),
                     Location = "Hall A - Building 1",
-                    Image = "dotnet_maui.png",
+                    Image = "dotnet_maui.jpg",
                     Category = "Academic",
                     IsRegistered = true,
                     Status = "Live"
@@ -33,7 +33,7 @@ namespace Campus.Services
                     Description = "Annual music festival featuring student bands and solo performers.",
                     Date = DateTime.Now.AddDays(2),
                     Location = "Open Air Theater",
-                    Image = "music_fest.png",
+                    Image = "music_fest.jpg",
                     Category = "Cultural",
                     IsRegistered = true,
                     Status = "Featured"
@@ -45,7 +45,7 @@ namespace Campus.Services
                     Description = "Meet top employers and explore internship opportunities.",
                     Date = DateTime.Now.AddDays(15),
                     Location = "Convention Center",
-                    Image = "career_fair.png",
+                    Image = "career_fair.jpg",
                     Category = "Social",
                     IsRegistered = true,
                     Status = "Popular"
@@ -57,7 +57,7 @@ namespace Campus.Services
                     Description = "Hands-on workshop covering modern UI/UX design fundamentals.",
                     Date = DateTime.Now.AddDays(5),
                     Location = "Lab 3 - Building 2",
-                    Image = "uiux_workshop.png",
+                    Image = "uiux_workshop.jpg",
                     Category = "Academic",
                     IsRegistered = true,
                     Status = "Limited"
@@ -69,7 +69,7 @@ namespace Campus.Services
                     Description = "Inter-department volleyball tournament. All skill levels welcome!",
                     Date = DateTime.Now.AddDays(3),
                     Location = "Sports Complex",
-                    Image = "volleyball.png",
+                    Image = "volleyball.jpg",
                     Category = "Sports",
                     IsRegistered = true,
                     Status = "Soon"
