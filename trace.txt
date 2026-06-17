@@ -1,0 +1,461 @@
+*** SettingsService.cs ***
+commit ea8bdeddad60cb086fb4ea6d93d3996d5f628a5f
+Merge: bb4b5cb 8019f60
+Author: hhuong103 <253066440+hhuong103@users.noreply.github.com>
+Date:   Thu Apr 2 08:26:17 2026 +0700
+
+    Merge branch 'Team-9-Settings/Reference' into team9-logic
+
+commit bb4b5cba81cf0e359db61d63e7eb99778a22fb32
+Author: dtc235190022-gif <dtc235190022@ictu.edu.vn>
+Date:   Wed Apr 1 22:58:33 2026 +0700
+
+    SettingsService.cs
+
+diff --git a/Services/SettingsService.cs b/Services/SettingsService.cs
+index 34ec921..386d291 100644
+--- a/Services/SettingsService.cs
++++ b/Services/SettingsService.cs
+@@ -1,53 +1,150 @@
+-﻿using System;
+-using System.Collections.Generic;
+-using System.Text;
+-using Campus.Models;
+-using Microsoft.Maui.Storage;
++﻿using Campus.Models;
++using Campus.Services;
++using Campus.Session;
++using System.Collections.ObjectModel;
++using System.ComponentModel;
++using System.Runtime.CompilerServices;
+ 
+-namespace Campus.Services
++namespace Campus.ViewModels
+ {
+-    public class SettingsService
++    public class SettingsViewModel : INotifyPropertyChanged
+     {
+-        private const string ThemeKey = "settings_theme_mode";
+-        private const string NotificationKey = "settings_notifications_enabled";
+-        private const string LanguageKey = "settings_language"; // Thêm key cho ngôn ngữ
++        private readonly SettingsService _settingsService;
++        public event PropertyChangedEventHandler? PropertyChanged;
+ 
+-        public SettingsPreferences GetSettings()
++        private string? _fullName;
++        public string? FullName
+         {
+-            var themeValue = Preferences.Default.Get(ThemeKey, (int)ThemeMode.Light);
+-            var notificationsEnabled = Preferences.Default.Get(NotificationKey, true);
+-            var language = Preferences.Default.Get(LanguageKey, "English");
++            get => _fullName;
++            set { _fullName = value; OnPropertyChanged(); }
++        }
++
++        private string? _email;
++        public string? Email
++        {
++            get => _email;
++            set { _email = value; OnPropertyChanged(); }
++        }
+ 
+-            return new SettingsPreferences
++        private string? _studentId;
++        public string? StudentId
++        {
++            get => _studentId;
++            set { _studentId = value; OnPropertyChanged(); }
++        }
++
++        private bool _isDarkMode;
++        public bool IsDarkMode
++        {
++            get => _isDarkMode;
++            set
+             {
+-                ThemeMode = (ThemeMode)themeValue,
+-                // QUAN TRỌNG: Phải có dấu phẩy ở cuối dòng này
+-                NotificationsEnabled = notificationsEnabled, 
+-                // Gán giá trị ngôn ngữ
+-                Language = language 
+-            };
++                if (_isDarkMode != value)
++                {
++                    _isDarkMode = value;
++                    OnPropertyChanged();
++                    ApplyThemeChange(value);
++                }
++            }
+         }
+ 
+-        public void SaveThemeMode(ThemeMode themeMode)
++        private string _themeLabel = "LIGHT";
++        public string ThemeLabel
+         {
+-            Preferences.Default.Set(ThemeKey, (int)themeMode);
++            get => _themeLabel;
++            set { _themeLabel = value; OnPropertyChanged(); }
+         }
+ 
+-        public void SaveNotificationsEnabled(bool enabled)
++        private bool _isNotificationsEnabled;
++        public bool IsNotificationsEnabled
+         {
+-            Preferences.Default.Set(NotificationKey, enabled);
++            get => _isNotificationsEnabled;
++            set
++            {
++                if (_isNotificationsEnabled == value) return;
++                _isNotificationsEnabled = value;
++                OnPropertyChanged();
++                _settingsService.SaveNotificationsEnabled(value);
++            }
+         }
+ 
+-        // Bổ sung hàm lưu ngôn ngữ
+-        public void SaveLanguage(string language)
++        private string? _selectedLanguage;
++        public string? SelectedLanguage
+         {
+-            Preferences.Default.Set(LanguageKey, language);
++            get => _selectedLanguage;
++            set
++            {
++                if (_selectedLanguage == value) return;
++                _selectedLanguage = value;
++                OnPropertyChanged();
++
++                if (!string.IsNullOrWhiteSpace(value))
++                {
++                    _settingsService.SaveLanguage(value);
++
++                    
++                    ApplyLanguageChange(value);
++                }
++            }
++        }
++        private void ApplyLanguageChange(string language)
++        {
++            var cultureCode = language == "Vietnamese" ? "vi-VN" : "en-US";
++            var culture = new System.Globalization.CultureInfo(cultureCode);
++
++            System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
++            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
++
++            
++        }
++        public ObservableCollection<string> SupportedLanguages { get; } = new ObservableCollection<string>
++        {
++            "English",
++"Vietnamese"
++        };
++
++        
++        public SettingsViewModel()
++        {
++            _settingsService = new SettingsService();
++
++           
++            var user = AppSession.CurrentUser;
++            if (user != null)
++            {
++                FullName = user.Username;
++                Email = user.Email;
++                StudentId = user.StudentId;
++            }
++
++        
++            var currentSettings = _settingsService.GetSettings();
++            _isDarkMode = currentSettings.ThemeMode == ThemeMode.Dark;
++            ThemeLabel = _isDarkMode ? "DARK" : "LIGHT";
++            _isNotificationsEnabled = currentSettings.NotificationsEnabled;
++
++            _selectedLanguage = _settingsService.GetLanguage();
++            if (string.IsNullOrWhiteSpace(_selectedLanguage))
++            {
++                _selectedLanguage = SupportedLanguages[0];
++            }
++        }
++
++        private void ApplyThemeChange(bool isDark)
++        {
++            _settingsService.SaveThemeMode(isDark ? ThemeMode.Dark : ThemeMode.Light);
++            
++            if (Application.Current != null)
++            {
++                Application.Current.UserAppTheme = isDark ? AppTheme.Dark : AppTheme.Light;
++            }
++            
++            ThemeLabel = isDark ? "DARK" : "LIGHT";
+         }
+ 
+-        // Bổ sung hàm lấy ngôn ngữ
+-        public string GetLanguage()
++        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+         {
+-            return Preferences.Default.Get(LanguageKey, "English");
++            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+         }
+     }
+ }
+\ No newline at end of file
+
+commit c3aced48cf6d792a2ba0111e30249edfd578a0ef
+Author: dtc235190022-gif <dtc235190022@ictu.edu.vn>
+Date:   Wed Apr 1 22:51:44 2026 +0700
+
+    SettingsViewModel.cs
+
+diff --git a/Services/SettingsService.cs b/Services/SettingsService.cs
+index 765cc73..34ec921 100644
+--- a/Services/SettingsService.cs
++++ b/Services/SettingsService.cs
+@@ -10,16 +10,21 @@ namespace Campus.Services
+     {
+         private const string ThemeKey = "settings_theme_mode";
+         private const string NotificationKey = "settings_notifications_enabled";
++        private const string LanguageKey = "settings_language"; // Thêm key cho ngôn ngữ
+ 
+         public SettingsPreferences GetSettings()
+         {
+             var themeValue = Preferences.Default.Get(ThemeKey, (int)ThemeMode.Light);
+             var notificationsEnabled = Preferences.Default.Get(NotificationKey, true);
++            var language = Preferences.Default.Get(LanguageKey, "English");
+ 
+             return new SettingsPreferences
+             {
+                 ThemeMode = (ThemeMode)themeValue,
+-                NotificationsEnabled = notificationsEnabled
++                // QUAN TRỌNG: Phải có dấu phẩy ở cuối dòng này
++                NotificationsEnabled = notificationsEnabled, 
++                // Gán giá trị ngôn ngữ
++                Language = language 
+             };
+         }
+ 
+@@ -32,5 +37,17 @@ namespace Campus.Services
+         {
+             Preferences.Default.Set(NotificationKey, enabled);
+         }
++
++        // Bổ sung hàm lưu ngôn ngữ
++        public void SaveLanguage(string language)
++        {
++            Preferences.Default.Set(LanguageKey, language);
++        }
++
++        // Bổ sung hàm lấy ngôn ngữ
++        public string GetLanguage()
++        {
++            return Preferences.Default.Get(LanguageKey, "English");
++        }
+     }
+ }
+\ No newline at end of file
+
+commit 05c79458e676594d812cebef9835ba56804884fe
+Author: cindy <admin@LAPTOP-4L802QDE>
+Date:   Wed Apr 1 15:40:07 2026 +0700
+
+    Add SaveLanguage method
+
+diff --git a/Services/SettingsService.cs b/Services/SettingsService.cs
+index 1004e32..f2777ce 100644
+--- a/Services/SettingsService.cs
++++ b/Services/SettingsService.cs
+@@ -39,5 +39,9 @@ namespace Campus.Services
+         {
+             return Preferences.Default.Get(LanguageKey, "English");
+         }
++        public void SaveLanguage(string language)
++        {
++            Preferences.Default.Set(LanguageKey, language);
++        }
+     }
+ }
+\ No newline at end of file
+
+commit cf0d2dee5699dc71ad19d25fdab719229adf584b
+Author: cindy <admin@LAPTOP-4L802QDE>
+Date:   Wed Apr 1 15:39:04 2026 +0700
+
+    Add GetLanguage method
+
+diff --git a/Services/SettingsService.cs b/Services/SettingsService.cs
+index 0ec11dd..1004e32 100644
+--- a/Services/SettingsService.cs
++++ b/Services/SettingsService.cs
+@@ -34,5 +34,10 @@ namespace Campus.Services
+         {
+             Preferences.Default.Set(NotificationKey, enabled);
+         }
++
++        public string GetLanguage()
++        {
++            return Preferences.Default.Get(LanguageKey, "English");
++        }
+     }
+ }
+\ No newline at end of file
+*** EventCardView.xaml blame ***
+commit 46cd2fa4bb93ef1c4726090d3a4aa62ed3f7cb7d
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 23:12:21 2026 +0700
+
+    feat(T5-19): add Unregister button and BindableProperty to EventCardView
+
+diff --git a/Views/EventCardView.xaml b/Views/EventCardView.xaml
+index e62c688..6b8dee6 100644
+--- a/Views/EventCardView.xaml
++++ b/Views/EventCardView.xaml
+@@ -79,7 +79,7 @@
+                     </HorizontalStackLayout>
+                 </Border>
+ 
+-                <!-- Unregister Button -->
++    <!-- Unregister Button -->
+                 <Button Grid.Column="2"
+                         Text="Unregister"
+                         FontSize="12"
+@@ -91,6 +91,7 @@
+                         VerticalOptions="Center"
+                         Command="{Binding Source={x:Reference cardRoot}, Path=UnregisterCommand}"
+                         CommandParameter="{Binding .}" />
++            
+             </Grid>
+ 
+         </Grid>
+
+commit 214842fab65a026665cc00b516b0befc0b16c5f1
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:58:28 2026 +0700
+
+    feat(T5-18): design layout details (image, title, date) for EventCardView
+
+diff --git a/Views/EventCardView.xaml b/Views/EventCardView.xaml
+index 9c87106..e62c688 100644
+--- a/Views/EventCardView.xaml
++++ b/Views/EventCardView.xaml
+@@ -96,4 +96,5 @@
+         </Grid>
+     </Border>
+ 
+-</ContentView>
+\ No newline at end of file
++</ContentView>
++``
+\ No newline at end of file
+
+commit c25f7e3bc0f9832523828086d349daa075027451
+Author: Huyntrangxinh <lahuyentrang25678@gmail.com>
+Date:   Fri Apr 3 22:57:37 2026 +0700
+
+    feat(T5-17): create reusable EventCardView component
+
+diff --git a/Views/EventCardView.xaml b/Views/EventCardView.xaml
+index 496ccc3..9c87106 100644
+--- a/Views/EventCardView.xaml
++++ b/Views/EventCardView.xaml
+@@ -96,4 +96,4 @@
+         </Grid>
+     </Border>
+ 
+-</ContentView>
++</ContentView>
+\ No newline at end of file
+*** MainPage.xaml.cs ***
+commit d1d0128684f369ec3d5254d3ee6ccca74293da1e
+Author: DavidHE <davidhoangem@gmail.com>
+Date:   Fri Apr 3 23:22:41 2026 +0700
+
+    test(issue-2): test data retrieval in MainPage
+
+diff --git a/MainPage.xaml.cs b/MainPage.xaml.cs
+index 7b1b3f8..2f632e4 100644
+--- a/MainPage.xaml.cs
++++ b/MainPage.xaml.cs
+@@ -1,24 +1,37 @@
+-﻿namespace Campus
++﻿using Campus.Services;
++using System.Diagnostics;
++using System.Linq;
++
++namespace Campus
+ {
+     public partial class MainPage : ContentPage
+     {
+-        int count = 0;
+-
+         public MainPage()
+         {
+             InitializeComponent();
++
++            // Run validation test for Task 4
++            TestEventDataRetrieval();
+         }
+ 
+-        private void OnCounterClicked(object? sender, EventArgs e)
++        private async void TestEventDataRetrieval()
+         {
+-            count++;
++            // 1. Initialize Service instance
++            IEventService eventService = new MockEventService();
++
++            // 2. Fetch mock data asynchronously
++            var events = await eventService.GetEventsAsync();
+ 
+-            if (count == 1)
+-                CounterBtn.Text = $"Clicked {count} time";
+-            else
+-                CounterBtn.Text = $"Clicked {count} times";
++            // 3. Verify data in the Visual Studio Output Window
++            Debug.WriteLine("-------------------------------------------");
++            Debug.WriteLine("TEAM 2 SYSTEM TEST: Event Data Retrieval");
++            Debug.WriteLine($"Items Found: {events.Count()}");
+ 
+-            SemanticScreenReader.Announce(CounterBtn.Text);
++            foreach (var ev in events)
++            {
++                Debug.WriteLine($">> Event: {ev.Title} | Location: {ev.Location}");
++            }
++            Debug.WriteLine("-------------------------------------------");
+         }
+     }
+ }
+
+commit f946028a55a1612bd5c27e3344393d4d24a44d4c
+Author: Koffeeine <147488095+Koffeeine@users.noreply.github.com>
+Date:   Sat Mar 28 16:51:29 2026 +0700
+
+    Add files via upload
+
+diff --git a/MainPage.xaml.cs b/MainPage.xaml.cs
+new file mode 100644
+index 0000000..7b1b3f8
+--- /dev/null
++++ b/MainPage.xaml.cs
+@@ -0,0 +1,24 @@
++﻿namespace Campus
++{
++    public partial class MainPage : ContentPage
++    {
++        int count = 0;
++
++        public MainPage()
++        {
++            InitializeComponent();
++        }
++
++        private void OnCounterClicked(object? sender, EventArgs e)
++        {
++            count++;
++
++            if (count == 1)
++                CounterBtn.Text = $"Clicked {count} time";
++            else
++                CounterBtn.Text = $"Clicked {count} times";
++
++            SemanticScreenReader.Announce(CounterBtn.Text);
++        }
++    }
++}

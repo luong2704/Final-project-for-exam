@@ -12,16 +12,17 @@ namespace Campus.Services
         private const string NotificationKey = "settings_notifications_enabled";
         private const string LanguageKey = "settings_language";
 
-
         public SettingsPreferences GetSettings()
         {
             var themeValue = Preferences.Default.Get(ThemeKey, (int)ThemeMode.Light);
             var notificationsEnabled = Preferences.Default.Get(NotificationKey, true);
+            var language = Preferences.Default.Get(LanguageKey, "English");
 
             return new SettingsPreferences
             {
                 ThemeMode = (ThemeMode)themeValue,
-                NotificationsEnabled = notificationsEnabled
+                NotificationsEnabled = notificationsEnabled,
+                Language = language
             };
         }
 
@@ -35,13 +36,14 @@ namespace Campus.Services
             Preferences.Default.Set(NotificationKey, enabled);
         }
 
-        public string GetLanguage()
-        {
-            return Preferences.Default.Get(LanguageKey, "English");
-        }
         public void SaveLanguage(string language)
         {
             Preferences.Default.Set(LanguageKey, language);
+        }
+
+        public string GetLanguage()
+        {
+            return Preferences.Default.Get(LanguageKey, "English");
         }
     }
 }

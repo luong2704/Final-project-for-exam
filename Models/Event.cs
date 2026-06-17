@@ -1,3 +1,4 @@
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Campus.Models
@@ -19,5 +20,6 @@ namespace Campus.Models
 
         [ObservableProperty]
         private string _status = "Upcoming";
+
     }
 }
